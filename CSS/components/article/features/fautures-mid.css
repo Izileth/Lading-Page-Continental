@@ -1,0 +1,160 @@
+.features-mid{
+    max-width: 100vw;
+    width: 100%;
+    height: max-content;
+    background-color: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    gap: 1rem;
+}
+
+.features-mid .container{
+    height: max-content;
+    max-width: 100vw;
+    width: 100%;
+    padding: 2rem;
+}
+
+.features-mid .container .header{
+    height: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+}
+.features-mid .container .header h2{
+    color: #f50000;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02rem;
+}
+.features-mid .container .header h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.01rem;
+}
+.features-mid .container .header p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.01rem;
+}
+.features-mid .container .box {
+    width: 100%;
+    height: 480px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.features-mid .container .box  .content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.25s ease-in;
+}
+
+.features-mid .container .box  .content:hover{
+    transform: translateY(-2%);
+}
+.features-mid .container .box  .content >div{
+    background-color: rgba(0,0,0,0.7);
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items:start;
+    gap: 1rem;
+    margin-inline: 1rem;
+    margin-block: 1rem;
+    border-radius: 12px;
+    transition: opacity 0.3s ease, transform 0.25s ease-in;
+}
+
+.features-mid .container .box  .content >div:hover{
+    transform: translateY(-2%);
+    opacity: 0.1;
+}
+.features-mid .container .box  .content h3{
+    color: #f50000;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-inline-start: 0.6rem;
+    letter-spacing: -0.02rem;
+}
+.features-mid .container .box  .content p{
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-block-start: 0.2rem;
+    margin-inline-start: 0.6rem;
+    letter-spacing: 0.01rem;
+}
+.features-mid .container .box  .content:nth-child(1){
+    background-image: url('https://wallpapercave.com/wp/wp6789798.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.features-mid .container .box  .content:nth-child(2){
+    background-image: url('https://www.86worx.com/media/catalog/product/optimized/b/4/b4ee5804e19f8fb230ccdcac227d89b4/b114-001_1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*Responsividade*/
+
+@media screen and (max-width: 768px) {
+    .features-mid{
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    .features-mid .container {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    .features-mid .container .header h2{
+        font-size: 3rem;
+    }
+    .features-mid .container .header h3{
+        font-size: 1.2rem;
+    }
+    .features-mid .container .header p{
+        font-size: 1rem;
+    }
+    .features-mid .container .box{
+        height: max-content;
+        flex-direction: column;
+    }
+    .features-mid .container .box  .content {
+        width: 100%;
+        height: 100%;
+    }
+    .features-mid .container .box  .content >div{
+        width: 90%;
+        height: max-content;
+    }
+    .features-mid .container .box  .content >div h3{
+        font-size: 1.5rem;
+        margin-block: 1rem;
+    }
+    .features-mid .container .box  .content >div p{
+        font-size: 0.8rem;
+        margin-block-end: 1rem;
+    }
+}

@@ -1,0 +1,62 @@
+/*Ajutes nos Estilos Espeficos de Componentes*/
+
+/*Carousel de Palavras*/
+
+
+/* Contêiner do carrossel */
+.words {
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Carrossel */
+.words-scroll{
+  display: flex;
+  gap: 50px;
+  animation: scroll 15s linear infinite;
+  white-space: nowrap;
+}
+
+/* Palavras */
+.word {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff2626;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.word:hover {
+  color: #4CAF50;
+  transform: scale(1.2);
+}
+
+/* Animação do carrossel */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .word {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .word {
+    font-size: 1.2rem;
+  }
+}

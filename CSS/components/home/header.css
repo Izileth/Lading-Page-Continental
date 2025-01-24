@@ -1,0 +1,146 @@
+/*Ajustes no Header*/
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.nav-bar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.nav-bar .logo span{
+    font-size: 1.2rem;
+}
+
+.nav-bar .menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-bar .menu ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+}
+.nav-bar .menu ul li{
+    list-style: none;
+}
+
+.nav-bar .menu ul li a {
+    color: #e50000;
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: color 0.3s;
+}
+
+.nav-bar .menu ul li a:hover {
+    color: #ddd;
+}
+
+.nav-bar .search-bar{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    margin-inline: 1rem;
+}
+.nav-bar .search-bar button{
+    background-color: #e50000;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.nav-bar .search-bar input{
+    background-color: #121212;
+    width: 200px;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.nav-bar .search-bar input::placeholder{
+    color: #fff;
+}
+.nav-bar .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.nav-bar .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    transition: top 0.5s ease;
+    z-index: 999;
+    padding: 20px;
+}
+.mobile-menu ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.mobile-menu ul li{
+    list-style: none;
+}
+
+.mobile-menu.open {
+    top: 80px;
+}
+
+.mobile-menu a {
+    display: block;
+    margin: 10px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.mobile-menu a:hover {
+    color: #00bcd4;
+}
+
+@media (max-width: 768px) {
+    .nav-bar .menu {
+        display: none;
+    }
+
+    .nav-bar .hamburger {
+        display: flex;
+    }
+    .nav-bar .search-bar input{
+        width: 100%;
+    }
+    .nav-bar .search-bar button{
+        padding: 0.3rem 1rem;
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,124 @@
+.features-low{
+    max-width: 100vw;
+    width: 100%;
+    height: max-content;
+    background-color: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    gap: 1rem;
+}
+
+.features-low .container{
+    height: max-content;
+    max-width: 100vw;
+    width: 100%;
+    padding: 2rem;
+}
+
+.features-low .container .header{
+    height: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 1rem;
+}
+.features-low .container .header h2{
+    color: #f50000;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: right;
+    letter-spacing: -0.02rem;
+}
+.features-low .container .header h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: right;
+    letter-spacing: 0.01rem;
+}
+.features-low .container .header p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: right;
+    letter-spacing: 0.01rem;
+}
+.features-low .container .box {
+    width: 100%;
+    height: 480px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.features-low .container .box  .content {
+    background-color: #1a1a1a;
+    width: 55%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.features-low .container .box  .content >div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 12px;
+}
+
+.features-low .container .box  .content >div img{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/7;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.features-low .container .box  .content >div img:hover {
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+    transform: translateY(-2%);
+}
+
+/*Responsividade*/
+
+@media screen and (max-width: 768px) {
+    .features-low{
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    .features-low .container {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    .features-low .container .header h2{
+        font-size: 3rem;
+    }
+    .features-low .container .header h3{
+        font-size: 1.2rem;
+    }
+    .features-low .container .header p{
+        font-size: 1rem;
+    }
+    .features-low .container .box{
+        flex-direction: column;
+    }
+    .features-low .container .box  .content {
+        width: 100%;
+        height: 50%;
+    }
+}

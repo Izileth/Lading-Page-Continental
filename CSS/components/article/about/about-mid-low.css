@@ -1,0 +1,161 @@
+.about-mid-low{
+    max-width: 100vw;
+    width: 100%;
+    height: max-content;
+    background-color: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    gap: 1rem;
+}
+
+.about-mid-low .container{
+    height: max-content;
+    max-width: 100vw;
+    width: 100%;
+    padding: 2rem;
+}
+
+.about-mid-low .container .header{
+    height: 280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 1rem;
+}
+.about-mid-low .container .header h2{
+    color: #f50000;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-block: 0.6rem;
+    letter-spacing: -0.02rem;
+}
+.about-mid-low .container .header h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: right;
+    letter-spacing: 0.01rem;
+}
+.about-mid-low .container .header p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    letter-spacing: 0.01rem;
+}
+.about-mid-low .container .box {
+    width: 100%;
+    height: 480px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.about-mid-low .container .box  .content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s ;
+}
+
+.about-mid-low .container .box  .content:hover{
+    box-shadow: 0 0 20px rgba(226, 68, 0, 0.745);
+    transform: scale(1.01);
+}
+.about-mid-low .container .box  .content >div{
+    background-color: rgba(0,0,0,0.7);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+    margin-inline: 1rem;
+    margin-block: 1rem;
+    border-radius: 12px;
+    transition: opacity 0.3s;
+}
+.about-mid-low .container .box  .content >div:hover{
+    opacity: 0.1;
+}
+
+.about-mid-low .container .box  .content >div h3{
+    color: #e00000;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-inline-start: 1rem;
+    text-align: center;
+}
+.about-mid-low .container .box  .content >div p{
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    margin-inline-start: 1rem;
+    margin-inline-end: 1rem;
+}
+.about-mid-low .container .box  .content:nth-child(1){
+    background-image: url('https://th.bing.com/th/id/OIP.wT5RUPPv0jmfdaCMwr-OSQHaE7?rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.about-mid-low .container .box  .content:nth-child(2){
+    background-image: url('https://th.bing.com/th/id/R.ee702f9430dc0fbec876a37545393b36?rik=FSHHCI8YU8Uarw&riu=http%3a%2f%2fspeedhunters-wp-production.s3.amazonaws.com%2fwp-content%2fuploads%2f2013%2f02%2fKanjo-35.jpg&ehk=5zkTAAER2yyl7iQ1seCROBE6LGH%2fPHjhrjDn8Gsm2lQ%3d&risl=&pid=ImgRaw&r=0');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/*Responsividade*/
+
+@media screen and (max-width: 768px) {
+    .about-mid-low{
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    .about-mid-low .container {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+    .about-mid-low .container .header h2{
+        font-size: 3rem;
+    }
+    .about-mid-low .container .header h3{
+        font-size: 1.2rem;
+    }
+    .about-mid-low .container .header p{
+        font-size: 1rem;
+    }
+    .about-mid-low .container .box{
+        height: max-content;
+        flex-direction: column;
+    }
+    .about-mid-low .container .box  .content {
+        width: 100%;
+        height: 100%;
+    }
+    .about-mid-low .container .box  .content >div h3{
+        text-align: left;
+        font-size: 1.8rem;
+    }
+    .about-mid-low .container .box  .content >div p{
+        font-size: 0.8rem;
+    };
+}
