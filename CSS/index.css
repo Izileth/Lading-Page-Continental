@@ -1,7 +1,8 @@
 :root{
   --var-background: #000000;
   --var-color-item: #080808;
-  --var-color-h2: #f50000;
+  --var-color-white: #ddd;
+  --var-color-h2: #e4e4e4;
   --var--color-h3: #f2f2f2;
   --var-color-p: #f5f5f5;
 }
@@ -38,16 +39,16 @@ header{
 
 .nav-bar {
   position: absolute;
-  top: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  height: 80px;
+  padding-inline: 10%;
+  height: 120px;
   background: linear-gradient(to bottom, #000, transparent);
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
   z-index: 1000;
 }
 
@@ -58,12 +59,12 @@ header{
 }
 .nav-bar .logo span{
   letter-spacing: 0.2rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 .nav-bar .logo p{
   letter-spacing: 0.2rem;
   font-size: 1.5rem;
-  color: #f50000;
+  color: var(--var-color-white);
   margin-inline: 0.4rem;
 }
 
@@ -83,7 +84,7 @@ header{
 }
 
 .nav-bar .menu ul li a {
-  color: #e50000;
+  color: var(--var-color-white);
   text-decoration: none;
   font-size: 1.4rem;
   transition: color 0.3s;
@@ -101,8 +102,8 @@ header{
   margin-inline: 1rem;
 }
 .nav-bar .search-bar button{
-  background-color: #e50000;
-  color: white;
+  background-color: var(--var-color-white);
+  color: var(--var-background);
   border: none;
   outline: none;
   border-radius: 5px;
@@ -129,7 +130,7 @@ header{
   list-style: none;
   margin: 5px 0 0;
   padding: 0;
-  color: #f50000;
+  color: var(--var-color-white);
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #121212;
@@ -590,7 +591,7 @@ header{
   font-size: 1.0rem;
 }
 .learn-container .learn-grid .learn-item:nth-child(1){
-  background-image: url('/assets/img/distopic2.jpg');
+  background-image: url('/assets/img/default2.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -598,20 +599,20 @@ header{
 }
 .learn-container .learn-grid .learn-item:nth-child(2){
   grid-column: span 2; /* Ocupará 2 colunas */
-  background-image: url('/assets/img/distopic3.jpg');
+  background-image: url('/assets/img/default2.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 .learn-container .learn-grid .learn-item:nth-child(3){
-  background-image: url('/assets/img/distopic1.jpg');
+  background-image: url('/assets/img/default2.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   
 }
 .learn-container .learn-grid .learn-item:nth-child(4){
-  background-image: url('/assets/img/distopic1.jpg');
+  background-image: url('/assets/img/default2.jpg');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -659,7 +660,7 @@ header{
   max-width: 100vw;
   width: 100%;
   height: 100%;
-  max-height: 100vh;
+  max-height:auto;
   background-color: var(--var-background);
   display: flex;
   flex-direction: column;
@@ -680,7 +681,7 @@ header{
 }
 .levels .levels-container .levels-grid{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, 1fr);
   height:100%;
   width: 100%;
@@ -692,13 +693,12 @@ header{
 .levels .levels-container .levels-grid .level-item{
   background-color: rgba(11, 11, 11, 0.6);
   width: 100%;
-  height: 240px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   text-align: left;
-  padding: 2rem;
   border-radius: 6px;
   transition: all 0.3s ease-in-out;
 }
@@ -707,15 +707,29 @@ header{
   color: #ffffff;
   margin-block: 0.6rem;
 }
+.levels .levels-container .levels-grid .level-item .level-midia{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.levels .levels-container .levels-grid .level-item .level-midia img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .levels .levels-container .levels-grid .level-item p{
   color: #ffffff;
   font-size: 1.2rem;
 }
+.levels .levels-container .levels-grid .level-item .level-content{
+  padding: 1rem;
+  margin-block: 1rem;
+}
 @media screen and  (max-width: 800px){
   .levels .levels-container .levels-grid{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
   }
   .levels .levels-container .levels-grid .level-item h3{
     font-size: 2rem;
@@ -826,11 +840,14 @@ header{
   font-size: 2.8rem;
   color: var(--var-color-h2);
   margin-block: 0.6rem;
+  padding-inline: 1rem;
 }
 
 .application-container .application-grid .application-item .application-content p{
   color: #ffffff;
   font-size: 1.2rem;
+  padding-inline: 1rem;
+  margin-block: 0.4rem;
 }
 /*Ajutes na contact*/
 .contact{
@@ -889,7 +906,7 @@ header{
   letter-spacing: 0.01rem;
 }
 .contact .container .box {
-  background-color: #1a1a1a;
+  background-color:rgba(11, 11, 11, 0.6);
   width: 100%;
   height: 420px;
   display: flex;
