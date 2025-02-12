@@ -208,6 +208,15 @@ header{
 }
 
 @media (max-width: 768px) {
+  .header{
+    flex-wrap: wrap;
+  }
+  .nav-bar{
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
   .nav-bar .menu {
       display: none;
   }
@@ -274,11 +283,14 @@ header{
   .header{
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 20px;
     padding: 20px;
   }
   .header-content{
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     align-items: center;
     gap: 0;
     padding: 0;
@@ -524,331 +536,6 @@ header{
   background-color: #f2f2f2;
 }
 
-/*Ajustes na seção Learn*/
-
-.learn{
-  max-width: 100vw;
-  width: 100%;
-  height: 100%;
-  max-height: 100vh;
-  background-color: var(--var-background);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  gap: 1rem;
-}
-.learn-container{
-  height: 100%;
-  max-height: 100vh;
-  max-width: 100vw;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-.learn-container .learn-grid{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  height:100vh;
-  width: 100%;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-.learn-container .learn-grid .learn-item{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: center;
-  text-align: left;
-  padding: 2rem;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
-}
-
-.learn-container .learn-grid .learn-item:hover{
-  transform: scale(1.01);
-}
-
-.learn-container .learn-grid .learn-item .learn-content{
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height:auto;
-  padding: 1rem;
-}
-.learn-container .learn-grid .learn-item .learn-content h3{
-  font-size: 2.6rem;
-  color: var(--var-color-h2);
-  margin-block: 0.4rem;
-}
-.learn-container .learn-grid .learn-item .learn-content p{
-  color: #ffffff;
-  font-size: 1.0rem;
-}
-.learn-container .learn-grid .learn-item:nth-child(1){
-  background-image: url('/assets/img/default2.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  grid-row: span 3; /* Ocupará 3 linhas */
-}
-.learn-container .learn-grid .learn-item:nth-child(2){
-  grid-column: span 2; /* Ocupará 2 colunas */
-  background-image: url('/assets/img/default2.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.learn-container .learn-grid .learn-item:nth-child(3){
-  background-image: url('/assets/img/default2.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  
-}
-.learn-container .learn-grid .learn-item:nth-child(4){
-  background-image: url('/assets/img/default2.jpg');
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  grid-column: span 3; /* Ocupará 3 linhas */
-  grid-row: span 2;
-}
-
-@media screen and  (max-width: 1200px) {
-  .learn{
-    height: auto;
-    width: 100%;
-  }
-  .learn-container{
-    height: auto;
-    width: 100%;
-  }
-  .learn-container .learn-grid{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-  }  
-  .learn-container .learn-grid .learn-item:nth-child(3){
-    grid-column: span 2; /* Ocupará 2 colunas */
-    grid-row: span 2; /* Ocupará 2 linhas */
-  }
-}
-
-@media screen and  (max-width: 800px){
-  .learn .learn-container .learn-grid .learn-item .learn-content{
-    width: 100%;
-  }
-  .learn .learn-container .learn-grid .learn-item .learn-content h3{
-    font-size: 1.2rem;
-    color: var(--var-color-h2);
-    margin-block: 0.2rem;
-  }
-  .learn .learn-container .learn-grid .learn-item .learn-content p{
-    font-size: 0.8rem;
-  }
-} 
-/*Ajustes na Levels*/
-
-.levels{
-  max-width: 100vw;
-  width: 100%;
-  height: 100%;
-  max-height:auto;
-  background-color: var(--var-background);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  gap: 1rem;
-}
-.levels .levels-container{
-  height: 100%;
-  max-height: 100%;
-  max-width: 100vw;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-.levels .levels-container .levels-grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  height:100%;
-  width: 100%;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-
-.levels .levels-container .levels-grid .level-item{
-  background-color: rgba(11, 11, 11, 0.6);
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  text-align: left;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
-}
-.levels .levels-container .levels-grid .level-item h3{
-  font-size: 2.8rem;
-  color: #ffffff;
-  margin-block: 0.6rem;
-}
-.levels .levels-container .levels-grid .level-item .level-midia{
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-.levels .levels-container .levels-grid .level-item .level-midia img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.levels .levels-container .levels-grid .level-item p{
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-.levels .levels-container .levels-grid .level-item .level-content{
-  padding: 1rem;
-  margin-block: 1rem;
-}
-@media screen and  (max-width: 800px){
-  .levels .levels-container .levels-grid{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-  }
-  .levels .levels-container .levels-grid .level-item h3{
-    font-size: 2rem;
-  }
-  .levels .levels-container .levels-grid .level-item p{
-    font-size: 1rem;
-  }
-}
-
-/*Ajustes na aplicação*/
-
-.application{
-  max-width: 100vw;
-  width: 100%;
-  height: 100%;
-  max-height: 100vh;
-  background-color: var(--var-background);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  gap: 1rem;
-}
-.application-container{
-  height: 100%;
-  max-height: 100vh;
-  max-width: 100vw;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.application-container .application-grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  height:100%;
-  width: 100%;
-  gap: 1rem;
-  padding: 1rem;
-}
-@media screen and  (max-width: 800px){
-  .application .application-container .application-grid .application-midia img{
-    width: 100%;
-    height: 200px;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-   .application .application-container .application-grid{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
-   .application .application-container .application-grid .application-item .application-content h3{
-    font-size: 2rem;
-  }
-  .application .application-container .application-grid .application-item .application-content p{
-    font-size: 1rem;
-  }  
-}
-.application-container .application-grid .application-midia{
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  text-align: left;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
-}
-
-.application-container .application-grid .application-midia img{
-  width: 100%;
-  height: 300px;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-
-.application-container .application-grid .application-item{
-  background-color: rgba(11, 11, 11, 0.6);
-  width: 100%;
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  text-align: left;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
-}
-
-.application-container .application-grid .application-item .application-content{
-  width: 100%;
-  height:max-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  text-align: left;
-  padding: 1rem;
-}
-.application-container .application-grid .application-item .application-content h3{
-  font-size: 2.8rem;
-  color: var(--var-color-h2);
-  margin-block: 0.6rem;
-  padding-inline: 1rem;
-}
-
-.application-container .application-grid .application-item .application-content p{
-  color: #ffffff;
-  font-size: 1.2rem;
-  padding-inline: 1rem;
-  margin-block: 0.4rem;
-}
 /*Ajutes na contact*/
 .contact{
   max-width: 100vw;
