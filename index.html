@@ -15,19 +15,23 @@
     <meta property="og:image" content="./assets/img/icons/telegran.jpg">
     <meta property="og:url" content="https://orientweb.netlify.app/">
     <meta name="twitter:card" content="./assets/favicon_logoa_Kw/favicon-32x32.png">
-
+    <style>@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Quattrocento:wght@400;700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap'); </style>
+        
+    <!--Fontes-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Quicksand:wght@300..700&family=Russo+One&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Quattrocento:wght@400;700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!--Css Index-->
     <link rel="stylesheet" href="/css/index.css">
     <link rel="icon" type="image/png" sizes="16x16"  href="/assets/favicon_logoa_Kw/favicon.ico">
     <!--AOS-->
     <title>Orient Web</title>
+    <a href="./assets/music/DRIFTBOYS - Canadá (Gakkou).mp3"></a>
 </head>
 
 <body>
+    
+
     <main>
         <header>
             <nav class="nav-bar">
@@ -50,9 +54,10 @@
                     id="searchInput" 
                     type="text" 
                     placeholder="Search..." 
+                    class="searchInput"
                     autocomplete="off">
-                    <ul id="suggestions" class="hidden"></ul>
-                    <button id="searchButton" type="submit">Search</button>
+                    <ul id="suggestions" class="suggestions"></ul>
+                    <button id="searchButton" class="searchButton" type="submit">Search</button>
                 </div>
                 <div class="hamburger" id="hamburger">
                     <div class="line"></div>
@@ -69,6 +74,16 @@
                         <li><a href="#maps">Mapas</a></li>
                         <li><a href="#blog">Blog</a></li>
                     </ul>
+                    <div class="mobile-search-bar">
+                        <input 
+                        id="searchInput" 
+                        class="searchInput"
+                        type="text" 
+                        placeholder="Search..." 
+                        autocomplete="off">
+                        <ul id="suggestions" class="hidden"></ul>
+                        <button class="searchButton" id="searchButton" type="submit">Search</button>
+                    </div>
                 </div>
             </nav>
             <main>
@@ -76,7 +91,7 @@
                     <div class="hero-content">
                         <h2>Welcome to Orient Continental</h2>
                         <p>Mergulhe na fascinante fusão da cultura oriental com a adrenalina das corridas de rua dos anos 80 no Japão. Explore curiosidades, histórias e a estética vibrante que marcaram uma era inesquecível.</p>
-                        <p class="credits">All Services Reserved During 2025</p>
+                        <p class="credits">Desenvolvido e Criado Por Izileth</p>
                         <a href="#about" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -160,7 +175,7 @@
 
         <!--Corridas-->
 
-        <section id="corridas">
+        <section id="racer">
             <div class="container">
                 <div class="content">
                     <div class="title">
@@ -168,44 +183,46 @@
                         <p>Veja algumas das mais conhecidas corridas de rua do Japão dos anos 80.</p>
                     </div>
                     <div class="streets">
-                        <div class="street">
-                            <div>
-                                <div class="midia">
-                                    <img src="./assets/img/racers/Racers.png" alt="midia">
-                                </div>
-                                <div class="info">
-                                    <h2>Bosozuku --</h2>
-                                    <p>Embora mais associados a gangues de motociclistas, os Bosozoku também desempenharam um papel significativo na cultura das corridas ilegais no Japão. Ativos principalmente nas décadas de 1970 e 1980, esses grupos eram compostos por jovens que pilotavam motocicletas e carros altamente customizados, frequentemente desrespeitando leis de trânsito e desafiando as autoridades. Suas atividades incluíam desfiles barulhentos, corridas ilegais e confrontos com gangues rivais. </p>
-                                    <div class="icons">
-                                        <a href="#">Ver no Mapa</a>
+                        <div>
+                            <div class="street">
+                                <div>
+                                    <div class="midia">
+                                        <img src="./assets/img/racers/Racers.png" alt="midia">
+                                    </div>
+                                    <div class="info">
+                                        <h2>Bosozuku --</h2>
+                                        <p>Embora mais associados a gangues de motociclistas, os Bosozoku também desempenharam um papel significativo na cultura das corridas ilegais no Japão. Ativos principalmente nas décadas de 1970 e 1980, esses grupos eram compostos por jovens que pilotavam motocicletas e carros altamente customizados, frequentemente desrespeitando leis de trânsito e desafiando as autoridades. Suas atividades incluíam desfiles barulhentos, corridas ilegais e confrontos com gangues rivais. </p>
+                                        <div class="icons">
+                                            <a href="#">Ver no Mapa</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="street">
-                            <div>
-                                <div class="midia">
-                                    <img src="./assets/img/racers/racer2.jpg" alt="midia">
-                                </div>
-                                <div class="info">
-                                    <h2>Rolling Zoku --</h2>
-                                    <p>Os Rolling Zoku foram um grupo de pilotos que, na década de 1960, corriam nas sinuosas estradas montanhosas do Japão, buscando estabelecer recordes de percurso. Eles são considerados precursores da cultura de drift que se popularizou nas décadas seguintes. Suas atividades influenciaram significativamente a cena de corridas ilegais no país. </p>
-                                    <div class="icons">
-                                        <a href="#">Ver no Mapa</a>
+                            <div class="street">
+                                <div>
+                                    <div class="midia">
+                                        <img src="./assets/img/racers/racer2.jpg" alt="midia">
+                                    </div>
+                                    <div class="info">
+                                        <h2>Rolling Zoku --</h2>
+                                        <p>Os Rolling Zoku foram um grupo de pilotos que, na década de 1960, corriam nas sinuosas estradas montanhosas do Japão, buscando estabelecer recordes de percurso. Eles são considerados precursores da cultura de drift que se popularizou nas décadas seguintes. Suas atividades influenciaram significativamente a cena de corridas ilegais no país. </p>
+                                        <div class="icons">
+                                            <a href="#">Ver no Mapa</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="street">
-                            <div>
-                                <div class="midia">
-                                    <img src="./assets/img/racers/racer3.jpg" alt="midia">
-                                </div>
-                                <div class="info">
-                                    <h2>Hashiriya --</h2>
-                                    <p>O termo "Hashiriya" refere-se genericamente aos corredores de rua no Japão. Durante as décadas de 1980 e 1990, muitos jovens entusiastas se identificavam como hashiriya, participando de corridas ilegais em diversas regiões do país. Eles utilizavam uma variedade de veículos modificados e contribuíram para a diversificação da cultura de corridas ilegais no Japã</p>
-                                    <div class="icons">
-                                        <a href="#">Ver no Mapa</a>
+                            <div class="street">
+                                <div>
+                                    <div class="midia">
+                                        <img src="./assets/img/racers/racer3.jpg" alt="midia">
+                                    </div>
+                                    <div class="info">
+                                        <h2>Hashiriya --</h2>
+                                        <p>O termo "Hashiriya" refere-se genericamente aos corredores de rua no Japão. Durante as décadas de 1980 e 1990, muitos jovens entusiastas se identificavam como hashiriya, participando de corridas ilegais em diversas regiões do país. Eles utilizavam uma variedade de veículos modificados e contribuíram para a diversificação da cultura de corridas ilegais no Japã</p>
+                                        <div class="icons">
+                                            <a href="#">Ver no Mapa</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +262,19 @@
             </div>
         </section>
 
-        <section id="corridas">
+        <section class="header">
+            <div class="header-content">
+                <h2>Esportivos Japoneses e Seu Legado --</h2>
+                <p>Veja os icones do mundo autotivo no Japão dos anos 80.</p>
+            </div>
+            <div class="header-content">
+                <p>Developer full stack</p>
+                <h2>Produced By Izileth</h2>
+            </div>
+        </section>
+    
+
+        <section id="carros">
             <div class="container">
                 <div class="content">
                     <div class="title">
@@ -256,12 +285,12 @@
                         <div class="racer">
                             <div>
                                 <div class="midia">
-                                    <img src="./assets/img/cars/honda/Nsx.jpg" alt="midia">
+                                    <img src="./assets/img/cars/nissan/280sx.jpg" alt="midia">
                                 </div>
                                 <div class="info">
                                     <div>
-                                        <h3>NSX</h3>
-                                        <p>NSX é uma das mais conhecidas corridas de rua do Japão dos anos 80. A corrida é dividida em 5 etapas, com cada etapa sendo mais difícil.</p>
+                                        <h3>240SX --</h3>
+                                        <p>Destinado principalmente ao mercado norte-americano, o 240SX foi produzido entre 1989 e 1998. Era equipado com um motor de 2.4 litros naturalmente aspirado e estava disponível em várias configurações de carroceria, incluindo hatchback e coupé. Este modelo ganhou popularidade entre os entusiastas de drift devido à sua tração traseira e equilíbrio.</p>
                                     </div>
                                     <div class="icons">
                                         <div>
@@ -275,31 +304,12 @@
                         <div class="racer">
                             <div>
                                 <div class="midia">
-                                    <img src="./assets/img/cars/nissan/Skyline.jpg" alt="midia">
+                                    <img src="./assets/img/cars/nissan/Skyline R34.jpg" alt="midia">
                                 </div>
                                 <div class="info">
                                     <div>
-                                        <h3>Skyline</h3>
-                                        <p>Skyline é uma das mais conhecidas corridas de rua do Japão dos anos 80. A corrida é dividida em 5 etapas, com cada etapa sendo mais difícil.</p>
-                                    </div>
-                                    <div class="icons">
-                                        <div>
-                                            <a href="#">Link Para as Fotos</a>
-                                            <a href="#">Compartilhar</a>
-                                        </div>
-                                    </div>
-                                 </div>   
-                            </div>
-                        </div>
-                        <div class="racer">
-                            <div>
-                                <div class="midia">
-                                    <img src="./assets/img/cars/toyota/supr.jpg" alt="midia">
-                                </div>
-                                <div class="info">
-                                    <div>
-                                        <h3>Supra</h3>
-                                        <p>Skyline é uma das mais conhecidas corridas de rua do Japão dos anos 80. A corrida é dividida em 5 etapas, com cada etapa sendo mais difícil.</p>
+                                        <h3>Skyline --</h3>
+                                        <p>Originalmente um sedã, o Skyline evoluiu para incluir versões esportivas, sendo a mais famosa a GT-R. As gerações R32, R33 e R34, produzidas entre o final dos anos 1980 e 1990, são especialmente reverenciadas por sua performance e tecnologia avançada.</p>
                                     </div>
                                     <div class="icons">
                                         <div>
@@ -313,12 +323,31 @@
                         <div class="racer">
                             <div>
                                 <div class="midia">
-                                    <img src="./assets/img/cars/mardza/marzax7.jpg" alt="midia">
+                                    <img src="./assets/img/cars/toyota/AE86.jpg" alt="midia">
                                 </div>
                                 <div class="info">
                                     <div>
-                                        <h3>Rx-7</h3>
-                                        <p>Skyline é uma das mais conhecidas corridas de rua do Japão dos anos 80. A corrida é dividida em 5 etapas, com cada etapa sendo mais difícil.</p>
+                                        <h3>AE86 --</h3>
+                                        <p>Parte da quinta geração do Corolla, o AE86, disponível nas versões Levin e Sprinter Trueno, destacou-se por sua leveza, tração traseira e excelente equilíbrio, tornando-se um favorito entre os entusiastas de drift e automobilismo..</p>
+                                    </div>
+                                    <div class="icons">
+                                        <div>
+                                            <a href="#">Link Para as Fotos</a>
+                                            <a href="#">Compartilhar</a>
+                                        </div>
+                                    </div>
+                                 </div>   
+                            </div>
+                        </div>
+                        <div class="racer">
+                            <div>
+                                <div class="midia">
+                                    <img src="./assets/img/cars/honda/Brz.jpg" alt="midia">
+                                </div>
+                                <div class="info">
+                                    <div>
+                                        <h3>BRZ --</h3>
+                                        <p>O Subaru BRZ é um coupé esportivo desenvolvido em parceria entre a Subaru e a Toyota. Lançado inicialmente em 2012, o BRZ destaca-se por seu design elegante, baixo centro de gravidade e experiência de condução envolvente</p>
                                     </div>
                                     <div class="icons">
                                         <div>
@@ -330,6 +359,27 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <!--7858099082:AAE9gQvpaUmw2UqfjE3a-UqPK3a2aCnCDOE-->
+        <section class="header">
+            <div class="header-content">
+                <h2>Mapas e CheckPoints-</h2>
+                <p>Explore os mapas e checkpoints mais importantes do Japão nos anos 80.</p>
+            </div>
+            <div class="header-content">
+                <p>Developer full stack</p>
+                <h2>Produced By Izileth</h2>
+            </div>
+        </section>
+        <section id="mapas">
+            <div class="container">
+                <div class="content">
+                    <div class="title">
+                        <h2>Mapas e Checkpoints</h2>
+                        <p>Explore os mapas e checkpoints mais importantes do Japão nos anos 80.</p>
+                    </div>    
                 </div>
             </div>
         </section>
@@ -360,7 +410,7 @@
                                 </div>
                                 <div class="info">
                                     <h3>Cultura Clássica</h3>
-                                    <p>A cultura pop é uma das mais populares do mundo. É caracterizada por uma grande quantidade de músicas, filmes e séries.</p>
+                                    <p>A cultura clássica do Japão abrange uma ampla gama de artes e tradições que moldaram a identidade cultural do país. A literatura clássica, como "O Conto de Genji" de Murasaki Shikibu, é considerada uma das primeiras novelas do mundo. O teatro Noh e Kabuki oferecem performances estilizadas que combinam música, dança e drama, transmitindo histórias tradicionais e mitológicas. A poesia haiku, com sua estrutura concisa de 17 sílabas, captura momentos efêmeros da natureza e da experiência humana. As artes visuais, incluindo a pintura em rolos e as gravuras em madeira (ukiyo-e), retratam paisagens, cenas da vida cotidiana e figuras famosas, influenciando artistas em todo o mundo. Essas expressões culturais clássicas continuam a ser estudadas e apreciadas, oferecendo insights sobre os valores e a estética do Japão ao longo dos séculos..</p>
                                     <div class="icons">
                                         <a href="#">Saiba mais</a>
                                     </div>
@@ -374,7 +424,7 @@
                                 </div>
                                 <div class="info">
                                     <h3>Cultura Cyberpunk</h3>
-                                    <p>A cultura pop é uma das mais populares do mundo. É caracterizada por uma grande quantidade de músicas, filmes e séries.</p>
+                                    <p>O gênero cyberpunk, que emergiu na década de 1980, encontrou no Japão um terreno fértil para seu desenvolvimento. Obras como "Akira" e "Ghost in the Shell" exploram temas de alta tecnologia em sociedades distópicas, refletindo ansiedades sobre o rápido avanço tecnológico e suas implicações sociais. A estética cyberpunk é caracterizada por ambientes urbanos densamente povoados, neon brilhante e uma fusão de orgânico e mecânico. A influência da cultura japonesa no cyberpunk é evidente em elementos como megacorporações dominantes, a presença de culturas híbridas e a exploração da identidade em um mundo altamente tecnologizado. A celebração dos 40 anos do gênero destaca sua relevância contínua e sua capacidade de prever tendências atuais.</p>
                                     <div class="icons">
                                         <a href="#">Saiba mais</a>
                                     </div>
@@ -388,7 +438,7 @@
                                 </div>
                                 <div class="info">
                                     <h3>Cultura Pop</h3>
-                                    <p>A cultura pop é uma das mais populares do mundo. É caracterizada por uma grande quantidade de músicas, filmes e séries.</p>
+                                    <p>A cultura pop japonesa, conhecida como J-pop, engloba uma variedade de manifestações culturais que ganharam destaque global nas últimas décadas. Elementos como mangá (quadrinhos), anime (animação), música pop, moda e videogames são componentes centrais dessa cultura. O conceito de kawaii (fofura) é uma característica marcante, influenciando desde personagens de mídia até tendências de moda. Ícones como Hello Kitty e Pikachu exemplificam essa estética. Além disso, a música pop japonesa, com grupos idol e bandas de J-rock, conquistou fãs internacionalmente. Eventos como o Anime Summit em Brasília demonstram a disseminação e o impacto da cultura pop japonesa ao redor do mundo</p>
                                     <div class="icons">
                                         <a href="#">Saiba mais</a>
                                     </div>
@@ -402,7 +452,7 @@
                                 </div>
                                 <div class="info">
                                     <h3>Cultura Milenar</h3>
-                                    <p>A cultura pop é uma das mais populares do mundo. É caracterizada por uma grande quantidade de músicas, filmes e séries.</p>
+                                    <p>A cultura milenar do Japão é profundamente enraizada em tradições que remontam a séculos. Práticas como a cerimônia do chá (chanoyu), a caligrafia (shodō) e a arrumação floral (ikebana) refletem a busca pela simplicidade e harmonia com a natureza. As artes marciais, incluindo o judô, caratê e kendô, não são apenas disciplinas físicas, mas também caminhos para o desenvolvimento espiritual e moral. Festivais tradicionais, como o Hanami (apreciação das flores de cerejeira) e o Matsuri (festivais locais), celebram a mudança das estações e a conexão comunitária. A arquitetura tradicional, exemplificada por templos e santuários, destaca o uso de materiais naturais e a integração com o ambiente circundante..</p>
                                     <div class="icons">
                                         <a href="#">Saiba mais</a>
                                     </div>
@@ -655,69 +705,51 @@
                 <div class="content">
                     <div class="comnunity">
                         <div class="comunit">
-                            <div class="info">
-                                <h2>Fórum --</h2>
-                                <p>Discuta sobre o Japão dos anos 80, como carros, música, literatura, etc.</p>
-                            </div>
-                            <div class="trending">
-                                <h3> --Tendências</h3>
-                                <div>
-                                    <ul>
-                                        <li>Carros: Chevrolet Camaro</li>
-                                        <li>Música: Hyoerin - Giyeokgiyeok</li>
-                                        <li>Literatura: Jhumpa Lahiri</li>
-                                        <li>Outros: Aprender a levar o carro</li>
-                                        <li>Carros: Chevrolet Camaro</li>
-                                        <li>Música: Hyoerin - Giyeokgiyeok</li>
-                                        <li>Literatura: Jhumpa Lahiri</li>
-                                        <li>Outros: Aprender a levar o carro</li>
-                                    </ul>
+                            <div>
+                                <div class="info">
+                                    <h2>Fórum --</h2>
+                                    <p>Discuta sobre o Japão dos anos 80, como carros, música, literatura, etc.</p>
                                 </div>
-                            </div>
-                            <div class="social-media">
-                                <ul class="icons">
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/pinteret.jpg" alt="facebook"></a>
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/spotify.jpg" alt="instagram"></a>
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/Insta.jpg" alt="twitter"></a>
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/telegran.jpg" alt="twitter"></a>
-                                </ul>
-                            </div>    
-                            <div class="btn">
-                                <a href="#" class="btn-forum">Visitar o Fórum</a>
+                                <div class="trending">
+                                    <h2>Adicionar Tendências --</h2>
+                                    <form  class="postForm">
+                                        <input type="text" id="categoria" class="categoria" placeholder="Categoria (ex: Música, Carros)" required>
+                                        <input type="text" id="titulo" class="titulo" placeholder="Título da Postagem" required>
+                                        <button type="submit">Adicionar</button>
+                                    </form>
+                                    <h3>Tendências --</h3>
+                                    <div>
+                                        <ul class="trending-list"></ul>
+                                    </div>
+                                    <div class="btn">
+                                        <a href="#" class="btn-forum">Visitar o Fórum</a>
+                                    </div>
+                                </div>                        
                             </div>
                         </div>
                         <div class="comunit">
-                            <div class="info">
-                                <h2>-- Chat</h2>
-                                <p>Converse com outros desenvolvedores sobre o Japão dos anos 80.</p>
-                            </div>
-                            <div class="trending">
-                                <h3> --Tendências</h3>
-                                <div>
-                                    <ul>
-                                        <li>Carros: Chevrolet Camaro</li>
-                                        <li>Música: Hyoerin - Giyeokgiyeok</li>
-                                        <li>Literatura: Jhumpa Lahiri</li>
-                                        <li>Outros: Aprender a levar o carro</li>
-                                        <li>Carros: Chevrolet Camaro</li>
-                                        <li>Música: Hyoerin - Giyeokgiyeok</li>
-                                        <li>Literatura: Jhumpa Lahiri</li>
-                                        <li>Outros: Aprender a levar o carro</li>
-                                    </ul>
+                            <div>
+                                <div class="info">
+                                    <h2>Chat --</h2>
+                                    <p>Discuta sobre o Japão dos anos 80, como carros, música, literatura, etc.</p>
                                 </div>
+                                <div class="trending">
+                                    <h2>Adicionar Tendências --</h2>
+                                    <form class="postForm">
+                                        <input type="text" id="categoria"  class="categoria" placeholder="Categoria (ex: Música, Carros)" required>
+                                        <input type="text" id="titulo" class="titulo" placeholder="Título da Postagem" required>
+                                        <button type="submit">Adicionar</button>
+                                    </form>
+                                    <h3>Tendências --</h3>
+                                    <div>
+                                        <ul class="trending-list"></ul>
+                                    </div>
+                                    <div class="btn">
+                                        <a href="#" class="btn-forum">Visitar Chat</a>
+                                    </div>
+                                </div>                        
                             </div>
-                            <div class="social-media">
-                                <ul class="icons">
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/pinteret.jpg" alt="facebook"></a>
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/spotify.jpg" alt="instagram"></a>
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/Insta.jpg" alt="twitter"></a>
-                                    <a href="#" target="_blank"><img src="./assets/img/icons/telegran.jpg" alt="twitter"></a>
-                                </ul>
-                            </div>    
-                            <div class="btn">
-                                <a href="#" class="btn-chat">Entrar no Chat</a>
-                            </div>
-                        </div>
+                        </div>    
                     </div>
                 </div>
             </div>
@@ -743,7 +775,7 @@
                         <h3>Complete The Form For Notify</h3>
                         <p>Fill out the form to be notified of new content</p>
                     </div>
-                    <form  data-aos="zoom-in" >
+                    <form id="form" data-aos="zoom-in" >
                         <div class="input-group">
                             <input type="text" id="nome" placeholder=" " required />
                             <label for="nome">Full Name</label>
@@ -862,9 +894,12 @@
     <script src="./js/components/itens/navBar.js"></script>
     <script src="./js/components/carousel/slider.js"></script>
     <script src="./js/components/carousel/words.js"></script>
-    <script src="./js/components/player/"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/components/itens/searchBar.js"></script>
+    <script src="./js/components/player/play.js"></script>
+    <script src="./js/backend/json.js" defer></script>
+    <script src="./js/backend/jsonBot.js" defer></script>
+    <script src="./js/frontend/formSend.js"></script>
+    <script type="module" src="./js/components/itens/searchBar.mjs"></script>
+    <script type="module" src="./js/components/itens/searchLogic.mjs"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>  AOS.init();</script>
 </body>

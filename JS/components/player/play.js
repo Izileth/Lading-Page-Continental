@@ -1,4 +1,6 @@
 class MusicPlayer {
+    static players = []; // Lista global para gerenciar todos os players
+
     constructor(playerId, playlist) {
         this.player = document.getElementById(playerId);
         this.audio = this.player.querySelector("audio");
@@ -8,11 +10,13 @@ class MusicPlayer {
         this.nextBtn = this.player.querySelector(".next");
         this.prevBtn = this.player.querySelector(".prev");
 
-        this.playlist = playlist;
+        this.playlist = playlist; // Usa os links do Google Drive diretamente
         this.currentTrack = 0;
 
-        // Carregar primeira faixa
-        this.loadTrack(this.currentTrack);
+        this.loadTrack(this.currentTrack, false);
+
+        // Adiciona este player à lista global
+        MusicPlayer.players.push(this);
 
         // Eventos
         this.playPauseBtn.addEventListener("click", () => this.togglePlayPause());
@@ -20,22 +24,35 @@ class MusicPlayer {
         this.progressBar.addEventListener("input", () => this.seekAudio());
         this.nextBtn.addEventListener("click", () => this.nextTrack());
         this.prevBtn.addEventListener("click", () => this.prevTrack());
+        this.audio.addEventListener("ended", () => this.nextTrack());
     }
 
-    loadTrack(trackIndex) {
+    loadTrack(trackIndex, autoplay = true) {
         this.audio.src = this.playlist[trackIndex];
         this.audio.load();
+        if (autoplay) this.play();
+    }
+
+    play() {
+        // Para todos os outros players antes de tocar este
+        MusicPlayer.players.forEach(player => {
+            if (player !== this) player.pause();
+        });
+
         this.audio.play();
         this.playPauseBtn.textContent = "⏸";
     }
 
+    pause() {
+        this.audio.pause();
+        this.playPauseBtn.textContent = "▶";
+    }
+
     togglePlayPause() {
         if (this.audio.paused) {
-            this.audio.play();
-            this.playPauseBtn.textContent = "⏸";
+            this.play();
         } else {
-            this.audio.pause();
-            this.playPauseBtn.textContent = "▶";
+            this.pause();
         }
     }
 
@@ -65,29 +82,34 @@ class MusicPlayer {
     }
 }
 
-// Inicializar múltiplos players com IDs e playlists diferentes
+// Inicializar múltiplos players
 const player1 = new MusicPlayer("player1", [
     "./assets/music/DRIFTBOYS - Canadá (Gakkou).mp3",
-    "./assets/music/Song2.mp3",
-    "./assets/music/Song3.mp3"
+    "./assets/music/DRIFTBOYS_-_kami_(prod._By_Tan)_[_YouConvert.net_].mp3",
+    "./assets/music/DRIFTBOYS_-_Power_Slide_(Dir._sp.celes)_[_YouConvert.net_].mp3",
+    "./assets/music/Six_Days_(Lyrics)_-_Tokyo_Drift_its_only_monday_[_YouConvert.net_].mp3",
 ]);
 
+
 const player2 = new MusicPlayer("player2", [
+    "./assets/music/Six_Days_(Lyrics)_-_Tokyo_Drift_its_only_monday_[_YouConvert.net_].mp3",
     "./assets/music/DRIFTBOYS_-_kami_(prod._By_Tan)_[_YouConvert.net_].mp3",
-    "./assets/music/OtherSong2.mp3",
-    "./assets/music/OtherSong3.mp3"
+    "./assets/music/DRIFTBOYS - Canadá (Gakkou).mp3",
+    "./assets/music/DRIFTBOYS_-_Power_Slide_(Dir._sp.celes)_[_YouConvert.net_].mp3",
 ]);
 
 const player3 = new MusicPlayer("player3", [
     "./assets/music/DRIFTBOYS_-_Power_Slide_(Dir._sp.celes)_[_YouConvert.net_].mp3",
-    "./assets/music/OtherSong2.mp3",
-    "./assets/music/OtherSong3.mp3"
+    "./assets/music/DRIFTBOYS - Canadá (Gakkou).mp3",
+    "./assets/music/DRIFTBOYS_-_kami_(prod._By_Tan)_[_YouConvert.net_].mp3",
+    "./assets/music/Six_Days_(Lyrics)_-_Tokyo_Drift_its_only_monday_[_YouConvert.net_].mp3",
 ]);
 
 
 const player4= new MusicPlayer("player4", [
+    "./assets/music/DRIFTBOYS_-_Power_Slide_(Dir._sp.celes)_[_YouConvert.net_].mp3",
+    "./assets/music/DRIFTBOYS - Canadá (Gakkou).mp3",
+    "./assets/music/DRIFTBOYS_-_kami_(prod._By_Tan)_[_YouConvert.net_].mp3",
     "./assets/music/Six_Days_(Lyrics)_-_Tokyo_Drift_its_only_monday_[_YouConvert.net_].mp3",
-    "./assets/music/OtherSong2.mp3",
-    "./assets/music/OtherSong3.mp3"
 ]);
 
