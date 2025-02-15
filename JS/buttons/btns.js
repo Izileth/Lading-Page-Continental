@@ -1,18 +1,38 @@
 const redirectBtn = document.getElementById('next-btn');
 redirectBtn.addEventListener('click', () => {
     //Redireciona para uma seção do site
-    window.location.href = '#racer';
-    // O setTimeout é usado para garantir que o redirecionamento seja feito depois de 2 segundos
-    setTimeout(() => {
-        // Ao redirecionar, mostra um alerta com uma mensagem
-        alert('Redirecionado para a próxima seção do site');
-    }, 2000);
-    // Para evitar que o botão seja clicado novamente enquanto o redirecionamento está acontecendo
-    redirectBtn.disabled = true;
-    // Ao redirecionar, desabilita o botão por 5 segundos
-    setTimeout(() => {
-        redirectBtn.disabled = false;
-    }, 5000);
-    // Ao redirecionar, muda o texto do botão para "Redirecionando..."
-    redirectBtn.textContent = 'Redirecionando...';
+        // Seleciona o elemento pelo ID
+        const destino = document.getElementById("racer");
+    
+        // Scroll suave até o elemento
+        destino.scrollIntoView({ behavior: "smooth" });
+    
+        redirectBtn.disabled = true; // Disable the button while the new tab is loading.
+    
+        setTimeout(() => {
+            redirectBtn.disabled = false; // Re-enable the button after 5 seconds.
+        }, 2500); // 2.5 seconds delay before re-enabling the button.
+});
+
+const redirectRefBtns = document.querySelectorAll('.a'); // Seleciona todos os links com a classe "a"
+
+redirectRefBtns.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault(); // Evita o comportamento padrão do link
+
+        // Seleciona o elemento pelo ID
+        const destino = document.getElementById("mapa");
+
+        // Scroll suave até o elemento
+        if (destino) {
+            destino.scrollIntoView({ behavior: "smooth" });
+
+            // Desativa o botão temporariamente
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.disabled = false; // Reativa após 2.5s
+            }, 2500);
+        }
+    });
 });
