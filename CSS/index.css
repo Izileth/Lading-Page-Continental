@@ -257,7 +257,7 @@ header{
 
 .mobile-menu {
   position: fixed;
-  top: -100%;
+  top: -150%;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -266,7 +266,7 @@ header{
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: rgba(0, 0, 0,0.9);
+  background-color: #000;
   color: white;
   transition: top 0.5s ease;
   z-index: 999;
@@ -352,6 +352,7 @@ header{
   }
   .nav-bar{
     padding: 1rem;
+    position: fixed;
     justify-content: space-around;
     width: 100%;
     align-items: center;
@@ -489,7 +490,7 @@ header{
 .hero-content h2{
   font-size: 5.6rem;
   font-weight: 500;
-  color: var(--var-color-white);
+  color: var(--var-color-yellow);
   margin-block: 0.6rem;
 }
 .hero-content p{
@@ -502,7 +503,7 @@ header{
 .hero-content .credits{
   font-size: 1.2rem;
 }
-.hero-content a{
+.hero-content .btn{
   background-color:var(--var-background-dark);
   color: var(--var-color-white);
   padding: 15px 35px;
@@ -513,10 +514,10 @@ header{
   letter-spacing: 0.2rem;
   margin-top: 1.2rem;
   font-size: 1.1rem;
-  margin-inline-start:1rem;
+  margin-inline-start:0.5rem;
   transition: all 0.25s;
 }
-.hero-content a:hover{
+.hero-content .btn:hover{
   background-color: #fff;
   color: #000;
   box-shadow:0px 0px 20px #fff;
@@ -549,7 +550,7 @@ header{
   .hero-content .credits{
     font-size: 0.9rem;
   }
-  .hero-content a{
+  .hero-content .btn{
     font-size: 1rem;
     padding: 0.6rem 1.2rem;
   }
@@ -660,35 +661,35 @@ header{
     margin-left: -400%;
   }
   .slider .slides .navigate-auto{
-    margin-bottom: 10%;
+    margin-bottom: 0;
   }
 }
 .slider .slides #radio1:checked ~ .navigate-auto .auto-btn1 {
-  background-color: #ddd;
+  background-color: var(--var-color-yellow);
 }
 .slider .slides #radio2:checked ~ .navigate-auto .auto-btn2 {
-  background-color: #ddd;
+  background-color: var(--var-color-yellow);
 }
 .slider .slides #radio3:checked ~ .navigate-auto .auto-btn3 {
-  background-color: #ddd;
+  background-color: var(--var-color-yellow);
 }
 .slider .slides #radio4:checked ~ .navigate-auto .auto-btn4 {
-  background-color: #ddd;
+  background-color: var(--var-color-yellow);
 }
 .slider .slides #radio5:checked ~ .navigate-auto .auto-btn5 {
-  background-color: #ddd;
+  background-color: var(--var-color-yellow);
 }
 .slider .slides .navigate-auto {
   position:absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   z-index: 2;
 }
 .slider .slides .navigate-auto div {
-  border: 2px solid #f2f2f2;
+  border: 2px solid var(--var-color-red);
   padding: 5px;
   cursor: pointer;
   border-radius: 10px;
@@ -698,7 +699,7 @@ header{
   margin-right: 40px;
 }
 .slider .slides .navigate-auto div:hover {
-  background-color: #f2f2f2;
+  background-color: var(--var-color-yellow);
 }
 .slider .navigate-manual {
   position: absolute;
@@ -712,7 +713,7 @@ header{
   z-index: 2;
 }
 .slider .navigate-manual .manual-btn {
-  border: 2px solid #ddd;
+  border: 2px solid var(--var-color-yellow);
   padding: 5px;
   cursor: pointer;
   border-radius: 10px;
@@ -722,7 +723,7 @@ header{
   margin-right: 40px;
 }
 .slider .navigate-manual .manual-btn:hover {
-  background-color: #f2f2f2;
+  background-color: var(--var-color-yellow);
 }
 
 /*Ajutes nas seções*/
@@ -751,7 +752,6 @@ section .container .content{
   gap: 1rem;
 }
 section .container .content .title{
-  background-color: rgba(0, 0, 0,0.8);
   width: 100%;
   height: 250px;
   max-height: auto;
@@ -810,6 +810,36 @@ section .container .content .title p{
   color: #ffffff;
   overflow: hidden;
   gap: 1rem;
+  position: relative; /* Necessário para o ::before funcionar corretamente */
+}
+
+#racer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#racer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:100%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,1.0), transparent);
+  z-index: 1;
+}
+
+#racer > * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
 }
 
 section .streets{
@@ -977,13 +1007,13 @@ section .streets .street div .info p{
   font-size: 1.0rem;
   letter-spacing: 0.2rem;
 }
-section .streets .street div .info .icons{
+section .streets .street div .info .icons {
   width: 100%;
   align-items: end;
   display: flex;
   gap: 0.5rem;
 }
-section .streets .street div .info .icons a{
+section .streets .street div .info .icons  a{
   color: var(--var-color-red);
   text-decoration: none;
   transition: all 0.2s ;
@@ -1084,6 +1114,36 @@ section .streets .street div .info .icons a:hover{
   color: #ffffff;
   overflow: hidden;
   gap: 1rem;
+  position: relative;
+}
+
+#carros::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#carros::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:100%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,1.0), transparent);
+  z-index: 1;
+}
+
+#carros > * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
 }
 
 section .racers{
@@ -1228,6 +1288,193 @@ section .racers .racer .info .icons div a:hover{
   }
 }
 
+/*Ajustes na seção de Mapas*/
+
+#mapa{
+  max-width: 100vw;
+  background-image: url('/assets/img/maps/mapJP.gif');
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  width: 100%;
+  height: auto;
+  max-height: auto;
+  color: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+#mapa::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#mapa::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:100%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,1.0), transparent);
+  z-index: 1;
+}
+
+#mapa > * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
+}
+section .maps{
+  max-width: 100vw;
+  width: 100%;
+  height: auto;
+  max-height: auto;
+  color: #ffffff;
+  overflow: hidden;
+  gap: 1rem;
+}
+section .maps .map{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+section .maps .map div{
+  height: 400px;
+  max-height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  object-fit: cover;
+  padding-inline: 1rem;
+}
+section .maps .map div .midia{
+  height: max-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section .maps .map div img{
+  height: 400px;
+  width: 100%;
+  filter: grayscale(100%);
+  object-fit: cover;
+}
+section .maps .map div .info{
+  background-color: rgba(0, 0, 0,0.8);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem;
+}
+section .maps .map div .info h3{
+  font-size: 3.4rem;
+  font-weight:400;
+  margin-bottom: 0.5rem;
+  color: var(--var-color-yellow);
+}
+
+section .maps .map div .info p{
+  font-size: 1.0rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2rem;
+}
+section .maps .map div .icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  gap: 1rem;
+  margin-block: 0.6rem;
+}
+section .maps .map div  .icon a{
+  color: var(--var-color-red);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+section .maps .map div .info div a:hover{
+  color: var(--var-color-yellow);
+  text-shadow: 0px 0px 30px var(--var-color-yellow);
+}
+/*Responsividade*/
+
+@media only screen and (max-width: 900px) {
+  #mapa{
+    height: auto;
+    max-height: max-content;
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+  section .maps{
+    height: auto;
+    max-height: max-content;
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+  section .maps .map{
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+  }
+  section .maps .map div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  section .maps .map div .image{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  section .maps .map div img{
+    height: 240px;
+    width: 100%;
+    filter: grayscale(100%);
+    object-fit: cover;
+  }
+  section .maps .map div .info{
+    height: auto;
+    width: 100%;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  section .maps .map div .info h3{
+    font-size: 2.4rem;
+  }
+  section .maps .map div .info p{
+    font-size: 0.8rem;
+  }
+}
 
 /*Ajutes na Cuture*/
 
@@ -1245,6 +1492,37 @@ section .racers .racer .info .icons div a:hover{
   color: #ffffff;
   overflow: hidden;
   gap: 1rem;
+  position: relative;
+}
+
+
+#cultura::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#cultura::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:100%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,1.0), transparent);
+  z-index: 1;
+}
+
+#cultura > * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
 }
 
 section .cultures{
@@ -1398,6 +1676,36 @@ section .cultures .culture .info .icons a:hover{
   color: #ffffff;
   overflow: hidden;
   gap: 1rem;
+  position: relative;
+}
+
+#animes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#animes::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:100%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,1.0), transparent);
+  z-index: 1;
+}
+
+#animes > * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
 }
 
 section .animes{
@@ -1573,6 +1881,36 @@ section .animes .anime .info .icons div a:hover{
   align-items: center;
   color: #ffffff;
   gap: 1rem;
+  position: relative;
+}
+
+#musica::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#musica::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:100%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,1.0), transparent);
+  z-index: 1;
+}
+
+#musica > * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
 }
 section .music{
   max-width: 100vw;
@@ -1797,6 +2135,36 @@ section .music .track div .info .icons .progress-bar {
   align-items: center;
   color: #ffffff;
   gap: 1rem;
+  position: relative;
+}
+
+#comunidade::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#comunidade::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:30%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,1.0), transparent);
+  z-index: 1;
+}
+
+#comunidade > * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
 }
 
 section .comnunity{
@@ -2100,6 +2468,36 @@ section .comnunity .comunit .social-media .icons img{
   align-items: center;
   color: #ffffff;
   gap: 1rem;
+  position: relative;
+}
+
+#contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top,rgba(0,0,0,0.8), transparent);
+  z-index: 1;
+}
+
+
+/* Gradiente na parte inferior */
+#contact::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:100%; /* Define a altura do gradiente inferior */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  z-index: 1;
+}
+
+#contact> * {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre o gradiente */
 }
 .contact{
   max-width: 100vw;
