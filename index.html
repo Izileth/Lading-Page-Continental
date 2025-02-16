@@ -53,13 +53,13 @@
                 </div>
                 <div class="search-bar">
                     <input 
-                    id="searchInput" 
+                    id="searchInputDesktop" 
                     type="text" 
                     placeholder="Search..." 
                     class="searchInput"
                     autocomplete="off">
-                    <ul id="suggestions" class="suggestions"></ul>
-                    <button id="searchButton" class="searchButton" type="submit">Search</button>
+                    <ul id="suggestionsDesktop" class="suggestions"></ul>
+                    <button id="searchButtonDesktop" class="searchButton" type="submit">Search</button>
                 </div>
                 <div class="hamburger" id="hamburger">
                     <div class="line"></div>
@@ -79,14 +79,26 @@
                     </ul>
                     <div class="mobile-search-bar">
                         <input 
-                        id="searchInput" 
+                        id="searchInputMobile" 
                         class="searchInput"
                         type="text" 
                         placeholder="Search..." 
                         autocomplete="off">
-                        <ul id="suggestions" class="hidden"></ul>
-                        <button class="searchButton" id="searchButton" type="submit">Search</button>
+                        <button class="searchButton" id="searchButtonMobile" type="submit">Search</button>
                     </div>
+                    <ul id="suggestionsMobile" class="hidden mobile-list">
+                        <h3>Sugestões de Pesquisa</h3>
+                        <div>
+                            <li><a href="#racer">Carros</a></li>
+                            <li><a href="#carros">Equipes</a></li>
+                            <li><a href="#cultura">Rotas</a></li>
+                            <li><a href="#animes">Trajetos</a></li>
+                            <li><a href="#musica">Músicas</a></li>
+                            <li><a href="#mapas">Mapas</a></li>
+                            <li><a href="#comunidade">Forums</a></li>
+                            <li><a href="#contact">Contato</a></li>
+                        </div>
+                    </ul>
                 </div>
             </nav>
             <main>
@@ -165,7 +177,7 @@
         <!--Seções-->
 
         <!--Seção de Header-->
-        <section class="header">
+        <section id="1" class="header">
             <div class="header-content">
                 <h2>Corridas de Rua dos Anos 80 --</h2>
                 <p>Descubra as corridas mais famosas do Japão dos anos 80.</p>
@@ -265,7 +277,7 @@
             </div>
         </section>
 
-        <section class="header">
+        <section id="2" class="header">
             <div class="header-content">
                 <h2>Esportivos Japoneses e Seu Legado --</h2>
                 <p>Veja os icones do mundo autotivo no Japão dos anos 80.</p>
@@ -376,7 +388,7 @@
                 <h2>Produced By Izileth</h2>
             </div>
         </section>
-        <section id="mapa">
+        <section id="mapas">
             <div class="container">
                 <div class="content">
                     <div class="title">
@@ -945,7 +957,7 @@
     <script src="./js/backend/json.js" defer></script>
     <script src="./js/backend/jsonBot.js" defer></script>
     <script src="./js/buttons/btns.js"></script>
-    <script type="module" src="./js/components/itens/searchBar.mjs"></script>
+    <script type="module" src="./js/components/itens/searchBar.js"></script>
     <script type="module" src="./js/components/itens/searchLogic.mjs"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>

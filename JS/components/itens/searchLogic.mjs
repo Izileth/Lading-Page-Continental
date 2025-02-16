@@ -1,16 +1,14 @@
 export function initializeSearch(searchInputs, searchButtons, suggestionsLists, mobileMenu) {
-    // Array que mapeia palavras-chave com as seções
     const sections = [
-        { label: 'home', sectionId: 'home' },
-        { label: 'learn', sectionId: 'learn' },
-        { label: 'features', sectionId: 'features' },
-        { label: 'about', sectionId: 'about' },
-        { label: 'contact', sectionId: 'contact' },
-        { label: 'maps', sectionId: 'maps' },
-        { label: 'blog', sectionId: 'blog' }
+        { label: 'inicio', sectionId: '1' },
+        { label: 'animes', sectionId: '2' },
+        { label: 'mapas', sectionId: 'mapas' },
+        { label: 'carros', sectionId: 'carros' },
+        { label: 'contato', sectionId: 'contact' },
+        { label: 'forums', sectionId: 'comunidade' },
+        { label: 'cultura', sectionId: 'cultura' }
     ];
 
-    // Função de navegação
     function navigateToSection(input) {
         const userInput = input.value.trim().toLowerCase();
         const targetSection = sections.find(section => section.label === userInput);
@@ -18,7 +16,6 @@ export function initializeSearch(searchInputs, searchButtons, suggestionsLists, 
         if (targetSection) {
             document.getElementById(targetSection.sectionId).scrollIntoView({ behavior: 'smooth' });
 
-            // Fecha o menu mobile se estiver aberto
             if (mobileMenu && mobileMenu.classList.contains('open')) {
                 mobileMenu.classList.remove('open');
             }
@@ -27,7 +24,6 @@ export function initializeSearch(searchInputs, searchButtons, suggestionsLists, 
         }
     }
 
-    // Função para preencher sugestões
     function populateSuggestions(input, suggestionsList) {
         const query = input.value.trim().toLowerCase();
         suggestionsList.innerHTML = '';
@@ -41,19 +37,17 @@ export function initializeSearch(searchInputs, searchButtons, suggestionsLists, 
                 li.addEventListener('click', () => {
                     input.value = section.label;
                     suggestionsList.classList.add('hidden');
-                    navigateToSection(input); // Redireciona ao clicar
                 });
                 suggestionsList.appendChild(li);
             });
         } else {
             const li = document.createElement('li');
             li.textContent = 'Nenhuma sugestão encontrada';
-            li.style.color = '#aaa';
+            li.style.color = '#ff2626';
             suggestionsList.appendChild(li);
         }
     }
 
-    // Adiciona eventos para cada campo de busca
     searchInputs.forEach((input, index) => {
         const suggestionsList = suggestionsLists[index];
 
@@ -73,7 +67,6 @@ export function initializeSearch(searchInputs, searchButtons, suggestionsLists, 
         });
     });
 
-    // Adiciona eventos para cada botão de pesquisa
     searchButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
             navigateToSection(searchInputs[index]);

@@ -206,32 +206,71 @@ header{
 
 
 /* Estilo das sugestões */
-#suggestions {
+#suggestionsDesktop{
   list-style: none;
   margin: 5px 0 0;
   padding: 0;
   color: var(--var-color-white);
   border-radius: 5px;
-  background-color: #121212;
+  background-color: var(--var-background-dark);
   position: absolute;
   width: 100%;
   z-index: 1000;
   overflow-y: hidden;
-  margin-block-start: 220px;
-  max-height: 150px;
+  margin-block-start: 340px;
+  max-height: 350px;
   overflow-y: auto;
 }
 
-#suggestions li {
+#suggestionsDesktop li {
   padding: 10px;
   overflow-y: hidden;
   cursor: pointer;
 }
 
-#suggestions li:hover {
+#suggestionsDesktop li:hover {
   background-color: #1a1a1a;
 }
 
+#suggestionsMobile{
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 0;
+  color: var(--var-color-white);
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  margin-top: 80vh;
+  width: 100%;
+  z-index: 1000;
+  overflow-y: hidden;
+  max-height: 350px;
+  overflow-y: auto;
+}
+#suggestionsMobile h3{
+  font-size: 1.6rem;
+  margin-block: 2.4rem;
+  color: var(--var-color-white);
+}
+
+#suggestionsMobile div {
+  height: max-content;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  cursor: pointer;
+}
+#suggestionsMobile div li {
+  max-height: 2.8rem;
+  height: max-content;
+  overflow-y: hidden;
+  cursor: pointer;
+}
+
+#suggestionsMobile li:hover {
+  background-color: #1a1a1a;
+}
 
 
 /* Ocultar sugestões quando o dropdown não estiver ativo */
@@ -261,6 +300,7 @@ header{
   left: 0;
   width: 100%;
   height: 100vh;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -330,6 +370,10 @@ header{
   padding: 0.6rem 1.8rem;
   border: none;
   outline: none;
+}
+.nav-bar .mobile-list{
+  height: 420px;
+  width: 100%;
 }
 
 .nav-bar .mobile-search-bar input::placeholder{
