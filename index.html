@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>World Cup</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    
+    <div id="app">
+        <h1 class="font-bold p-10 text text-pink-800 ">Welcome to the World Cup</h1>
+    </div>
+    <div class="flex justify-center items-center h-screen">
+        <img src="./src/assets/world-cup.png" alt="World Cup Image" class="w-1/2 h-auto">
+    </div>
+    <div class="flex justify-center items-center h-screen">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Click Me!
+        </button>
+    </div>
+    <script type="module" src="./src/main.js"></script>
 </body>
 </html>
