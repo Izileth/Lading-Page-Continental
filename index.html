@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-          body {
+        body {
             font-family: 'Inter', sans-serif;
         }
         .gradient-bg {
@@ -226,6 +226,827 @@
         /* Wheel Animation */
         .wheel-visual {
             transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        /* Adicionar ao seu CSS existente */
+
+        /* ==================== */
+        /* Seção Rodas e Aros */
+        /* ==================== */
+        .wheel-card:hover .wheel-specs {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wheel-specs {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .wheel-rotate {
+            transition: transform 0.5s ease;
+        }
+
+        .wheel-card:hover .wheel-rotate {
+            transform: rotate(180deg);
+        }
+
+        .specs-table th {
+            background-color: #1a1a1a;
+            position: sticky;
+            top: 0;
+        }
+
+        .specs-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ==================== */
+        /* Seção Sons e Músicas */
+        /* ==================== */
+        .audio-wave {
+            height: 40px;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(255,255,255,0.3) 50%, 
+                rgba(255,255,255,0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audio-wave::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255,255,255,0.2) 50%, 
+                transparent 100%);
+            animation: waveAnimation 2s linear infinite;
+        }
+
+        @keyframes waveAnimation {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .song-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .engine-sound-card {
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .engine-sound-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .engine-sound-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .engine-sound-card:hover::before {
+            background: rgba(0,0,0,0.2);
+        }
+
+        /* ==================== */
+        /* Seção Gangues JDM */
+        /* ==================== */
+        .timeline-item {
+            flex: 0 0 auto;
+            width: 300px;
+            scroll-snap-align: start;
+        }
+
+        .timeline-container {
+            scroll-snap-type: x mandatory;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            opacity: 0.1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover .timeline-year {
+            opacity: 0.2;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .gang-map {
+            background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            position: relative;
+        }
+
+        .map-point {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            animation: pulse 2s infinite;
+        }
+
+        .map-point::after {
+            content: attr(data-gang);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-point:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .gang-car-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .gang-car-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .gang-car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .gang-car-info {
+            position: relative;
+            z-index: 2;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .gang-car-card:hover .gang-car-info {
+            transform: translateY(0);
+        }
+
+        /* ==================== */
+        /* Elementos Gerais */
+        /* ==================== */
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 100;
+        }
+
+        .has-tooltip:hover .tooltip {
+            opacity: 1;
+        }
+
+        /* Timeline Navigation */
+        .timeline-nav {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.7);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .timeline-nav:hover {
+            background: rgba(0,0,0,0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .timeline-nav-prev {
+            left: -20px;
+        }
+
+        .timeline-nav-next {
+            right: -20px;
+        }
+
+        /* Audio Progress Bar */
+        .audio-progress {
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .audio-progress-filled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: white;
+            width: 0%;
+        }
+
+        .audio-progress-handle {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .audio-progress:hover .audio-progress-handle {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .timeline-item {
+                width: 250px;
+            }
+            
+            .timeline-nav {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            
+            .timeline-nav-prev {
+                left: -10px;
+            }
+            
+            .timeline-nav-next {
+                right: -10px;
+            }
+            
+            .gang-car-info {
+                transform: translateY(0);
+            }
+        }
+
+        /* Animações Específicas */
+        @keyframes fadeInGrow {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .fade-in-grow {
+            animation: fadeInGrow 0.6s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        /* Efeito de Brilho para Destaque */
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glow-effect:hover::after {
+            opacity: 1;
+        }
+
+        /* Efeito de Escala para Cards */
+        .scale-on-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scale-on-hover:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* ==================== */
+        /* Seção Carros Icônicos */
+        /* ==================== */
+        .car-card {
+            transition: all 0.3s ease, transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .car-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .car-card:hover::after {
+            opacity: 1;
+        }
+
+        .decade-filter.active {
+            background: white !important;
+            color: black !important;
+            font-weight: 600;
+        }
+
+        /* Modal de Detalhes */
+        .car-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .car-modal.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .car-modal:not(.hidden) {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #333;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-item {
+            background: #2d2d2d;
+            padding: 0.8rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .spec-item div:first-child {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .spec-item div:last-child {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+        }
+
+        /* ==================== */
+        /* Seção Rotas de Corrida */
+        /* ==================== */
+        .route-highlight {
+            position: relative;
+        }
+
+        .route-highlight::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .route-timeline {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 1rem;
+        }
+
+        .route-timeline-item {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            padding: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .route-timeline-item:not(.active) {
+            opacity: 0.6;
+            transform: scale(0.95);
+        }
+
+        .route-timeline-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .route-timeline-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .route-timeline-prev {
+            left: 1rem;
+        }
+
+        .route-timeline-next {
+            right: 1rem;
+        }
+
+        /* ==================== */
+        /* Seção Locais de Encontro */
+        /* ==================== */
+        .location-highlight {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+
+        .location-connection {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            height: 2px;
+            animation: connectionDraw 0.5s ease-out forwards;
+            transform-origin: left center;
+        }
+
+        @keyframes connectionDraw {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 100;
+            max-width: 200px;
+        }
+
+        /* ==================== */
+        /* Elementos Gerais */
+        /* ==================== */
+        .card-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeInGlow 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeInGlow {
+            to { opacity: 1; }
+        }
+
+        .card-info {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .route-timeline-item {
+                padding: 0 0.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* ==================== */
+        /* Seção Histórias JDM */
+        /* ==================== */
+        .timeline-story {
+            position: relative;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .timeline-year {
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-year::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 110%;
+            height: 110%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-story:hover .timeline-year {
+            transform: scale(1.1);
+            background: #111;
+        }
+
+        .timeline-story:hover .timeline-year::after {
+            width: 130%;
+            height: 130%;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 100px;
+            bottom: -60px;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-50%);
+        }
+
+        /* ==================== */
+        /* Seção Animes JDM */
+        /* ==================== */
+        .anime-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .anime-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .anime-card:hover::before {
+            opacity: 1;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .anime-card h3 {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ==================== */
+        /* Seção Informações Extras */
+        /* ==================== */
+        .faq-question {
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .faq-answer {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+
+        /* Modal de Vídeo */
+        .video-modal {
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .video-modal iframe {
+            width: 80vw;
+            height: 45vw;
+            max-width: 1000px;
+            max-height: 562px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .timeline-line {
+                bottom: -40px;
+            }
+            
+            .timeline-year {
+                width: 16px;
+                height: 16px;
+                font-size: 0;
+            }
+            
+            .timeline-year::after {
+                width: 24px;
+                height: 24px;
+            }
+            
+            .faq-question {
+                padding: 1rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInGlow {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes waveAnimation {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
     </style>
@@ -925,16 +1746,844 @@
         </div>
     </section>
 
+        <!-- Carros Icônicos Section -->
+    <section id="carros" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Carros Icônicos JDM</h2>
+            
+            <!-- Filtro por Década -->
+            <div class="flex justify-center mb-12 gap-2 fade-in-section">
+                <button class="decade-filter px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm hover:bg-white hover:text-black transition-all active" data-decade="all">Todos</button>
+                <button class="decade-filter px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm hover:bg-white hover:text-black transition-all" data-decade="80">Anos 80</button>
+                <button class="decade-filter px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm hover:bg-white hover:text-black transition-all" data-decade="90">Anos 90</button>
+                <button class="decade-filter px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm hover:bg-white hover:text-black transition-all" data-decade="00">Anos 2000</button>
+            </div>
+
+            <!-- Grid de Carros -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-section">
+                <!-- Nissan Skyline GT-R R34 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">R34</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">1999</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Nissan Skyline GT-R</h3>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Godzilla</span>
+                        </div>
+                        
+                        <!-- Especificações Técnicas -->
+                        <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">2.6L</div>
+                                <div class="text-gray-400">Motor</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">280HP</div>
+                                <div class="text-gray-400">Potência</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">4WD</div>
+                                <div class="text-gray-400">Tração</div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-4 text-sm">O lendário GT-R R34, último Skyline do século XX, com seu RB26DETT twin-turbo e sistema ATTESA E-TS.</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-xs text-white bg-black bg-opacity-50 hover:bg-opacity-70 px-3 py-1 rounded-full transition-all group-hover:bg-white group-hover:text-black">
+                                + Detalhes
+                            </button>
+                            <div class="text-xs text-gray-500">#JDM #Legend</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Toyota Supra MK4 -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">MK4</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">1993</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Toyota Supra</h3>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">2JZ</span>
+                        </div>
+                        
+                        <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">3.0L</div>
+                                <div class="text-gray-400">Motor</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">320HP</div>
+                                <div class="text-gray-400">Potência</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">RWD</div>
+                                <div class="text-gray-400">Tração</div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-4 text-sm">O Supra MK4 com seu lendário motor 2JZ-GTE, capaz de suportar mais de 1000HP com preparação.</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-xs text-white bg-black bg-opacity-50 hover:bg-opacity-70 px-3 py-1 rounded-full transition-all group-hover:bg-white group-hover:text-black">
+                                + Detalhes
+                            </button>
+                            <div class="text-xs text-gray-500">#Tuner #Beast</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mazda RX-7 FD -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">FD3S</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">1992</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Mazda RX-7</h3>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">13B</span>
+                        </div>
+                        
+                        <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">1.3L</div>
+                                <div class="text-gray-400">Rotativo</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">255HP</div>
+                                <div class="text-gray-400">Potência</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">RWD</div>
+                                <div class="text-gray-400">Tração</div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-4 text-sm">O RX-7 FD com motor rotativo 13B-REW twin-turbo, um dos carros mais equilibrados já produzidos.</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-xs text-white bg-black bg-opacity-50 hover:bg-opacity-70 px-3 py-1 rounded-full transition-all group-hover:bg-white group-hover:text-black">
+                                + Detalhes
+                            </button>
+                            <div class="text-xs text-gray-500">#Rotary #Drift</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Honda NSX -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">NA1</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">1990</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Honda NSX</h3>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Super</span>
+                        </div>
+                        
+                        <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">3.0L</div>
+                                <div class="text-gray-400">V6</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">270HP</div>
+                                <div class="text-gray-400">Potência</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">RWD</div>
+                                <div class="text-gray-400">Tração</div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-4 text-sm">O supercarro japonês que desafiou a Ferrari, com chassi de alumínio e assistência de Ayrton Senna.</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-xs text-white bg-black bg-opacity-50 hover:bg-opacity-70 px-3 py-1 rounded-full transition-all group-hover:bg-white group-hover:text-black">
+                                + Detalhes
+                            </button>
+                            <div class="text-xs text-gray-500">#Supercar #Senna</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mitsubishi Lancer Evo VI -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">Evo VI</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">1999</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Lancer Evolution</h3>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">4G63</span>
+                        </div>
+                        
+                        <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">2.0L</div>
+                                <div class="text-gray-400">Turbo</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">280HP</div>
+                                <div class="text-gray-400">Potência</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">4WD</div>
+                                <div class="text-gray-400">Tração</div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-4 text-sm">O Evo VI TME (Tommi Mäkinen Edition) com seu sistema AWD avançado e suspensão aprimorada.</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-xs text-white bg-black bg-opacity-50 hover:bg-opacity-70 px-3 py-1 rounded-full transition-all group-hover:bg-white group-hover:text-black">
+                                + Detalhes
+                            </button>
+                            <div class="text-xs text-gray-500">#Rally #4WD</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subaru Impreza 22B -->
+                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">22B</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">1998</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold">Subaru Impreza</h3>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">EJ22</span>
+                        </div>
+                        
+                        <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">2.2L</div>
+                                <div class="text-gray-400">Turbo</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">280HP</div>
+                                <div class="text-gray-400">Potência</div>
+                            </div>
+                            <div class="bg-gray-700 p-2 rounded">
+                                <div class="font-semibold">4WD</div>
+                                <div class="text-gray-400">Tração</div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400 mb-4 text-sm">O raro 22B STi, com motor 2.2L e carroceria alargada, limitado a 400 unidades mundialmente.</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <button class="text-xs text-white bg-black bg-opacity-50 hover:bg-opacity-70 px-3 py-1 rounded-full transition-all group-hover:bg-white group-hover:text-black">
+                                + Detalhes
+                            </button>
+                            <div class="text-xs text-gray-500">#Collector #Rally</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rotas de Corrida Section -->
+    <section id="rotas" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Rotas de Corrida Ilegais</h2>
+            
+            <div class="max-w-4xl mx-auto fade-in-section">
+                <!-- Wangan -->
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-6">
+                        <h3 class="text-2xl font-bold">Wangan</h3>
+                        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Velocidade</span>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-gray-400 mb-4">A lendária rodovia Bayshore (Shuto Expressway) em Tóquio, palco das corridas noturnas de alta velocidade do Mid Night Club.</p>
+                            <ul class="text-gray-400 text-sm space-y-2 mb-4">
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Velocidades acima de 300km/h</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Túneis iluminados com neon</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Skyline GT-Rs dominavam</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-800 h-full min-h-48 rounded-lg flex items-center justify-center">
+                            <span class="text-gray-600 text-lg">Mapa da Rota Wangan</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Touge -->
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-6">
+                        <h3 class="text-2xl font-bold">Touge (峠)</h3>
+                        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Montanha</span>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="order-2 md:order-1">
+                            <p class="text-gray-400 mb-4">Estradas de montanha sinuosas como as de Hakone e Irohazaka, onde o drift e a técnica superam a potência.</p>
+                            <ul class="text-gray-400 text-sm space-y-2 mb-4">
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Curvas fechadas e declives acentuados</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> AE86 Truenos e RX-7s eram populares</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Corridas "attack/defense"</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-800 h-full min-h-48 rounded-lg flex items-center justify-center order-1 md:order-2">
+                            <span class="text-gray-600 text-lg">Mapa da Rota Touge</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- C1 Loop -->
+                <div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <h3 class="text-2xl font-bold">C1 Loop</h3>
+                        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Circular</span>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-gray-400 mb-4">O circuito interno de Tóquio, uma rota circular de 22km que se tornou um playground noturno para corridas ilegais.</p>
+                            <ul class="text-gray-400 text-sm space-y-2">
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Múltiplos túneis e viadutos</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Necessidade de memorização perfeita</li>
+                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Variedade de carros e estilos</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-800 h-full min-h-48 rounded-lg flex items-center justify-center">
+                            <span class="text-gray-600 text-lg">Mapa do C1 Loop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mapa Interativo -->
+            <div class="mt-16 bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                <div class="p-6 border-b border-gray-700">
+                    <h3 class="text-xl font-semibold">Principais Rotas no Japão</h3>
+                </div>
+                <div class="h-96 relative">
+                    <!-- Mapa Base -->
+                    <div class="absolute inset-0 bg-gray-700 flex items-center justify-center">
+                        <span class="text-gray-600 text-lg">Mapa Interativo das Rotas</span>
+                    </div>
+                    
+                    <!-- Pontos do Mapa -->
+                    <div class="absolute left-1/4 top-1/3 w-3 h-3 bg-red-500 rounded-full animate-pulse cursor-pointer" data-route="wangan"></div>
+                    <div class="absolute left-1/3 top-2/3 w-3 h-3 bg-blue-500 rounded-full animate-pulse cursor-pointer" data-route="touge"></div>
+                    <div class="absolute left-2/3 top-1/2 w-3 h-3 bg-yellow-500 rounded-full animate-pulse cursor-pointer" data-route="c1"></div>
+                    
+                    <!-- Legenda -->
+                    <div class="absolute bottom-4 left-4 bg-gray-900 bg-opacity-80 p-3 rounded-lg">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <span class="text-xs">Wangan</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <span class="text-xs">Touge</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <span class="text-xs">C1 Loop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locais de Encontro Section -->
+    <section id="encontros" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Locais de Encontro JDM</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 fade-in-section">
+                <!-- Daikoku PA -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group">
+                    <div class="relative h-48 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-4xl">Daikoku</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-xs">Yokohama</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Daikoku Parking Area</h3>
+                        <p class="text-gray-400 text-sm mb-4">O mais famoso ponto de encontro de carros no Japão, localizado na Shuto Expressway.</p>
+                        
+                        <div class="flex items-center text-xs text-gray-500 gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Yokohama, Kanagawa</span>
+                        </div>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-700">
+                            <h4 class="text-xs uppercase text-gray-500 mb-2">Dias Populares</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Sábado</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Feriados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tatsumi PA -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group">
+                    <div class="relative h-48 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-4xl">Tatsumi</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-xs">Tóquio</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tatsumi Parking Area</h3>
+                        <p class="text-gray-400 text-sm mb-4">Ponto de encontro próximo ao Rainbow Bridge, frequentado por supercarros e JDM raros.</p>
+                        
+                        <div class="flex items-center text-xs text-gray-500 gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Koto City, Tóquio</span>
+                        </div>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-700">
+                            <h4 class="text-xs uppercase text-gray-500 mb-2">Dias Populares</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Sexta</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Sábado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Umihotaru PA -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden group">
+                    <div class="relative h-48 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-4xl">Umihotaru</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-xs">Chiba</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Umihotaru PA</h3>
+                        <p class="text-gray-400 text-sm mb-4">Estacionamento no meio da Tokyo Bay Aqua-Line, com vista para a baía de Tóquio.</p>
+                        
+                        <div class="flex items-center text-xs text-gray-500 gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Tokyo Bay, Chiba</span>
+                        </div>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-700">
+                            <h4 class="text-xs uppercase text-gray-500 mb-2">Dias Populares</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Domingo</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Noites</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mapa dos Encontros -->
+            <div class="mt-16 bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                <div class="p-6 border-b border-gray-700 flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">Horários de Pico</h3>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1 bg-gray-700 text-xs rounded-full hover:bg-gray-600 transition-colors">Sexta</button>
+                        <button class="px-3 py-1 bg-gray-700 text-xs rounded-full hover:bg-gray-600 transition-colors">Sábado</button>
+                        <button class="px-3 py-1 bg-gray-700 text-xs rounded-full hover:bg-gray-600 transition-colors">Domingo</button>
+                    </div>
+                </div>
+                <div class="h-96 relative">
+                    <!-- Mapa Base -->
+                    <div class="absolute inset-0 bg-gray-700 flex items-center justify-center">
+                        <span class="text-gray-600 text-lg">Mapa dos Pontos de Encontro</span>
+                    </div>
+                    
+                    <!-- Pontos do Mapa -->
+                    <div class="absolute left-1/4 top-1/2 w-4 h-4 bg-white rounded-full animate-pulse cursor-pointer" data-location="daikoku"></div>
+                    <div class="absolute left-1/2 top-1/3 w-4 h-4 bg-white rounded-full animate-pulse cursor-pointer" data-location="tatsumi"></div>
+                    <div class="absolute left-2/3 top-2/3 w-4 h-4 bg-white rounded-full animate-pulse cursor-pointer" data-location="umihotaru"></div>
+                    
+                    <!-- Linhas de Conexão -->
+                    <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25% 50% L50% 33% L66% 66%" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none" stroke-dasharray="5,5"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Histórias JDM Section -->
+    <section id="historias" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Histórias da Cultura JDM</h2>
+            
+            <!-- Timeline Vertical -->
+            <div class="max-w-3xl mx-auto fade-in-section">
+                <!-- Item 1 -->
+                <div class="timeline-story mb-16">
+                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+                        1980s
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg relative">
+                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
+                        <h3 class="text-2xl font-bold mb-4">O Nascimento do Wangan</h3>
+                        <p class="text-gray-400 mb-4">
+                            As corridas noturnas na rodovia Bayshore começam a se popularizar entre entusiastas de carros japoneses, dando origem à lenda das corridas Wangan.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Mid Night Club</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">R32 GT-R</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">300km/h+</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="timeline-story mb-16">
+                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+                        1990s
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg relative">
+                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
+                        <h3 class="text-2xl font-bold mb-4">A Era de Ouro</h3>
+                        <p class="text-gray-400 mb-4">
+                            Os anos 90 viram o auge da cultura JDM com carros como o Supra MK4, RX-7 FD e Skyline GT-R dominando as ruas e pistas.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">2JZ-GTE</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">RB26DETT</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">280HP Limit</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="timeline-story mb-16">
+                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+                        2000s
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg relative">
+                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
+                        <h3 class="text-2xl font-bold mb-4">O Boom Global</h3>
+                        <p class="text-gray-400 mb-4">
+                            O sucesso de filmes como Velozes e Furiosos e a popularização dos video games de corrida levam a cultura JDM para o mundo todo.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Fast & Furious</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Gran Turismo</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Import Scene</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="timeline-story">
+                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+                        2010+
+                    </div>
+                    <div class="bg-gray-800 p-8 rounded-lg relative">
+                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
+                        <h3 class="text-2xl font-bold mb-4">A Cultura Moderna</h3>
+                        <p class="text-gray-400 mb-4">
+                            Os carros JDM clássicos se tornam itens de colecionador enquanto a cultura evolui com novos estilos como o stance e o time attack.
+                        </p>
+                        <div class="flex gap-2 flex-wrap">
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">R34 GT-R</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">JDM Tax</span>
+                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Restomod</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animes JDM Section -->
+    <section id="animes" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Animes da Cultura JDM</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-section">
+                <!-- Initial D -->
+                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden group">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">頭文字D</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-xs">1998-2014</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Initial D</h3>
+                        <p class="text-gray-400 text-sm mb-4">O anime que popularizou o mundo das corridas de touge e o drift no Japão.</p>
+                        
+                        <div class="flex items-center text-xs text-gray-500 gap-2 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>8 Temporadas</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="text-xs uppercase text-gray-500 mb-2">Carros Principais</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">AE86 Trueno</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">FD3S RX-7</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">R32 GT-R</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full mt-4 py-2 bg-transparent border border-gray-600 hover:bg-white hover:text-black transition-all rounded-lg text-sm flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Ver Opening
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Wangan Midnight -->
+                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden group">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">湾岸</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-xs">2007-2008</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Wangan Midnight</h3>
+                        <p class="text-gray-400 text-sm mb-4">O mundo das corridas noturnas de alta velocidade nas rodovias de Tóquio.</p>
+                        
+                        <div class="flex items-center text-xs text-gray-500 gap-2 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>26 Episódios</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="text-xs uppercase text-gray-500 mb-2">Carros Principais</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">S30Z "Devil Z"</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">964 Turbo</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">R32 GT-R</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full mt-4 py-2 bg-transparent border border-gray-600 hover:bg-white hover:text-black transition-all rounded-lg text-sm flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Ver Opening
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- MF Ghost -->
+                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden group">
+                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                            <span class="text-6xl">MFG</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-xs">2023</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">MF Ghost</h3>
+                        <p class="text-gray-400 text-sm mb-4">Sequência espiritual de Initial D, agora com carros modernos em corridas legais.</p>
+                        
+                        <div class="flex items-center text-xs text-gray-500 gap-2 mb-3">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>1 Temporada</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h4 class="text-xs uppercase text-gray-500 mb-2">Carros Principais</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">GT86</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">R35 GT-R</span>
+                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Porsche 911</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full mt-4 py-2 bg-transparent border border-gray-600 hover:bg-white hover:text-black transition-all rounded-lg text-sm flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Ver Opening
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informações Extras Section -->
+    <section id="extras" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Informações Extras</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 fade-in-section">
+                <!-- Documentários -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Documentários</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>Speedhunters - The Golden Era of JDM</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>Drift Bible - Keiichi Tsuchiya</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>Mid Night Club - Last Run</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Livros -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Livros</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>Japanese Domestic Market - Brian Long</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>The Manga Guide to Cars</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>GT-R - The Legendary Nissan</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Eventos -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Eventos</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>Tokyo Auto Salon</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>D1 Grand Prix</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            <span>Time Attack Japan</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="mt-16 max-w-3xl mx-auto fade-in-section">
+                <h3 class="text-2xl font-semibold text-center mb-8">Perguntas Frequentes</h3>
+                
+                <div class="space-y-4">
+                    <!-- Item 1 -->
+                    <div class="faq-item bg-gray-800 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-6 text-left">
+                            <span>O que significa JDM?</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">JDM significa "Japanese Domestic Market" (Mercado Doméstico Japonês). Originalmente se refere a veículos e peças feitas especificamente para o mercado japonês, mas hoje é usado para descrever a cultura de carros japoneses em geral.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="faq-item bg-gray-800 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-6 text-left">
+                            <span>Por que os carros JDM têm limite de 280HP?</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">Entre 1988 e 2004, a Japan Automobile Manufacturers Association (JAMA) tinha um acordo voluntário para limitar a potência dos carros a 280HP (206kW). Isso foi uma medida de segurança, apesar de muitos carros terem potencial para muito mais potência.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="faq-item bg-gray-800 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center p-6 text-left">
+                            <span>Qual é a diferença entre JDM e USDM?</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 hidden">
+                            <p class="text-gray-400">JDM se refere a carros e peças feitas para o mercado japonês, enquanto USDM (US Domestic Market) são versões feitas para o mercado americano. As diferenças podem incluir motores, especificações de desempenho, faróis e até mesmo a posição do volante.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Reviews Carousel Section -->
     <section id="reviews" class="py-20 bg-black">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Reviews da Comunidade</h2>
             
             <!-- Reviews Carousel -->
-            <div class="carousel-container max-w-4xl mx-auto fade-in-section">
+            <div class="carousel-container max-w-7xl mx-auto fade-in-section">
                 <div class="carousel-track" id="reviewsCarousel">
                     <div class="carousel-slide">
-                        <div class="bg-gray-800 p-8 text-center">
+                        <div class="bg-transparent p-8 text-center">
                             <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4"></div>
                             <p class="text-gray-300 mb-4 text-lg italic">
                                 "Site incrível! Finalmente encontrei informações detalhadas sobre a cultura JDM em português."
@@ -944,7 +2593,7 @@
                         </div>
                     </div>
                     <div class="carousel-slide">
-                        <div class="bg-gray-800 p-8 text-center">
+                        <div class="bg-transparent p-8 text-center">
                             <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4"></div>
                             <p class="text-gray-300 mb-4 text-lg italic">
                                 "As informações sobre os carros clássicos são muito precisas. Recomendo para todos os fãs!"
@@ -954,7 +2603,7 @@
                         </div>
                     </div>
                     <div class="carousel-slide">
-                        <div class="bg-gray-800 p-8 text-center">
+                        <div class="bg-transparent p-8 text-center">
                             <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4"></div>
                             <p class="text-gray-300 mb-4 text-lg italic">
                                 "Design clean e conteúdo de qualidade. Virou minha referência para cultura japonesa."
@@ -1061,7 +2710,7 @@
 
 
     <script>
-           const openSidebar = document.getElementById('openSidebar');
+        const openSidebar = document.getElementById('openSidebar');
         const closeSidebar = document.getElementById('closeSidebar');
         const mobileSidebar = document.getElementById('mobileSidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -1357,139 +3006,533 @@
             });
         });
 
+        lazyImages.forEach(img => imageObserver.observe(img));
+        
+        
         // Timeline Navigation
-class Timeline {
-    constructor(containerId, prevId, nextId) {
-        this.container = document.getElementById(containerId);
-        this.prevBtn = document.getElementById(prevId);
-        this.nextBtn = document.getElementById(nextId);
-        this.scrollPosition = 0;
-        this.itemWidth = 320; // Largura aproximada de cada item + margin
-        
-        this.init();
-    }
-    
-    init() {
-        this.prevBtn.addEventListener('click', () => this.scroll('left'));
-        this.nextBtn.addEventListener('click', () => this.scroll('right'));
-        
-        // Hide prev button initially
-        this.toggleButtons();
-        
-        // Update button visibility on scroll
-        this.container.addEventListener('scroll', () => {
-            this.toggleButtons();
-        });
-    }
-    
-    scroll(direction) {
-        const containerWidth = this.container.clientWidth;
-        const scrollWidth = this.container.scrollWidth;
-        
-        if (direction === 'left') {
-            this.scrollPosition = Math.max(0, this.scrollPosition - this.itemWidth);
-        } else {
-            this.scrollPosition = Math.min(
-                scrollWidth - containerWidth, 
-                this.scrollPosition + this.itemWidth
-            );
+        class Timeline  {
+        constructor(containerId, prevId, nextId) {
+            this.container = document.getElementById(containerId);
+            this.prevBtn = document.getElementById(prevId);
+            this.nextBtn = document.getElementById(nextId);
+            this.scrollPosition = 0;
+            this.itemWidth = 320; // Largura aproximada de cada item + margin
+            
+            this.init();
         }
         
-        this.container.scrollTo({
-            left: this.scrollPosition,
-            behavior: 'smooth'
-        });
-    }
-    
-    toggleButtons() {
-        const containerWidth = this.container.clientWidth;
-        const scrollWidth = this.container.scrollWidth;
-        const scrollLeft = this.container.scrollLeft;
-        
-        this.prevBtn.style.display = scrollLeft > 0 ? 'flex' : 'none';
-        this.nextBtn.style.display = scrollLeft < (scrollWidth - containerWidth - 1) ? 'flex' : 'none';
-    }
-}
-
-    // Initialize timeline
-    const timeline = new Timeline('timeline', 'timelinePrev', 'timelineNext');
-
-    // Tooltips for map
-    const mapPoints = document.querySelectorAll('[data-tooltip]');
-    mapPoints.forEach(point => {
-        const tooltip = document.createElement('div');
-        tooltip.textContent = point.dataset.tooltip;
-        tooltip.className = 'absolute bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity -translate-y-8';
-        
-        point.appendChild(tooltip);
-        point.classList.add('group', 'cursor-pointer');
-        
-        // Position tooltip
-        point.addEventListener('mouseenter', () => {
-            const rect = point.getBoundingClientRect();
-            tooltip.style.left = `${rect.width/2 - tooltip.offsetWidth/2}px`;
-        });
-    });
-
-    // Audio player functionality
-    const audioPlayers = document.querySelectorAll('.audio-player');
-    audioPlayers.forEach(player => {
-        const playBtn = player.querySelector('.play-btn');
-        const progress = player.querySelector('.progress');
-        const currentTime = player.querySelector('.current-time');
-        const duration = player.querySelector('.duration');
-        
-        // Mock functionality
-        playBtn.addEventListener('click', () => {
-            player.classList.toggle('playing');
+        init() {
+            this.prevBtn.addEventListener('click', () => this.scroll('left'));
+            this.nextBtn.addEventListener('click', () => this.scroll('right'));
             
-            if (player.classList.contains('playing')) {
-                playBtn.innerHTML = '❚❚';
-                // Simulate progress
-                let time = 0;
-                const interval = setInterval(() => {
-                    if (time >= 100) {
-                        clearInterval(interval);
-                        player.classList.remove('playing');
-                        playBtn.innerHTML = '▶';
-                        progress.style.width = '0%';
-                    } else {
-                        time += 1;
-                        progress.style.width = `${time}%`;
-                        currentTime.textContent = formatTime(time * 0.42); // 42s total
-                    }
-                }, 420); // 420ms for 100 steps = 42s total
+            // Hide prev button initially
+            this.toggleButtons();
+            
+            // Update button visibility on scroll
+            this.container.addEventListener('scroll', () => {
+                this.toggleButtons();
+            });
+        }
+        
+        scroll(direction) {
+            const containerWidth = this.container.clientWidth;
+            const scrollWidth = this.container.scrollWidth;
+            
+            if (direction === 'left') {
+                this.scrollPosition = Math.max(0, this.scrollPosition - this.itemWidth);
             } else {
-                playBtn.innerHTML = '▶';
+                this.scrollPosition = Math.min(
+                    scrollWidth - containerWidth, 
+                    this.scrollPosition + this.itemWidth
+                );
             }
-        });
-    });
-
-    function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            
+            this.container.scrollTo({
+                left: this.scrollPosition,
+                behavior: 'smooth'
+            });
+        }
+        
+        toggleButtons() {
+            const containerWidth = this.container.clientWidth;
+            const scrollWidth = this.container.scrollWidth;
+            const scrollLeft = this.container.scrollLeft;
+            
+            this.prevBtn.style.display = scrollLeft > 0 ? 'flex' : 'none';
+            this.nextBtn.style.display = scrollLeft < (scrollWidth - containerWidth - 1) ? 'flex' : 'none';
+        }
     }
 
-    // Rotating wheel animation
-    const wheelItems = document.querySelectorAll('.wheel-item');
-    wheelItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            const wheel = item.querySelector('.wheel-visual');
-            if (wheel) {
-                wheel.style.transform = 'rotate(180deg)';
-            }
+        // Initialize timeline
+        const timeline = new Timeline('timeline', 'timelinePrev', 'timelineNext');
+
+        // Tooltips for map
+        const mapPoints = document.querySelectorAll('[data-tooltip]');
+        mapPoints.forEach(point => {
+            const tooltip = document.createElement('div');
+            tooltip.textContent = point.dataset.tooltip;
+            tooltip.className = 'absolute bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity -translate-y-8';
+            
+            point.appendChild(tooltip);
+            point.classList.add('group', 'cursor-pointer');
+            
+            // Position tooltip
+            point.addEventListener('mouseenter', () => {
+                const rect = point.getBoundingClientRect();
+                tooltip.style.left = `${rect.width/2 - tooltip.offsetWidth/2}px`;
+            });
         });
-        
-        item.addEventListener('mouseleave', () => {
-            const wheel = item.querySelector('.wheel-visual');
-            if (wheel) {
-                wheel.style.transform = 'rotate(0)';
-            }
+
+        // Audio player functionality
+        const audioPlayers = document.querySelectorAll('.audio-player');
+        audioPlayers.forEach(player => {
+            const playBtn = player.querySelector('.play-btn');
+            const progress = player.querySelector('.progress');
+            const currentTime = player.querySelector('.current-time');
+            const duration = player.querySelector('.duration');
+            
+            // Mock functionality
+            playBtn.addEventListener('click', () => {
+                player.classList.toggle('playing');
+                
+                if (player.classList.contains('playing')) {
+                    playBtn.innerHTML = '❚❚';
+                    // Simulate progress
+                    let time = 0;
+                    const interval = setInterval(() => {
+                        if (time >= 100) {
+                            clearInterval(interval);
+                            player.classList.remove('playing');
+                            playBtn.innerHTML = '▶';
+                            progress.style.width = '0%';
+                        } else {
+                            time += 1;
+                            progress.style.width = `${time}%`;
+                            currentTime.textContent = formatTime(time * 0.42); // 42s total
+                        }
+                    }, 420); // 420ms for 100 steps = 42s total
+                } else {
+                    playBtn.innerHTML = '▶';
+                }
+            });
         });
-    });
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Rotating wheel animation
+        const wheelItems = document.querySelectorAll('.wheel-item');
+        wheelItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const wheel = item.querySelector('.wheel-visual');
+                if (wheel) {
+                    wheel.style.transform = 'rotate(180deg)';
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                const wheel = item.querySelector('.wheel-visual');
+                if (wheel) {
+                    wheel.style.transform = 'rotate(0)';
+                }
+            });
+        });
+
+        const decadeFilters = document.querySelectorAll('.decade-filter');
+        const carCards = document.querySelectorAll('.car-card');
+
+        decadeFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                const decade = filter.dataset.decade;
+                
+                // Atualizar filtro ativo
+                decadeFilters.forEach(f => f.classList.remove('active'));
+                filter.classList.add('active');
+                
+                // Filtrar carros
+                carCards.forEach(card => {
+                    if (decade === 'all' || card.dataset.decade === decade) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Mapa Interativo - Rotas
+        const routePoints = document.querySelectorAll('[data-route]');
+        routePoints.forEach(point => {
+            point.addEventListener('mouseenter', () => {
+                const route = point.dataset.route;
+                // Aqui você pode adicionar lógica para destacar a rota
+                console.log(`Rota selecionada: ${route}`);
+            });
+        });
+
+        // Mapa Interativo - Locais de Encontro
+        const locationPoints = document.querySelectorAll('[data-location]');
+        locationPoints.forEach(point => {
+            point.addEventListener('click', () => {
+                const location = point.dataset.location;
+                // Aqui você pode adicionar lógica para mostrar detalhes do local
+                console.log(`Local selecionado: ${location}`);
+            });
+        });
+
+        // Tooltips para os Mapas
+        function initMapTooltips() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'absolute bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none opacity-0 transition-opacity z-10';
+            document.body.appendChild(tooltip);
+
+            document.querySelectorAll('[data-tooltip]').forEach(el => {
+                el.addEventListener('mouseenter', (e) => {
+                    tooltip.textContent = el.dataset.tooltip;
+                    tooltip.style.opacity = '1';
+                    
+                    const rect = el.getBoundingClientRect();
+                    tooltip.style.left = `${rect.left + window.scrollX}px`;
+                    tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+
+        initMapTooltips();
+
+
+        // Filtro por Década - Complemento
+        decadeFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Adiciona efeito visual de clique
+                filter.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    filter.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Mapa Interativo - Rotas (Aprimorado)
+        routePoints.forEach(point => {
+            const route = point.dataset.route;
+            
+            point.addEventListener('mouseenter', () => {
+                // Destacar todas as informações relacionadas à rota
+                document.querySelectorAll(`[data-route-section="${route}"]`).forEach(el => {
+                    el.classList.add('route-highlight');
+                });
+                
+                // Aumentar ponto no mapa
+                point.style.transform = 'scale(1.5)';
+                point.style.zIndex = '10';
+            });
+            
+            point.addEventListener('mouseleave', () => {
+                // Remover destaque
+                document.querySelectorAll(`[data-route-section="${route}"]`).forEach(el => {
+                    el.classList.remove('route-highlight');
+                });
+                
+                // Voltar ao tamanho normal
+                point.style.transform = 'scale(1)';
+                point.style.zIndex = '1';
+            });
+        });
+
+        // Mapa Interativo - Locais de Encontro (Aprimorado)
+        locationPoints.forEach(point => {
+            const location = point.dataset.location;
+            
+            point.addEventListener('mouseenter', () => {
+                // Destacar card correspondente
+                document.querySelector(`[data-location-card="${location}"]`).classList.add('location-highlight');
+                
+                // Adicionar linha de conexão animada
+                point.insertAdjacentHTML('afterend', 
+                    `<div class="location-connection" data-location="${location}"></div>`);
+            });
+            
+            point.addEventListener('mouseleave', () => {
+                // Remover destaque
+                document.querySelector(`[data-location-card="${location}"]`).classList.remove('location-highlight');
+                
+                // Remover linha de conexão
+                document.querySelector(`.location-connection[data-location="${location}"]`).remove();
+            });
+        });
+
+        // Tooltips para os Mapas (Aprimorado)
+        function initMapTooltips() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'map-tooltip';
+            document.body.appendChild(tooltip);
+
+            document.querySelectorAll('[data-tooltip]').forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    tooltip.textContent = el.dataset.tooltip;
+                    tooltip.style.opacity = '1';
+                    
+                    // Posicionar tooltip seguindo o mouse
+                    tooltip.style.left = `${e.clientX + 15}px`;
+                    tooltip.style.top = `${e.clientY + 15}px`;
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+
+        // Animação de Destaque para Cards (Completa)
+        function setupCardHighlights() {
+            const cards = document.querySelectorAll('.car-card, .location-card, .route-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.boxShadow = '0 10px 30px rgba(255, 255, 255, 0.1)';
+                    card.style.transform = 'translateY(-5px)';
+                    
+                    // Efeito de brilho
+                    const glow = document.createElement('div');
+                    glow.className = 'card-glow';
+                    card.appendChild(glow);
+                    
+                    // Animação de info (se existir)
+                    const info = card.querySelector('.card-info');
+                    if (info) {
+                        info.style.opacity = '1';
+                        info.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.boxShadow = '';
+                    card.style.transform = '';
+                    
+                    // Remover brilho
+                    const glow = card.querySelector('.card-glow');
+                    if (glow) glow.remove();
+                    
+                    // Resetar info
+                    const info = card.querySelector('.card-info');
+                    if (info) {
+                        info.style.opacity = '0';
+                        info.style.transform = 'translateY(10px)';
+                    }
+                });
+            });
+        }
+
+        // Modal para Detalhes dos Carros
+        function setupCarModals() {
+            const modal = document.createElement('div');
+            modal.className = 'car-modal hidden';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <button class="modal-close">&times;</button>
+                    <div class="modal-body"></div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            document.querySelectorAll('.car-card button').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.car-card');
+                    const title = card.querySelector('h3').textContent;
+                    const specs = card.querySelectorAll('.bg-gray-700');
+                    
+                    let specsHtml = '';
+                    specs.forEach(spec => {
+                        specsHtml += `
+                            <div class="spec-item">
+                                <div>${spec.querySelector('.font-semibold').textContent}</div>
+                                <div>${spec.querySelector('.text-gray-400').textContent}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    modal.querySelector('.modal-body').innerHTML = `
+                        <h2>${title}</h2>
+                        <div class="specs-grid">${specsHtml}</div>
+                        <p class="modal-description">${card.querySelector('p').textContent}</p>
+                    `;
+                    
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            modal.querySelector('.modal-close').addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Timeline Horizontal para Rotas
+        class RouteTimeline {
+            constructor() {
+                this.timeline = document.querySelector('.route-timeline');
+                if (!this.timeline) return;
+                
+                this.items = this.timeline.querySelectorAll('.route-timeline-item');
+                this.navPrev = document.querySelector('.route-timeline-prev');
+                this.navNext = document.querySelector('.route-timeline-next');
+                this.currentIndex = 0;
+                
+                this.init();
+            }
+            
+            init() {
+                this.navPrev.addEventListener('click', () => this.prev());
+                this.navNext.addEventListener('click', () => this.next());
+                
+                this.update();
+            }
+            
+            prev() {
+                this.currentIndex = Math.max(0, this.currentIndex - 1);
+                this.update();
+            }
+            
+            next() {
+                this.currentIndex = Math.min(this.items.length - 1, this.currentIndex + 1);
+                this.update();
+            }
+            
+            update() {
+                const offset = -this.currentIndex * 100;
+                this.timeline.style.transform = `translateX(${offset}%)`;
+                
+                // Atualizar navegação
+                this.navPrev.style.visibility = this.currentIndex === 0 ? 'hidden' : 'visible';
+                this.navNext.style.visibility = this.currentIndex === this.items.length - 1 ? 'hidden' : 'visible';
+                
+                // Atualizar indicadores
+                this.items.forEach((item, index) => {
+                    item.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+        }
+
+        // Inicializar todos os componentes
+        document.addEventListener('DOMContentLoaded', () => {
+            initMapTooltips();
+            setupCardHighlights();
+            setupCarModals();
+            new RouteTimeline();
+            
+            // Intersection Observer para animações
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
 
         lazyImages.forEach(img => imageObserver.observe(img));
+
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.closest('.faq-item');
+                const answer = item.querySelector('.faq-answer');
+                const icon = question.querySelector('svg');
+                
+                // Alternar resposta
+                answer.classList.toggle('hidden');
+                
+                // Animação do ícone
+                icon.style.transform = answer.classList.contains('hidden') ? 
+                    'rotate(0deg)' : 'rotate(180deg)';
+                
+                // Fechar outros itens
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('.faq-answer').classList.add('hidden');
+                        otherItem.querySelector('svg').style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+
+        // Anime Video Buttons
+        document.querySelectorAll('.anime-card button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const animeTitle = this.closest('.anime-card').querySelector('h3').textContent;
+                
+                // Criar modal de vídeo
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4';
+                modal.innerHTML = `
+                    <div class="relative w-full max-w-4xl">
+                        <button class="absolute -top-10 right-0 text-white text-2xl">&times;</button>
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-800 rounded-lg overflow-hidden">
+                            <div class="w-full h-full flex items-center justify-center">
+                                <p class="text-gray-400">Opening de ${animeTitle}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                document.body.style.overflow = 'hidden';
+                
+                // Fechar modal
+                modal.querySelector('button').addEventListener('click', () => {
+                    modal.remove();
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+
+        // Timeline Animation
+        const timelineStories = document.querySelectorAll('.timeline-story');
+        timelineStories.forEach((story, index) => {
+            // Adicionar atraso para animação sequencial
+            story.style.animationDelay = `${index * 0.15}s`;
+            
+            // Linha da timeline
+            if (index < timelineStories.length - 1) {
+                const line = document.createElement('div');
+                line.className = 'timeline-line';
+                story.appendChild(line);
+            }
+        });
+
+        // Hover Effects for Info Cards
+        document.querySelectorAll('#extras .bg-gray-800').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('svg').classList.add('text-white');
+                this.querySelector('h3').classList.add('text-white');
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('svg').classList.remove('text-white');
+                this.querySelector('h3').classList.remove('text-white');
+            });
+        });
+    
     </script>
 </body>
 </html>
