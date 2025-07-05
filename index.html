@@ -36,8 +36,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+    <link href="./src/output.css" rel="stylesheet">
       
     <title>JDM & Cultura Japonesa</title>
 
@@ -799,71 +798,85 @@
         /* ==================== */
         /* Seção Rotas de Corrida */
         /* ==================== */
-        .route-highlight {
+        .route-card {
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .route-tag {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .interactive-map {
+            background: linear-gradient(135deg, #000000 0%, #000000 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .map-point {
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+        
+        .map-point:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 20px currentColor);
+        }
+        
+        .route-image {
+            transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
         }
-
-        .route-highlight::before {
-            content: "";
+        
+        .route-image::before {
+            content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: inherit;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
         }
-
-        .route-timeline {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 1rem;
+        
+        .route-image:hover::before {
+            background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
         }
-
-        .route-timeline-item {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            padding: 0 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .route-timeline-item:not(.active) {
-            opacity: 0.6;
-            transform: scale(0.95);
-        }
-
-        .route-timeline-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
+        
+        .bullet-point {
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            height: 1px;
+        }
+        
+        .legend-item {
             transition: all 0.3s ease;
         }
-
-        .route-timeline-nav:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translateY(-50%) scale(1.1);
+        
+        .legend-item:hover {
+            transform: translateX(5px);
+            filter: brightness(1.2);
         }
-
-        .route-timeline-prev {
-            left: 1rem;
-        }
-
-        .route-timeline-next {
+        
+        .route-number {
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            font-size: 4rem;
+            opacity: 0.1;
+            position: absolute;
+            top: 1rem;
             right: 1rem;
         }
 
@@ -949,50 +962,202 @@
         /* ==================== */
         /* Seção Histórias JDM */
         /* ==================== */
-        .timeline-story {
-            position: relative;
-            animation: fadeInUp 0.6s ease-out both;
-        }
-
-        .timeline-year {
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-year::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 110%;
-            height: 110%;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-story:hover .timeline-year {
-            transform: scale(1.1);
-            background: #111;
-        }
-
-        .timeline-story:hover .timeline-year::after {
-            width: 130%;
-            height: 130%;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
+          
         .timeline-line {
             position: absolute;
             left: 50%;
-            top: 100px;
-            bottom: -60px;
+            top: 0;
+            bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.3) 80%, transparent 100%);
             transform: translateX(-50%);
         }
+        
+        .timeline-story {
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: timelineSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .timeline-story:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-story:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-story:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-story:nth-child(4) { animation-delay: 0.8s; }
+        
+        @keyframes timelineSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timeline-year {
+            background: linear-gradient(135deg, #111111 0%, #dddddd90 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+        }
+  
+        
+        .timeline-card {
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .timeline-card:hover::before {
+            opacity: 1;
+        }
+        
+        .timeline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            z-index: 15;
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+        }
+        
+        .tag {
+            background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tag:hover {
+            background: linear-gradient(135deg, #444444 0%, #2a2a2a 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .decade-indicator {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            font-size: 8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.05;
+            line-height: 1;
+            pointer-events: none;
+        }
+        
+        .era-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            border-radius: 0.5rem;
+            pointer-events: none;
+        }
+        
+        .era-80s { background: linear-gradient(135deg, #555555 0%, #ffffff 100%); }
+        .era-90s { background: linear-gradient(135deg, #1b1b1b 0%, #000000 100%); }
+        .era-2000s { background: linear-gradient(135deg, #eeeeee 0%, #ffffff 100%); }
+        .era-2010s { background: linear-gradient(135deg, #000000 0%, #ffffff 100%); }
+        
+        .story-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a1 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.875rem;
+            color: #000;
+            z-index: 5;
+        }
+        
+        .timeline-container {
+            position: relative;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.3) 80%, transparent 100%);
+            transform: translateX(-50%);
+        }
+        
+        .story-content {
+            position: relative;
+            z-index: 5;
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
 
         /* ==================== */
         /* Seção Animes JDM */
@@ -1028,28 +1193,6 @@
         .anime-card h3 {
             position: relative;
             z-index: 2;
-        }
-
-        /* ==================== */
-        /* Seção Informações Extras */
-        /* ==================== */
-        .faq-question {
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(255,255,255,0.05);
-        }
-
-        .faq-answer {
-            transition: all 0.3s ease;
-            max-height: 0;
-            overflow: hidden;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding-bottom: 1.5rem;
         }
 
         /* Modal de Vídeo */
@@ -1226,112 +1369,146 @@
     </section>
  
     <!-- JDM Carousel Section -->
-    <section id="jdm" class="py-20 bg-zinc-800">
+  
+    <section id="jdm" class="py-20 bg-black">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Japanese Domestic Market</h2>
+                    
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Esportivos Lendários
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Explore os carros que definiram a era JDM, cada um com sua própria história e legado.
+                </p>
+            </div>
             
             <!-- JDM Carousel -->
             <div id="jdmWrapper" class="carousel-container w-full relative overflow-hidden mb-16 fade-in-section">
                 <div class="carousel-track flex flex-nowrap transition-transform duration-500 ease-out w-full" id="jdmTrack">
                     <!-- Slide 1 - Nissan Skyline GT-R -->
-                    <div class="carousel-slide shrink-0 w-full flex justify-center ">
-                        <div class="bg-zinc-950 p-8 card-hover max-w-sm mx-auto md:w-auto md:max-w-5xl">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group">
-                                <img 
-                                    src="https://i.pinimg.com/736x/3a/07/88/3a07888408bf3c026abe1f81a6825b68.jpg" 
-                                    alt="Nissan Skyline GT-R" 
-                                    class="w-full h-48  md:h-96 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
-                                    loading="lazy"
-                                />
+                    <div class="carousel-slide shrink-0 w-full flex justify-center">
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                                <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
+                                    <img 
+                                        src="https://i.pinimg.com/736x/3a/07/88/3a07888408bf3c026abe1f81a6825b68.jpg" 
+                                        alt="Nissan Skyline GT-R" 
+                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        loading="lazy"
+                                    />
+                                </div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 pointer-events-none"></div>
+                                <div class="mt-6 text-center md:absolute md:bottom-8 md:left-8 md:right-8 md:text-left">
+                                    <h3 class="text-2xl md:text-4xl font-semibold mb-4 text-white">Nissan Skyline GT-R</h3>
+                                    <p class="text-gray-300 md:text-lg">Ícone do JDM, conhecido por sua performance e design atemporal.</p>
+                                </div>
                             </div>
-                            <h3 class="text-2xl font-semibold mb-4 mt-4">Nissan Skyline GT-R</h3>
-                            <p class="text-gray-400">Ícone do JDM, conhecido por sua performance e design atemporal.</p>
                         </div>
                     </div>
                     
                     <!-- Slide 2 - Toyota Supra MK4 -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-zinc-950 p-8 card-hover max-w-sm mx-auto md:w-full md:max-w-5xl">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group">
-                                <img 
-                                    src="https://i.pinimg.com/736x/cd/e8/57/cde857015024bfcbe2f5d45ec546d15e.jpg" 
-                                    alt="Toyota Supra MK4" 
-                                    class="w-full h-48 md:h-96 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
-                                    loading="lazy"
-                                />
+                        <div class="bg-zinc-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                                <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
+                                    <img 
+                                        src="https://i.pinimg.com/736x/cd/e8/57/cde857015024bfcbe2f5d45ec546d15e.jpg" 
+                                        alt="Toyota Supra MK4" 
+                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        loading="lazy"
+                                    />
+                                </div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 pointer-events-none"></div>
+                                <div class="mt-6 text-center md:absolute md:bottom-8 md:left-8 md:right-8 md:text-left">
+                                    <h3 class="text-2xl md:text-4xl font-semibold mb-4 text-white">Toyota Supra MK4</h3>
+                                    <p class="text-gray-300 md:text-lg">Lenda das pistas, símbolo de poder e precisão japonesa.</p>
+                                </div>
                             </div>
-                            <h3 class="text-2xl font-semibold mb-4 mt-4">Toyota Supra MK4</h3>
-                            <p class="text-gray-400">Lenda das pistas, símbolo de poder e precisão japonesa.</p>
                         </div>
                     </div>
                     
                     <!-- Slide 3 - Honda NSX -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-zinc-950 p-8 card-hover max-w-sm mx-auto md:w-full md:max-w-5xl">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group">
-                                <img 
-                                    src="https://i.pinimg.com/736x/d7/00/36/d70036c5288b5b1a4c5e535a1e9632af.jpg" 
-                                    alt="Honda NSX" 
-                                    class="w-full h-48 md:h-96 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
-                                    loading="lazy"
-                                />
+                        <div class="bg-zinc-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                                <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
+                                    <img 
+                                        src="https://i.pinimg.com/736x/d7/00/36/d70036c5288b5b1a4c5e535a1e9632af.jpg" 
+                                        alt="Honda NSX" 
+                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        loading="lazy"
+                                    />
+                                </div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 pointer-events-none"></div>
+                                <div class="mt-6 text-center md:absolute md:bottom-8 md:left-8 md:right-8 md:text-left">
+                                    <h3 class="text-2xl md:text-4xl font-semibold mb-4 text-white">Honda NSX</h3>
+                                    <p class="text-gray-300 md:text-lg">Superesportivo que redefiniu os padrões da indústria.</p>
+                                </div>
                             </div>
-                            <h3 class="text-2xl font-semibold mb-4 mt-4">Honda NSX</h3>
-                            <p class="text-gray-400">Superesportivo que redefiniu os padrões da indústria.</p>
                         </div>
                     </div>
                     
                     <!-- Slide 4 - Mazda RX-7 -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-zinc-950 p-8 card-hover max-w-sm mx-auto md:w-full md:max-w-5xl">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group">
-                                <img 
-                                    src="https://i.pinimg.com/736x/d6/d8/b4/d6d8b43bcf4856a2efa0915e92f211b5.jpg" 
-                                    alt="Mazda RX-7" 
-                                    class="w-full h-48 md:h-96 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
-                                    loading="lazy"
-                                />
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                                <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
+                                    <img 
+                                        src="https://i.pinimg.com/736x/d6/d8/b4/d6d8b43bcf4856a2efa0915e92f211b5.jpg" 
+                                        alt="Mazda RX-7" 
+                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        loading="lazy"
+                                    />
+                                </div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 pointer-events-none"></div>
+                                <div class="mt-6 text-center md:absolute md:bottom-8 md:left-8 md:right-8 md:text-left">
+                                    <h3 class="text-2xl md:text-4xl font-semibold mb-4 text-white">Mazda RX-7</h3>
+                                    <p class="text-gray-300 md:text-lg">Motor rotativo único e design aerodinâmico perfeito.</p>
+                                </div>
                             </div>
-                            <h3 class="text-2xl font-semibold mb-4 mt-4">Mazda RX-7</h3>
-                            <p class="text-gray-400">Motor rotativo único e design aerodinâmico perfeito.</p>
                         </div>
                     </div>
                     
                     <!-- Slide 5 - Subaru Impreza WRX -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-zinc-950 p-8 card-hover max-w-sm mx-auto md:w-full md:max-w-5xl">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group">
-                                <img 
-                                    src="https://i.pinimg.com/736x/06/78/1e/06781e633f05a9174afda638fa9ebd00.jpg" 
-                                    alt="Subaru Impreza WRX" 
-                                    class="w-full h-48 md:h-96 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
-                                    loading="lazy"
-                                />
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                                <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
+                                    <img 
+                                        src="https://i.pinimg.com/736x/06/78/1e/06781e633f05a9174afda638fa9ebd00.jpg" 
+                                        alt="Subaru Impreza WRX" 
+                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        loading="lazy"
+                                    />
+                                </div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 pointer-events-none"></div>
+                                <div class="mt-6 text-center md:absolute md:bottom-8 md:left-8 md:right-8 md:text-left">
+                                    <h3 class="text-2xl md:text-4xl font-semibold mb-4 text-white">Subaru Impreza WRX</h3>
+                                    <p class="text-gray-300 md:text-lg">Domínio nos rallies e nas ruas com tração integral.</p>
+                                </div>
                             </div>
-                            <h3 class="text-2xl font-semibold mb-4 mt-4">Subaru Impreza WRX</h3>
-                            <p class="text-gray-400">Domínio nos rallies e nas ruas com tração integral.</p>
                         </div>
                     </div>
                     
                     <!-- Slide 6 - Mitsubishi Lancer Evo -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-zinc-950 p-8 card-hover max-w-sm mx-auto md:w-full md:max-w-5xl">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group">
-                                <img 
-                                    src="https://i.pinimg.com/736x/e3/f6/56/e3f656dbd19d15c213ac17b65fd00279.jpg" 
-                                    alt="Mitsubishi Lancer Evo" 
-                                    class="w-full h-48 md:h-96 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
-                                    loading="lazy"
-                                />
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                                <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
+                                    <img 
+                                        src="https://i.pinimg.com/736x/e3/f6/56/e3f656dbd19d15c213ac17b65fd00279.jpg" 
+                                        alt="Mitsubishi Lancer Evo" 
+                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        loading="lazy"
+                                    />
+                                </div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70 pointer-events-none"></div>
+                                <div class="mt-6 text-center md:absolute md:bottom-8 md:left-8 md:right-8 md:text-left">
+                                    <h3 class="text-2xl md:text-4xl font-semibold mb-4 text-white">Mitsubishi Lancer Evo</h3>
+                                    <p class="text-gray-300 md:text-lg">Tecnologia de corrida aplicada ao uso diário.</p>
+                                </div>
                             </div>
-                            <h3 class="text-2xl font-semibold mb-4 mt-4">Mitsubishi Lancer Evo</h3>
-                            <p class="text-gray-400">Tecnologia de corrida aplicada ao uso diário.</p>
                         </div>
                     </div>
                 </div>
@@ -1342,11 +1519,18 @@
             </div>
         </div>
     </section>
-
     <!-- Categorias Section -->
     <section id="categorias" class="py-20 bg-black">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Categorias JDM</h2>
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Grids & Modelos 
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Explore as categorias e modelos que definiram a cultura automobilística japonesa
+                </p>
+            </div>
             
             <!-- Category Filter -->
             <div class="category-filter justify-center fade-in-section">
@@ -1359,42 +1543,42 @@
             
             <!-- Categories Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in-section" id="categoriesGrid">
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="sports">
+                <div class="category-item bg-transparent  p-6 card-hover" data-category="sports">
                     <img src="https://i.pinimg.com/736x/e4/33/d6/e433d6a645d9456778e40ab82d84ec3d.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Sports Cars</h3>
                     <p class="text-gray-400 text-sm">Carros esportivos puros focados em performance</p>
                 </div>
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="drift">
+                <div class="category-item bg-transparent p-6 card-hover" data-category="drift">
                     <img src="https://i.pinimg.com/736x/39/85/96/3985968abec5d5e0b78f5cd75c48856b.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Drift Cars</h3>
                     <p class="text-gray-400 text-sm">Máquinas preparadas para o drift</p>
                 </div>
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="tuning">
+                <div class="category-item bg-transparent p-6 card-hover" data-category="tuning">
                     <img src="https://i.pinimg.com/736x/74/15/6a/74156ac24901833a633e34d1bd5caeb7.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Tuning</h3>
                     <p class="text-gray-400 text-sm">Modificações e preparações especiais</p>
                 </div>
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="classic">
+                <div class="category-item bg-tranpsarent p-6 card-hover" data-category="classic">
                     <img src="https://i.pinimg.com/736x/78/58/08/785808110027a3bd3c0086cf68ed6854.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Clássicos</h3>
                     <p class="text-gray-400 text-sm">Ícones atemporais do JDM</p>
                 </div>
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="sports">
+                <div class="category-item bg-transparent p-6 card-hover" data-category="sports">
                     <img src="https://i.pinimg.com/736x/70/99/ac/7099ac1333a0d84bbbaa9484a8b57f1f.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Kei Cars</h3>
                     <p class="text-gray-400 text-sm">Carros compactos únicos do Japão</p>
                 </div>
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="tuning">
+                <div class="category-item bg-transparent p-6 card-hover" data-category="tuning">
                     <img src="https://i.pinimg.com/736x/a3/50/3a/a3503a59dd830c8b3de88539fe2fb5e4.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Bosozoku</h3>
                     <p class="text-gray-400 text-sm">Estilo radical japonês de customização</p>
                 </div>
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="drift">
+                <div class="category-item bg-transparent p-6 card-hover" data-category="drift">
                     <img src="https://i.pinimg.com/736x/0e/83/67/0e83676e069fbcc3d8c493e4a731e4ba.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Touge</h3>
                     <p class="text-gray-400 text-sm">Carros para montanhas japonesas</p>
                 </div>
-                <div class="category-item bg-zinc-950 p-6 card-hover" data-category="classic">
+                <div class="category-item bg-transparent p-6 card-hover" data-category="classic">
                     <img src="https://i.pinimg.com/736x/4f/58/d8/4f58d8c8e544612132565fce71376ef2.jpg" alt="Subaru Impreza WRX" class="w-full h-52 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl mb-2"></img>
                     <h3 class="text-xl font-semibold mb-2">Nostalgic</h3>
                     <p class="text-gray-400 text-sm">Clássicos dos anos 80 e 90</p>
@@ -1404,9 +1588,17 @@
     </section>
 
     <!-- Cultura Section -->
-    <section id="cultura" class="py-20 bg-neutral-400">
+    <section id="cultura" class="py-20 bg-zinc-950">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Cultura Japonesa</h2>
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Cultura Do Sol Nascente
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Uma cultura de melhoria contínua, inspirada na perfeição dos carros JDM.
+                </p>
+            </div>
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div class="animate-slideInLeft">
                     <h3 class="text-3xl font-semibold mb-6">Kaizen 改善</h3>
@@ -1437,13 +1629,24 @@
     <!-- Rodas e Aros Section -->
     <section id="rodas" class="py-20 bg-black">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Rodas & Aros JDM</h2>
+        
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Rodas e Aros Icônicos
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Descubra as rodas e aros que definiram a cultura JDM, 
+                    desde os anos 80 até hoje. Cada um com sua própria história, 
+                    carros icônicos e rivalidades épicas.
+                </p>
+            </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in-section">
                 <!-- Item 1 -->
-                <div class="bg-zinc-900 p-6 card-hover group overflow-hidden">
-                    <div class="h-48 it-bg-weel-1 mb-4 flex items-center justify-center relative">
-                        <div class="w-32 h-32 rounded-full border-4 border-gray-600 group-hover:border-white transition-all duration-500 transform group-hover:rotate-180"></div>
+                <div class="bg-transparent p-6 card-hover group overflow-hidden">
+                    <div class="h-72 it-bg-weel-1 mb-4 flex items-center justify-center relative">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"></div>
                         <span class="absolute text-xs text-gray-400 group-hover:text-white transition-all">RAYS Volk TE37</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Volk TE37</h3>
@@ -1451,9 +1654,9 @@
                 </div>
                 
                 <!-- Item 2 -->
-                <div class="bg-zinc-900 p-6 card-hover group overflow-hidden">
-                    <div class="h-48 it-bg-weel-2 mb-4 flex items-center justify-center relative">
-                        <div class="w-32 h-32 rounded-full border-4 border-gray-600 group-hover:border-white transition-all duration-500 transform group-hover:-rotate-45"></div>
+                <div class="bg-transparent p-6 card-hover group overflow-hidden">
+                    <div class="h-72 it-bg-weel-2 mb-4 flex items-center justify-center relative">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"></div>
                         <span class="absolute text-xs text-gray-400 group-hover:text-white transition-all">Watanabe RS</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Watanabe RS</h3>
@@ -1461,8 +1664,8 @@
                 </div>
                 
                 <!-- Item 3 -->
-                <div class="bg-zinc-900 p-6 card-hover group overflow-hidden">
-                    <div class="h-48 it-bg-weel-3 mb-4 flex items-center justify-center relative">
+                <div class="bg-transparent p-6 card-hover group overflow-hidden">
+                    <div class="h-72 it-bg-weel-3 mb-4 flex items-center justify-center relative">
                         <div class="w-32 h-32 rounded-full border-4 border-gray-600 group-hover:border-white transition-all duration-500"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                             <span class="text-xs text-white">SSR Professor SP1</span>
@@ -1473,8 +1676,8 @@
                 </div>
                 
                 <!-- Item 4 -->
-                <div class="bg-zinc-900 p-6 card-hover group overflow-hidden">
-                    <div class="h-48 it-bg-weel-4 mb-4 flex items-center justify-center relative">
+                <div class="bg-transparent p-6 card-hover group overflow-hidden">
+                    <div class="h-72 it-bg-weel-4 mb-4 flex items-center justify-center relative">
                         <div class="w-32 h-32 rounded-full border-4 border-gray-600 group-hover:border-white transition-all duration-500"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                             <span class="text-xs text-gray-400 group-hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0">Work Meister S1</span>
@@ -1538,7 +1741,16 @@
     <!-- Sons e Músicas Section -->
     <section id="sons" class="py-20 bg-gray-900">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Sons da Cultura JDM</h2>
+
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Solta o Som
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Mergulhe na trilha sonora que define a cultura JDM, com músicas que capturam a essência das corridas e do tuning japonês.
+                </p>
+            </div>
             
             <div class="grid md:grid-cols-2 gap-8 fade-in-section">
                 <!-- Player de Áudio -->
@@ -1694,16 +1906,31 @@
 
     <!-- Gangues JDM Section -->
     <section id="gangues" class="py-20 bg-black">
+        <!-- Section Divider -->
+                
+        <div class="section-divider mb-32"></div>
+                
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Gangues & Crews Lendárias</h2>
-            
+
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Gangues & Lendas 
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Descubra as gangues lendárias que dominaram as ruas do Japão, 
+                    desde os anos 80 até hoje. Cada uma com sua própria história, 
+                    carros icônicos e rivalidades épicas.
+                </p>
+            </div>
+
             <!-- Timeline Horizontal -->
             <div class="relative fade-in-section">
                 <div class="flex overflow-x-auto pb-8 hide-scrollbar" id="timeline">
                     <!-- Item 1 -->
                     <div class="flex-shrink-0 w-80 mr-8">
-                        <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
-                            <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-900 relative">
+                        <div class="bg-transparent rounded-lg overflow-hidden h-full">
+                            <div class="h-48 bg-[url(https://i.pinimg.com/736x/d1/a4/cd/d1a4cd507b747d3275b22bb1479349f3.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-r from-gray-700 to-gray-900 relative">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <span class="text-4xl font-bold opacity-30">1980</span>
                                 </div>
@@ -1722,8 +1949,8 @@
                     
                     <!-- Item 2 -->
                     <div class="flex-shrink-0 w-80 mr-8">
-                        <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
-                            <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-900 relative">
+                        <div class="bg-transparent rounded-lg overflow-hidden h-full">
+                            <div class="h-48  bg-[url(https://i.pinimg.com/736x/fb/5c/79/fb5c79de4f78ff96b146711fef74c9ea.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-r from-gray-700 to-gray-900 relative">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <span class="text-4xl font-bold opacity-30">1990</span>
                                 </div>
@@ -1742,8 +1969,8 @@
                     
                     <!-- Item 3 -->
                     <div class="flex-shrink-0 w-80 mr-8">
-                        <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
-                            <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-900 relative">
+                        <div class="bg-transparent rounded-lg overflow-hidden h-full">
+                            <div class="h-48  bg-[url(https://i.pinimg.com/736x/99/a9/51/99a9517f2f6052fe3c1a6cf266e6621e.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-r from-gray-700 to-gray-900 relative">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <span class="text-4xl font-bold opacity-30">1995</span>
                                 </div>
@@ -1762,8 +1989,8 @@
                     
                     <!-- Item 4 -->
                     <div class="flex-shrink-0 w-80 mr-8">
-                        <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
-                            <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-900 relative">
+                        <div class="bg-transparent rounded-lg overflow-hidden h-full">
+                            <div class="h-48  bg-[url(https://i.pinimg.com/736x/37/0d/3f/370d3f6e39ec482185e05374f3a9d4d5.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-r from-gray-700 to-gray-900 relative">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <span class="text-4xl font-bold opacity-30">2000</span>
                                 </div>
@@ -1782,8 +2009,8 @@
                     
                     <!-- Item 5 -->
                     <div class="flex-shrink-0 w-80">
-                        <div class="bg-gray-800 rounded-lg overflow-hidden h-full">
-                            <div class="h-48 bg-gradient-to-r from-gray-700 to-gray-900 relative">
+                        <div class="bg-transparent rounded-lg overflow-hidden h-full">
+                            <div class="h-48  bg-[url(https://i.pinimg.com/736x/4b/49/97/4b499721f33b18f6000b9527a99be29c.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-r from-gray-700 to-gray-900 relative">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <span class="text-4xl font-bold opacity-30">2010</span>
                                 </div>
@@ -1809,33 +2036,34 @@
                     ❯
                 </button>
             </div>
+                  
+            <!-- Section Divider -->
+                
+            <div class="section-divider mb-32"></div>
+                
             
             <!-- Mapa das Gangues -->
-            <div class="mt-16 bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+            <div class="mt-16 bg-black rounded-lg overflow-hidden fade-in-section">
                 <div class="p-6">
-                    <h3 class="text-2xl font-semibold mb-4">Territórios das Gangues</h3>
+                    <h3 class="text-3xl font-semibold mb-2">Territórios das Gangues</h3>
                     <p class="text-gray-400 mb-6">Principais rotas e áreas de atuação das crews mais famosas.</p>
                 </div>
                 
-                <div class="h-96 bg-gray-700 relative overflow-hidden">
+                <div class="h-96 bg-zinc-950 relative overflow-hidden">
                     <!-- Mapa Simulado -->
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-full h-full bg-gradient-to-br from-gray-600 to-gray-900 relative">
+                    <div class="absolute  inset-0 flex items-center justify-center">
+                        <div class="w-full h-full bg-[url(https://cdn11.bigcommerce.com/s-hv21hhsv/images/stencil/1280x1280/products/36535/240355/Tokyo_Map_Dark__24004.1672008928.png?c=2)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-zinc-950 to-zinc-950 relative">
                             <!-- Elementos do Mapa -->
-                            <div class="absolute left-1/4 top-1/4 w-3 h-3 bg-red-500 rounded-full animate-pulse" data-tooltip="Mid Night Club - Wangan"></div>
-                            <div class="absolute left-1/3 top-1/2 w-3 h-3 bg-blue-500 rounded-full animate-pulse" data-tooltip="Team Orange - Ebisu"></div>
-                            <div class="absolute left-2/3 top-1/3 w-3 h-3 bg-yellow-500 rounded-full animate-pulse" data-tooltip="Mines - Yokohama"></div>
-                            <div class="absolute left-1/2 top-3/4 w-3 h-3 bg-green-500 rounded-full animate-pulse" data-tooltip="HKS - Fuji"></div>
+                            <div class="absolute left-1/4 top-1/4 w-12 h-12 bg-red-500 rounded-full animate-pulse" data-tooltip="Mid Night Club - Wangan"></div>
+                            <div class="absolute left-1/3 top-1/2 w-16 h-16 bg-blue-500 rounded-full animate-pulse" data-tooltip="Team Orange - Ebisu"></div>
+                            <div class="absolute left-2/3 top-1/3 w-8 h-8 bg-yellow-500 rounded-full animate-pulse" data-tooltip="Mines - Yokohama"></div>
+                            <div class="absolute left-1/2 top-2.5 w-20 h-20 bg-green-500 rounded-full animate-pulse" data-tooltip="HKS - Fuji"></div>
                             
-                            <!-- Rotas -->
-                            <div class="absolute left-1/4 top-1/4 w-1 h-24 bg-red-500 opacity-30 transform -rotate-12 origin-top"></div>
-                            <div class="absolute left-1/3 top-1/2 w-1 h-32 bg-blue-500 opacity-30 transform rotate-45 origin-top"></div>
-                            <div class="absolute left-2/3 top-1/3 w-1 h-20 bg-yellow-500 opacity-30 transform -rotate-30 origin-top"></div>
                         </div>
                     </div>
                     
                     <!-- Legenda -->
-                    <div class="absolute bottom-4 left-4 bg-gray-900 bg-opacity-80 p-4 rounded-lg">
+                    <div class="absolute bottom-4 left-4 bg-black bg-opacity-80 p-4 rounded-lg">
                         <div class="flex items-center gap-2 mb-2">
                             <div class="w-3 h-3 bg-red-500 rounded-full"></div>
                             <span class="text-xs">Mid Night Club</span>
@@ -1844,22 +2072,32 @@
                             <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
                             <span class="text-xs">Team Orange</span>
                         </div>
-                        <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2 mb-2">
                             <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
                             <span class="text-xs">Mines</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="text-xs">HKS</span>
                         </div>
                     </div>
                 </div>
             </div>
+     
             
             <!-- Carros das Gangues -->
             <div class="mt-12 fade-in-section">
-                <h3 class="text-2xl font-semibold mb-6 text-center">Carros Icônicos das Gangues</h3>
+                          
+                <!-- Section Divider -->
+                <div class="section-divider mb-32"></div>
+      
+                
+                <h3 class="text-3xl font-semibold mb-6 text-left mb-4">Carros Icônicos das Gangues</h3>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Carro 1 -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden group relative h-64">
-                        <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[url(https://i.pinimg.com/736x/ac/0b/90/ac0b90807ad859f9e1e8f06737382ec1.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
                             <span class="text-4xl opacity-20 group-hover:opacity-30 transition-opacity">R32</span>
                         </div>
                         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -1875,7 +2113,7 @@
                     
                     <!-- Carro 2 -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden group relative h-64">
-                        <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[url(https://i.pinimg.com/736x/fd/7a/7e/fd7a7e00bb00c03c3e85271baf0f1e5c.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
                             <span class="text-4xl opacity-20 group-hover:opacity-30 transition-opacity">Supra</span>
                         </div>
                         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -1891,7 +2129,7 @@
                     
                     <!-- Carro 3 -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden group relative h-64">
-                        <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[url(https://i.pinimg.com/736x/69/7e/f0/697ef02a910e0681dd6a83f88e7c3ee7.jpg)] bg-center bg-no-repeat bg-cover  bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
                             <span class="text-4xl opacity-20 group-hover:opacity-30 transition-opacity">Impreza</span>
                         </div>
                         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -1908,11 +2146,24 @@
             </div>
         </div>
     </section>
-
-        <!-- Carros Icônicos Section -->
-    <section id="carros" class="py-20 bg-gray-900">
+        
+    <!-- Carros Icônicos Section -->
+    <section id="carros" class="py-20 bg-black">  
+        <!-- Section Divider -->
+                
+        <div class="section-divider mb-32"></div>
+                
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Carros Icônicos JDM</h2>
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Carros Icônicos das Gangues
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Explore os carros que definiram a cultura automobilística japonesa
+                </p>
+            </div>
+            
             
             <!-- Filtro por Década -->
             <div class="flex justify-center mb-12 gap-2 fade-in-section">
@@ -1925,8 +2176,8 @@
             <!-- Grid de Carros -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-section">
                 <!-- Nissan Skyline GT-R R34 -->
-                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="car-card bg-black rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64  bg-[url(https://i.pinimg.com/736x/33/f4/08/33f408d7928bbffb33331ec3a7c61a5e.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">R34</span>
                         </div>
@@ -1935,20 +2186,20 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold">Nissan Skyline GT-R</h3>
-                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Godzilla</span>
+                            <span class="bg-zinc-50 text-zinc-950 text-xs px-2 py-1 rounded">Godzilla</span>
                         </div>
                         
                         <!-- Especificações Técnicas -->
                         <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">2.6L</div>
                                 <div class="text-gray-400">Motor</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">280HP</div>
                                 <div class="text-gray-400">Potência</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">4WD</div>
                                 <div class="text-gray-400">Tração</div>
                             </div>
@@ -1966,8 +2217,8 @@
                 </div>
 
                 <!-- Toyota Supra MK4 -->
-                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="car-card bg-black rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64   bg-[url(https://i.pinimg.com/736x/7c/b4/14/7cb4141a2bb6d284a52e2c12aab9c0da.jpg)] bg-center bg-no-repeat bg-coverbg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">MK4</span>
                         </div>
@@ -1976,19 +2227,19 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold">Toyota Supra</h3>
-                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">2JZ</span>
+                            <span class="bg-zinc-50 text-zinc-950 text-xs px-2 py-1 rounded">2JZ</span>
                         </div>
                         
                         <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">3.0L</div>
                                 <div class="text-gray-400">Motor</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">320HP</div>
                                 <div class="text-gray-400">Potência</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">RWD</div>
                                 <div class="text-gray-400">Tração</div>
                             </div>
@@ -2006,8 +2257,8 @@
                 </div>
 
                 <!-- Mazda RX-7 FD -->
-                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="car-card bg-black rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64   bg-[url(https://i.pinimg.com/736x/c2/28/60/c22860d90d01dd98d52fba68b4c862fd.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">FD3S</span>
                         </div>
@@ -2016,19 +2267,19 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold">Mazda RX-7</h3>
-                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">13B</span>
+                            <span class="bg-zinc-50 text-zinc-950 text-xs px-2 py-1 rounded">13B</span>
                         </div>
                         
                         <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">1.3L</div>
                                 <div class="text-gray-400">Rotativo</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">255HP</div>
                                 <div class="text-gray-400">Potência</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">RWD</div>
                                 <div class="text-gray-400">Tração</div>
                             </div>
@@ -2046,8 +2297,8 @@
                 </div>
 
                 <!-- Honda NSX -->
-                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="car-card bg-black rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64  bg-[url(https://i.pinimg.com/736x/60/92/e5/6092e5e091c2800735548a147d410b61.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">NA1</span>
                         </div>
@@ -2056,19 +2307,19 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold">Honda NSX</h3>
-                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">Super</span>
+                            <span class="bg-zinc-50 text-zinc-950 text-xs px-2 py-1 rounded">Super</span>
                         </div>
                         
                         <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">3.0L</div>
                                 <div class="text-gray-400">V6</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">270HP</div>
                                 <div class="text-gray-400">Potência</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">RWD</div>
                                 <div class="text-gray-400">Tração</div>
                             </div>
@@ -2086,8 +2337,8 @@
                 </div>
 
                 <!-- Mitsubishi Lancer Evo VI -->
-                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="car-card bg-black rounded-lg overflow-hidden group" data-decade="90">
+                    <div class="relative h-64   bg-[url(https://i.pinimg.com/736x/72/e9/ff/72e9ffe98d57f37e2b82e9d185e19887.jpg)] bg-center bg-no-repeat bg-coverbg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">Evo VI</span>
                         </div>
@@ -2096,19 +2347,19 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold">Lancer Evolution</h3>
-                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">4G63</span>
+                            <span class="bg-zinc-50 text-zinc-950 text-xs px-2 py-1 rounded">4G63</span>
                         </div>
                         
                         <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">2.0L</div>
                                 <div class="text-gray-400">Turbo</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">280HP</div>
                                 <div class="text-gray-400">Potência</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">4WD</div>
                                 <div class="text-gray-400">Tração</div>
                             </div>
@@ -2126,8 +2377,8 @@
                 </div>
 
                 <!-- Subaru Impreza 22B -->
-                <div class="car-card bg-gray-800 rounded-lg overflow-hidden group" data-decade="90">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="car-card bg-black overflow-hidden group" data-decade="90">
+                    <div class="relative h-64  bg-[url(https://i.pinimg.com/736x/61/62/94/61629473fede1c92ca25f55cdb45bdb2.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">22B</span>
                         </div>
@@ -2136,19 +2387,19 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-2xl font-bold">Subaru Impreza</h3>
-                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">EJ22</span>
+                            <span class="bg-zinc-50 text-zinc-950 text-xs px-2 py-1 rounded">EJ22</span>
                         </div>
                         
                         <div class="mb-4 grid grid-cols-3 gap-2 text-center text-xs">
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">2.2L</div>
                                 <div class="text-gray-400">Turbo</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">280HP</div>
                                 <div class="text-gray-400">Potência</div>
                             </div>
-                            <div class="bg-gray-700 p-2 rounded">
+                            <div class="bg-zinc-950 p-2 rounded">
                                 <div class="font-semibold">4WD</div>
                                 <div class="text-gray-400">Tração</div>
                             </div>
@@ -2169,104 +2420,195 @@
     </section>
 
     <!-- Rotas de Corrida Section -->
-    <section id="rotas" class="py-20 bg-black">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Rotas de Corrida Ilegais</h2>
-            
-            <div class="max-w-4xl mx-auto fade-in-section">
-                <!-- Wangan -->
-                <div class="mb-20">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h3 class="text-2xl font-bold">Wangan</h3>
-                        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Velocidade</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <p class="text-gray-400 mb-4">A lendária rodovia Bayshore (Shuto Expressway) em Tóquio, palco das corridas noturnas de alta velocidade do Mid Night Club.</p>
-                            <ul class="text-gray-400 text-sm space-y-2 mb-4">
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Velocidades acima de 300km/h</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Túneis iluminados com neon</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Skyline GT-Rs dominavam</li>
-                            </ul>
-                        </div>
-                        <div class="bg-gray-800 h-full min-h-48 rounded-lg flex items-center justify-center">
-                            <span class="text-gray-600 text-lg">Mapa da Rota Wangan</span>
-                        </div>
-                    </div>
-                </div>
+    <section id="rotas" class="py-24 bg-black relative overflow-hidden">
+        <!-- Section Divider -->
                 
-                <!-- Touge -->
-                <div class="mb-20">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h3 class="text-2xl font-bold">Touge (峠)</h3>
-                        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Montanha</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="order-2 md:order-1">
-                            <p class="text-gray-400 mb-4">Estradas de montanha sinuosas como as de Hakone e Irohazaka, onde o drift e a técnica superam a potência.</p>
-                            <ul class="text-gray-400 text-sm space-y-2 mb-4">
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Curvas fechadas e declives acentuados</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> AE86 Truenos e RX-7s eram populares</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Corridas "attack/defense"</li>
-                            </ul>
-                        </div>
-                        <div class="bg-gray-800 h-full min-h-48 rounded-lg flex items-center justify-center order-1 md:order-2">
-                            <span class="text-gray-600 text-lg">Mapa da Rota Touge</span>
-                        </div>
-                    </div>
-                </div>
+        <div class="section-divider mb-32"></div>
                 
-                <!-- C1 Loop -->
-                <div>
-                    <div class="flex items-center gap-4 mb-6">
-                        <h3 class="text-2xl font-bold">C1 Loop</h3>
-                        <span class="bg-gray-800 text-xs px-3 py-1 rounded-full">Circular</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <p class="text-gray-400 mb-4">O circuito interno de Tóquio, uma rota circular de 22km que se tornou um playground noturno para corridas ilegais.</p>
-                            <ul class="text-gray-400 text-sm space-y-2">
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Múltiplos túneis e viadutos</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Necessidade de memorização perfeita</li>
-                                <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span> Variedade de carros e estilos</li>
-                            </ul>
-                        </div>
-                        <div class="bg-gray-800 h-full min-h-48 rounded-lg flex items-center justify-center">
-                            <span class="text-gray-600 text-lg">Mapa do C1 Loop</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- Background Grid -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 50px 50px;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Rotas de Corrida Ilegais
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Explore as lendárias rotas que definiram a cultura automobilística japonesa
+                </p>
             </div>
             
-            <!-- Mapa Interativo -->
-            <div class="mt-16 bg-gray-800 rounded-lg overflow-hidden fade-in-section">
-                <div class="p-6 border-b border-gray-700">
-                    <h3 class="text-xl font-semibold">Principais Rotas no Japão</h3>
-                </div>
-                <div class="h-96 relative">
-                    <!-- Mapa Base -->
-                    <div class="absolute inset-0 bg-gray-700 flex items-center justify-center">
-                        <span class="text-gray-600 text-lg">Mapa Interativo das Rotas</span>
+            <div class="max-w-fit mx-auto">
+                <!-- Wangan -->
+                <div class="mb-32 fade-in">
+                    <div class="route-card rounded-2xl p-8 md:p-12 card-hover relative overflow-hidden">
+                        <div class="route-number">01</div>
+                        <div class="flex flex-col lg:flex-row gap-12">
+                            <div class="lg:w-1/2">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <h3 class="text-4xl font-bold">Wangan</h3>
+                                    <span class="route-tag text-xs px-4 py-2 rounded-full font-semibold tracking-wide">VELOCIDADE</span>
+                                </div>
+                                <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                    A lendária rodovia Bayshore (Shuto Expressway) em Tóquio, palco das corridas noturnas de alta velocidade do Mid Night Club.
+                                </p>
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Velocidades acima de 300km/h</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Túneis iluminados com neon</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Skyline GT-Rs dominavam</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2">
+                                <div class="route-image bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl h-80 flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-[url(https://tse3.mm.bing.net/th/id/OIP.W4vM-AXBvFwrcMl2QVPRywHaFi?rs=1&pid=ImgDetMain&o=7&rm=3)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-blue-500/20 to-purple-500/20"></div>
+                                    <span class="text-gray-400 text-lg font-medium z-10">Wangan Route Visualization</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <!-- Pontos do Mapa -->
-                    <div class="absolute left-1/4 top-1/3 w-3 h-3 bg-red-500 rounded-full animate-pulse cursor-pointer" data-route="wangan"></div>
-                    <div class="absolute left-1/3 top-2/3 w-3 h-3 bg-blue-500 rounded-full animate-pulse cursor-pointer" data-route="touge"></div>
-                    <div class="absolute left-2/3 top-1/2 w-3 h-3 bg-yellow-500 rounded-full animate-pulse cursor-pointer" data-route="c1"></div>
-                    
-                    <!-- Legenda -->
-                    <div class="absolute bottom-4 left-4 bg-gray-900 bg-opacity-80 p-3 rounded-lg">
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                            <span class="text-xs">Wangan</span>
+                </div>
+                
+                <!-- Section Divider -->
+                <div class="section-divider mb-32"></div>
+                
+                <!-- Touge -->
+                <div class="mb-32 fade-in">
+                    <div class="route-card rounded-2xl p-8 md:p-12 card-hover relative overflow-hidden">
+                        <div class="route-number">02</div>
+                        <div class="flex flex-col lg:flex-row gap-12">
+                            <div class="lg:w-1/2 lg:order-2">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <h3 class="text-4xl font-bold">Touge (峠)</h3>
+                                    <span class="route-tag text-xs px-4 py-2 rounded-full font-semibold tracking-wide">MONTANHA</span>
+                                </div>
+                                <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                    Estradas de montanha sinuosas como as de Hakone e Irohazaka, onde o drift e a técnica superam a potência.
+                                </p>
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Curvas fechadas e declives acentuados</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">AE86 Truenos e RX-7s eram populares</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Corridas "attack/defense"</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2 lg:order-1">
+                                <div class="route-image bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl h-80 flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-[url(https://tse2.mm.bing.net/th/id/OIP.sbDH3bsVnX-7J7Y2SniysgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-green-500/20 to-yellow-500/20"></div>
+                                    <span class="text-gray-400 text-lg font-medium z-10">Touge Route Visualization</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
-                            <span class="text-xs">Touge</span>
+                    </div>
+                </div>
+                
+                <!-- Section Divider -->
+                <div class="section-divider mb-32"></div>
+                
+                <!-- C1 Loop -->
+                <div class="mb-32 fade-in">
+                    <div class="route-card rounded-2xl p-8 md:p-12 card-hover relative overflow-hidden">
+                        <div class="route-number">03</div>
+                        <div class="flex flex-col lg:flex-row gap-12">
+                            <div class="lg:w-1/2">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <h3 class="text-4xl font-bold">C1 Loop</h3>
+                                    <span class="route-tag text-xs px-4 py-2 rounded-full font-semibold tracking-wide">CIRCULAR</span>
+                                </div>
+                                <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                    O circuito interno de Tóquio, uma rota circular de 22km que se tornou um playground noturno para corridas ilegais.
+                                </p>
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Múltiplos túneis e viadutos</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Necessidade de memorização perfeita</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="bullet-point"></div>
+                                        <span class="text-gray-300">Variedade de carros e estilos</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/2">
+                                <div class="route-image bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl h-80 flex items-center justify-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-[url(https://t4.ftcdn.net/jpg/03/61/27/79/360_F_361277984_9ne3vYrHc209Yz8K1tzC2bDdZPJQHT8H.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-red-500/20 to-orange-500/20"></div>
+                                    <span class="text-gray-400 text-lg font-medium z-10">C1 Loop Visualization</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                            <span class="text-xs">C1 Loop</span>
+                    </div>
+                </div>
+                
+                <!-- Mapa Interativo -->
+                <div class="fade-in">
+                    <div class="interactive-map rounded-2xl overflow-hidden glow-effect">
+                        <div class="p-8 border-b border-gray-800">
+                            <h3 class="text-3xl font-bold mb-2">Principais Rotas no Japão</h3>
+                            <p class="text-gray-400">Explore as rotas mais icônicas da cultura street racing japonesa</p>
+                        </div>
+                        <div class="h-96 relative bg-gradient-to-br from-black to-black">
+                            <!-- Mapa Base -->
+                            <div class="absolute bg-[url(https://cdn11.bigcommerce.com/s-hv21hhsv/images/stencil/1280x1280/products/36535/240355/Tokyo_Map_Dark__24004.1672008928.png?c=2))] bg-center bg-no-repeat bg-cover inset-0 flex items-center justify-center">
+                                <div class="text-gray-600 text-lg font-medium">Mapa Interativo das Rotas</div>
+                            </div>
+                            
+                            <!-- Pontos do Mapa -->
+                            <div class="absolute left-1/4 top-1/3 w-12 h-12 bg-red-500 rounded-full map-point cursor-pointer animate-pulse" 
+                                 title="Wangan Route" 
+                                 onclick="showRouteInfo('wangan')"></div>
+                            <div class="absolute left-1/3 top-2/3 w-12 h-12 bg-green-500 rounded-full map-point cursor-pointer animate-pulse" 
+                                 title="Touge Route" 
+                                 onclick="showRouteInfo('touge')"></div>
+                            <div class="absolute right-1/3 top-1/2 w-12 h-12 bg-yellow-500 rounded-full map-point cursor-pointer animate-pulse" 
+                                 title="C1 Loop" 
+                                 onclick="showRouteInfo('c1')"></div>
+
+                            <!-- Legenda -->
+                            <div class="absolute bottom-6 left-6 bg-black/80 backdrop-blur-sm p-4 rounded-lg border border-gray-800">
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3 legend-item cursor-pointer" onclick="showRouteInfo('wangan')">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <span class="text-sm font-medium">Wangan</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 legend-item cursor-pointer" onclick="showRouteInfo('touge')">
+                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                        <span class="text-sm font-medium">Touge</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 legend-item cursor-pointer" onclick="showRouteInfo('c1')">
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                        <span class="text-sm font-medium">C1 Loop</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Info Panel -->
+                            <div id="routeInfo" class="absolute top-6 right-6 bg-black/90 backdrop-blur-sm p-4 rounded-lg border border-gray-800 max-w-xs hidden">
+                                <div id="routeInfoContent"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2274,15 +2616,30 @@
         </div>
     </section>
 
+
     <!-- Locais de Encontro Section -->
-    <section id="encontros" class="py-20 bg-gray-900">
+    <section id="encontros" class="py-20 bg-black">  
+        <!-- Section Divider -->
+                
+        <div class="section-divider mb-32"></div>
+                
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Locais de Encontro JDM</h2>
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Locais de Encontro
+                </h2>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Descubra os locais de encontro que definiram a cultura de rua do Japão,
+                    desde os anos 80 até hoje. Cada um com sua própria história,
+                    carros icônicos e rivalidades épicas.
+                </p>
+            </div>
             
             <div class="grid md:grid-cols-3 gap-8 fade-in-section">
                 <!-- Daikoku PA -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden group">
-                    <div class="relative h-48 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="bg-black rounded-lg overflow-hidden group">
+                    <div class="relative h-48 bg-[url(https://i.pinimg.com/736x/53/c6/d6/53c6d66364e6dd35ed07b14e78d85b11.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-4xl">Daikoku</span>
                         </div>
@@ -2311,8 +2668,8 @@
                 </div>
                 
                 <!-- Tatsumi PA -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden group">
-                    <div class="relative h-48 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="bg-black rounded-lg overflow-hidden group">
+                    <div class="relative h-48 bg-[url(https://i.pinimg.com/736x/b1/47/99/b14799c12f5eee4b73d4b27a93fc2c4c.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-4xl">Tatsumi</span>
                         </div>
@@ -2341,8 +2698,8 @@
                 </div>
                 
                 <!-- Umihotaru PA -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden group">
-                    <div class="relative h-48 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="bg-black rounded-lg overflow-hidden group">
+                    <div class="relative h-48 bg-[url(https://i.pinimg.com/736x/8a/41/cc/8a41cc3ef99e4da7a5674bf987f30d5c.jpg)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-4xl">Umihotaru</span>
                         </div>
@@ -2372,9 +2729,9 @@
             </div>
             
             <!-- Mapa dos Encontros -->
-            <div class="mt-16 bg-gray-800 rounded-lg overflow-hidden fade-in-section">
-                <div class="p-6 border-b border-gray-700 flex justify-between items-center">
-                    <h3 class="text-xl font-semibold">Horários de Pico</h3>
+            <div class="mt-16 bg-black rounded-lg overflow-hidden fade-in-section">
+                <div class="pb-6 border-b border-gray-700 flex justify-between items-center">
+                    <h3 class="text-4xl font-semibold">Horários de Pico</h3>
                     <div class="flex gap-2">
                         <button class="px-3 py-1 bg-gray-700 text-xs rounded-full hover:bg-gray-600 transition-colors">Sexta</button>
                         <button class="px-3 py-1 bg-gray-700 text-xs rounded-full hover:bg-gray-600 transition-colors">Sábado</button>
@@ -2383,15 +2740,15 @@
                 </div>
                 <div class="h-96 relative">
                     <!-- Mapa Base -->
-                    <div class="absolute inset-0 bg-gray-700 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-[url(https://cdn11.bigcommerce.com/s-hv21hhsv/images/stencil/1280x1280/products/36535/240355/Tokyo_Map_Dark__24004.1672008928.png?c=2)] bg-center bg-no-repeat bg-cover bg-gray-700 flex items-center justify-center">
                         <span class="text-gray-600 text-lg">Mapa dos Pontos de Encontro</span>
                     </div>
                     
                     <!-- Pontos do Mapa -->
-                    <div class="absolute left-1/4 top-1/2 w-4 h-4 bg-white rounded-full animate-pulse cursor-pointer" data-location="daikoku"></div>
-                    <div class="absolute left-1/2 top-1/3 w-4 h-4 bg-white rounded-full animate-pulse cursor-pointer" data-location="tatsumi"></div>
-                    <div class="absolute left-2/3 top-2/3 w-4 h-4 bg-white rounded-full animate-pulse cursor-pointer" data-location="umihotaru"></div>
-                    
+                    <div class="absolute left-1/4 top-1/2 w-10 h-10 bg-white rounded-full animate-pulse cursor-pointer" data-location="daikoku"></div>
+                    <div class="absolute left-1/2 top-1/3 w-10 h-10 bg-white rounded-full animate-pulse cursor-pointer" data-location="tatsumi"></div>
+                    <div class="absolute left-2/3 top-2/3 w-10 h-10 bg-white rounded-full animate-pulse cursor-pointer" data-location="umihotaru"></div>
+
                     <!-- Linhas de Conexão -->
                     <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
                         <path d="M25% 50% L50% 33% L66% 66%" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none" stroke-dasharray="5,5"></path>
@@ -2402,84 +2759,124 @@
     </section>
 
     <!-- Histórias JDM Section -->
-    <section id="historias" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Histórias da Cultura JDM</h2>
+ 
+    <section id="historias" class="py-24 bg-gradient-to-br from-black to-black relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 50px 50px;"></div>
+        </div>
+
+        <!-- Section Divider -->
+        <div class="section-divider mb-32"></div>
+                
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Histórias da Cultura JDM
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Uma jornada através das décadas que moldaram a lendária cultura automobilística japonesa
+                </p>
+            </div>
             
-            <!-- Timeline Vertical -->
-            <div class="max-w-3xl mx-auto fade-in-section">
-                <!-- Item 1 -->
-                <div class="timeline-story mb-16">
-                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+            <!-- Timeline -->
+            <div class="max-w-5xl mx-auto timeline-container">
+                
+                <!-- Era 1980s -->
+                <div class="timeline-story mb-24">
+                    <div class="timeline-dot pulse-dot"></div>
+                    <div class="timeline-year mx-auto mb-12">
                         1980s
                     </div>
-                    <div class="bg-gray-800 p-8 rounded-lg relative">
-                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
-                        <h3 class="text-2xl font-bold mb-4">O Nascimento do Wangan</h3>
-                        <p class="text-gray-400 mb-4">
-                            As corridas noturnas na rodovia Bayshore começam a se popularizar entre entusiastas de carros japoneses, dando origem à lenda das corridas Wangan.
-                        </p>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Mid Night Club</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">R32 GT-R</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">300km/h+</span>
+                    <div class="timeline-card rounded-2xl p-8 md:p-12 relative max-w-2xl mx-auto">
+                        <div class="era-gradient era-80s"></div>
+                        <div class="story-number">01</div>
+                        <div class="decade-indicator">80s</div>
+                        <div class="story-content">
+                            <h3 class="text-3xl font-bold mb-6">O Nascimento do Wangan</h3>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                As corridas noturnas na rodovia Bayshore começam a se popularizar entre entusiastas de carros japoneses, dando origem à lenda das corridas Wangan.
+                            </p>
+                            <div class="flex gap-3 flex-wrap">
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">Mid Night Club</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">R32 GT-R</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">300km/h+</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Item 2 -->
-                <div class="timeline-story mb-16">
-                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+                <!-- Era 1990s -->
+                <div class="timeline-story mb-24">
+                    <div class="timeline-dot pulse-dot"></div>
+                    <div class="timeline-year mx-auto mb-12">
                         1990s
                     </div>
-                    <div class="bg-gray-800 p-8 rounded-lg relative">
-                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
-                        <h3 class="text-2xl font-bold mb-4">A Era de Ouro</h3>
-                        <p class="text-gray-400 mb-4">
-                            Os anos 90 viram o auge da cultura JDM com carros como o Supra MK4, RX-7 FD e Skyline GT-R dominando as ruas e pistas.
-                        </p>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">2JZ-GTE</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">RB26DETT</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">280HP Limit</span>
+                    <div class="timeline-card rounded-2xl p-8 md:p-12 relative max-w-2xl mx-auto">
+                        <div class="era-gradient era-90s"></div>
+                        <div class="story-number">02</div>
+                        <div class="decade-indicator">90s</div>
+                        <div class="story-content">
+                            <h3 class="text-3xl font-bold mb-6">A Era de Ouro</h3>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                Os anos 90 viram o auge da cultura JDM com carros como o Supra MK4, RX-7 FD e Skyline GT-R dominando as ruas e pistas.
+                            </p>
+                            <div class="flex gap-3 flex-wrap">
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">2JZ-GTE</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">RB26DETT</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">280HP Limit</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Item 3 -->
-                <div class="timeline-story mb-16">
-                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+                <!-- Era 2000s -->
+                <div class="timeline-story mb-24">
+                    <div class="timeline-dot pulse-dot"></div>
+                    <div class="timeline-year mx-auto mb-12">
                         2000s
                     </div>
-                    <div class="bg-gray-800 p-8 rounded-lg relative">
-                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
-                        <h3 class="text-2xl font-bold mb-4">O Boom Global</h3>
-                        <p class="text-gray-400 mb-4">
-                            O sucesso de filmes como Velozes e Furiosos e a popularização dos video games de corrida levam a cultura JDM para o mundo todo.
-                        </p>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Fast & Furious</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Gran Turismo</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Import Scene</span>
+                    <div class="timeline-card rounded-2xl p-8 md:p-12 relative max-w-2xl mx-auto">
+                        <div class="era-gradient era-2000s"></div>
+                        <div class="story-number">03</div>
+                        <div class="decade-indicator">00s</div>
+                        <div class="story-content">
+                            <h3 class="text-3xl font-bold mb-6">O Boom Global</h3>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                O sucesso de filmes como Velozes e Furiosos e a popularização dos video games de corrida levam a cultura JDM para o mundo todo.
+                            </p>
+                            <div class="flex gap-3 flex-wrap">
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">Fast & Furious</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">Gran Turismo</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">Import Scene</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Item 4 -->
+                <!-- Era 2010+ -->
                 <div class="timeline-story">
-                    <div class="timeline-year bg-black text-white text-xl font-bold w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-gray-700">
+                    <div class="timeline-dot pulse-dot"></div>
+                    <div class="timeline-year mx-auto mb-12">
                         2010+
                     </div>
-                    <div class="bg-gray-800 p-8 rounded-lg relative">
-                        <div class="absolute -left-2 top-8 w-4 h-4 bg-white rounded-full transform -translate-x-1/2"></div>
-                        <h3 class="text-2xl font-bold mb-4">A Cultura Moderna</h3>
-                        <p class="text-gray-400 mb-4">
-                            Os carros JDM clássicos se tornam itens de colecionador enquanto a cultura evolui com novos estilos como o stance e o time attack.
-                        </p>
-                        <div class="flex gap-2 flex-wrap">
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">R34 GT-R</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">JDM Tax</span>
-                            <span class="bg-gray-700 px-3 py-1 rounded-full text-xs">Restomod</span>
+                    <div class="timeline-card rounded-2xl p-8 md:p-12 relative max-w-2xl mx-auto">
+                        <div class="era-gradient era-2010s"></div>
+                        <div class="story-number">04</div>
+                        <div class="decade-indicator">10s+</div>
+                        <div class="story-content">
+                            <h3 class="text-3xl font-bold mb-6">A Cultura Moderna</h3>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                Os carros JDM clássicos se tornam itens de colecionador enquanto a cultura evolui com novos estilos como o stance e o time attack.
+                            </p>
+                            <div class="flex gap-3 flex-wrap">
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">R34 GT-R</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">JDM Tax</span>
+                                <span class="tag px-4 py-2 rounded-full text-sm font-medium">Restomod</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2490,13 +2887,27 @@
     <!-- Animes JDM Section -->
     <section id="animes" class="py-20 bg-black">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Animes da Cultura JDM</h2>
+            <!-- Section Divider -->
+                
+            <div class="section-divider mb-32"></div>
+                
+    
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Animes & Cultura
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Explore como os animes capturaram a essência das corridas de rua e da cultura JDM,
+                    trazendo emoção, rivalidades e carros icônicos para as telas.
+                </p>
+            </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in-section">
                 <!-- Initial D -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden group">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
-                        <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
+                <div class="anime-card bg-black rounded-lg overflow-hidden group">
+                    <div class="relative h-64 bg-[url(https://i.pinimg.com/736x/b8/d7/0b/b8d70b273055d20e10199eb860dd6f64.jpg))] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
+                        <div class="absolute inset-0 bg-[url())] bg-center bg-no-repeat bg-cover flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">頭文字D</span>
                         </div>
                         <div class="absolute bottom-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-full text-xs">1998-2014</div>
@@ -2515,9 +2926,9 @@
                         <div class="mb-4">
                             <h4 class="text-xs uppercase text-gray-500 mb-2">Carros Principais</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">AE86 Trueno</span>
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">FD3S RX-7</span>
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">R32 GT-R</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">AE86 Trueno</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">FD3S RX-7</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">R32 GT-R</span>
                             </div>
                         </div>
                         
@@ -2532,8 +2943,8 @@
                 </div>
                 
                 <!-- Wangan Midnight -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden group">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="anime-card bg-black rounded-lg overflow-hidden group">
+                    <div class="relative h-64 bg-[url(https://i.pinimg.com/736x/0e/17/4d/0e174d227322603188d3b7e310cc203d.jpg))] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">湾岸</span>
                         </div>
@@ -2553,9 +2964,9 @@
                         <div class="mb-4">
                             <h4 class="text-xs uppercase text-gray-500 mb-2">Carros Principais</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">S30Z "Devil Z"</span>
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">964 Turbo</span>
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">R32 GT-R</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">S30Z "Devil Z"</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">964 Turbo</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">R32 GT-R</span>
                             </div>
                         </div>
                         
@@ -2570,8 +2981,8 @@
                 </div>
                 
                 <!-- MF Ghost -->
-                <div class="anime-card bg-gray-800 rounded-lg overflow-hidden group">
-                    <div class="relative h-64 bg-gradient-to-br from-gray-700 to-gray-900">
+                <div class="anime-card bg-black rounded-lg overflow-hidden group">
+                    <div class="relative h-64 bg-[url(https://i.pinimg.com/736x/30/02/6e/30026e2d6a3817138ea65f2c83cb8272.jpg))] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-gray-700 to-gray-900">
                         <div class="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-30 transition-opacity">
                             <span class="text-6xl">MFG</span>
                         </div>
@@ -2591,9 +3002,9 @@
                         <div class="mb-4">
                             <h4 class="text-xs uppercase text-gray-500 mb-2">Carros Principais</h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">GT86</span>
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">R35 GT-R</span>
-                                <span class="px-2 py-1 bg-gray-700 text-xs rounded-full">Porsche 911</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">GT86</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">R35 GT-R</span>
+                                <span class="px-2 py-1 bg-zinc-950 text-xs rounded-full">Porsche 911</span>
                             </div>
                         </div>
                         
@@ -2610,201 +3021,38 @@
         </div>
     </section>
 
-    <!-- Informações Extras Section -->
-    <section id="extras" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Informações Extras</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8 fade-in-section">
-                <!-- Documentários -->
-                <div class="bg-gray-800 p-8 rounded-lg">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Documentários</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>Speedhunters - The Golden Era of JDM</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>Drift Bible - Keiichi Tsuchiya</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>Mid Night Club - Last Run</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Livros -->
-                <div class="bg-gray-800 p-8 rounded-lg">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Livros</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>Japanese Domestic Market - Brian Long</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>The Manga Guide to Cars</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>GT-R - The Legendary Nissan</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Eventos -->
-                <div class="bg-gray-800 p-8 rounded-lg">
-                    <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Eventos</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>Tokyo Auto Salon</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>D1 Grand Prix</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-white rounded-full"></span>
-                            <span>Time Attack Japan</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- FAQ -->
-            <div class="mt-16 max-w-3xl mx-auto fade-in-section">
-                <h3 class="text-2xl font-semibold text-center mb-8">Perguntas Frequentes</h3>
-                
-                <div class="space-y-4">
-                    <!-- Item 1 -->
-                    <div class="faq-item bg-gray-800 rounded-lg overflow-hidden">
-                        <button class="faq-question w-full flex justify-between items-center p-6 text-left">
-                            <span>O que significa JDM?</span>
-                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="faq-answer px-6 pb-6 hidden">
-                            <p class="text-gray-400">JDM significa "Japanese Domestic Market" (Mercado Doméstico Japonês). Originalmente se refere a veículos e peças feitas especificamente para o mercado japonês, mas hoje é usado para descrever a cultura de carros japoneses em geral.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 2 -->
-                    <div class="faq-item bg-gray-800 rounded-lg overflow-hidden">
-                        <button class="faq-question w-full flex justify-between items-center p-6 text-left">
-                            <span>Por que os carros JDM têm limite de 280HP?</span>
-                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="faq-answer px-6 pb-6 hidden">
-                            <p class="text-gray-400">Entre 1988 e 2004, a Japan Automobile Manufacturers Association (JAMA) tinha um acordo voluntário para limitar a potência dos carros a 280HP (206kW). Isso foi uma medida de segurança, apesar de muitos carros terem potencial para muito mais potência.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 3 -->
-                    <div class="faq-item bg-gray-800 rounded-lg overflow-hidden">
-                        <button class="faq-question w-full flex justify-between items-center p-6 text-left">
-                            <span>Qual é a diferença entre JDM e USDM?</span>
-                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="faq-answer px-6 pb-6 hidden">
-                            <p class="text-gray-400">JDM se refere a carros e peças feitas para o mercado japonês, enquanto USDM (US Domestic Market) são versões feitas para o mercado americano. As diferenças podem incluir motores, especificações de desempenho, faróis e até mesmo a posição do volante.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Carousel Section -->
-    <section id="reviews" class="py-20 bg-black">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Reviews da Comunidade</h2>
-            
-            <!-- Reviews Carousel -->
-            <div class="carousel-container max-w-4xl mx-auto fade-in-section">
-                <div class="carousel-track" id="reviewsCarousel">
-                    <div class="carousel-slide">
-                        <div class="bg-transparent p-8 text-center">
-                            <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4"></div>
-                            <p class="text-gray-300 mb-4 text-lg italic">
-                                "Site incrível! Finalmente encontrei informações detalhadas sobre a cultura JDM em português."
-                            </p>
-                            <h4 class="text-white font-semibold">Carlos Silva</h4>
-                            <p class="text-gray-400 text-sm">Entusiasta JDM</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="bg-transparent p-8 text-center">
-                            <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4"></div>
-                            <p class="text-gray-300 mb-4 text-lg italic">
-                                "As informações sobre os carros clássicos são muito precisas. Recomendo para todos os fãs!"
-                            </p>
-                            <h4 class="text-white font-semibold">Marina Santos</h4>
-                            <p class="text-gray-400 text-sm">Colecionadora</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="bg-transparent p-8 text-center">
-                            <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4"></div>
-                            <p class="text-gray-300 mb-4 text-lg italic">
-                                "Design clean e conteúdo de qualidade. Virou minha referência para cultura japonesa."
-                            </p>
-                            <h4 class="text-white font-semibold">Roberto Yamamoto</h4>
-                            <p class="text-gray-400 text-sm">Mecânico Especializado</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-nav carousel-prev" id="reviewsPrev">❮</button>
-                <button class="carousel-nav carousel-next" id="reviewsNext">❯</button>
-                <div class="carousel-indicators" id="reviewsIndicators"></div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Galeria Section -->
-    <section id="galeria" class="py-20 bg-gray-900">
+    <section id="galeria" class="py-20 bg-black">
+              
+        <!-- Section Divider -->
+                
+        <div class="section-divider mb-32"></div>
+                
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gradient fade-in-section">Galeria</h2>
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Explore a Galeria
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Uma coleção de imagens que capturam a essência dos carros JDM, eventos e encontros da comunidade.
+                </p>
+            </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in-section">
-                <div class="bg-gray-800 h-64 card-hover overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                <div class="bg-[url(https://i.pinimg.com/736x/2e/43/f3/2e43f329d011e914c7a557fa205c7da3.jpg)] bg-center bg-no-repeat bg-cover h-64 card-hover overflow-hidden">
+                
                 </div>
-                <div class="bg-gray-800 h-64 card-hover overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                <div class="bg-[url(https://i.pinimg.com/736x/29/73/9a/29739aab0c5aab9e6ecd0fa633f4fb9f.jpg)] bg-center bg-no-repeat bg-cover  h-64 card-hover overflow-hidden">
                 </div>
-                <div class="bg-gray-800 h-64 card-hover overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                <div class="bg-[url(https://i.pinimg.com/736x/82/5e/27/825e273b75ca48b9ea19381107936c5f.jpg)] bg-center bg-no-repeat bg-cover h-64 card-hover overflow-hidden">
+                
                 </div>
-                <div class="bg-gray-800 h-64 card-hover overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                <div class="bg-[url(https://i.pinimg.com/736x/54/9d/e2/549de2ecbdb45ecd972bc12f0c68e6e1.jpg)] bg-center bg-no-repeat bg-cover h-64 card-hover overflow-hidden">
                 </div>
-                <div class="bg-gray-800 h-64 card-hover overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                <div class="bg-[url(https://i.pinimg.com/736x/07/5e/f5/075ef5e482aecb21218badc07dfa490f.jpg)] bg-center bg-no-repeat bg-cover h-64 card-hover overflow-hidden">
                 </div>
-                <div class="bg-gray-800 h-64 card-hover overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                <div class="bg-[url(https://i.pinimg.com/736x/65/5b/f3/655bf3223b38ea8aa7e398f00eb7ad03.jpg)] bg-center bg-no-repeat bg-cover  h-64 card-hover overflow-hidden">
                 </div>
             </div>
         </div>
@@ -2812,14 +3060,24 @@
 
     <!-- Newsletter Section -->
     <section class="py-20 bg-black">
+
+        <!-- Section Divider -->
+                
+        <div class="section-divider mb-32"></div>
+                
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6 text-gradient fade-in-section">Fique por Dentro</h2>
-            <p class="text-gray-300 mb-8 max-w-xl mx-auto fade-in-section">
-                Receba as últimas novidades sobre JDM e cultura japonesa diretamente no seu email.
-            </p>
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
+                    Fique por Dentro
+                </h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    Inscreva-se para receber atualizações e conteúdo exclusivo sobre a cultura automobiliária japonesa.
+                </p>
+            </div>
             <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto fade-in-section">
-                <input type="email" placeholder="Seu email" class="flex-1 px-4 py-3 bg-gray-800 text-white border border-gray-700 focus:border-white focus:outline-none">
-                <button class="bg-white text-black px-8 py-3 font-semibold hover:bg-gray-200 transition-colors flex items-center gap-2">
+                <input type="email" placeholder="Seu email" class="flex-1 px-4 py-3 bg-zinc-950 text-white border border-zinc-950 focus:border-white focus:outline-none">
+                <button class="bg-white text-black text-center px-8 py-3 font-semibold hover:bg-gray-200 transition-colors flex items-center gap-2">
                     <span>Inscrever</span>
                     <div class="loading-spinner hidden"></div>
                 </button>
@@ -2828,7 +3086,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-12">
+    <footer class="bg-zinc-950 py-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
@@ -3633,52 +3891,7 @@
                 document.body.style.overflow = '';
             });
         }
-
-        // Timeline Horizontal para Rotas
-        class RouteTimeline {
-            constructor() {
-                this.timeline = document.querySelector('.route-timeline');
-                if (!this.timeline) return;
-                
-                this.items = this.timeline.querySelectorAll('.route-timeline-item');
-                this.navPrev = document.querySelector('.route-timeline-prev');
-                this.navNext = document.querySelector('.route-timeline-next');
-                this.currentIndex = 0;
-                
-                this.init();
-            }
-            
-            init() {
-                this.navPrev.addEventListener('click', () => this.prev());
-                this.navNext.addEventListener('click', () => this.next());
-                
-                this.update();
-            }
-            
-            prev() {
-                this.currentIndex = Math.max(0, this.currentIndex - 1);
-                this.update();
-            }
-            
-            next() {
-                this.currentIndex = Math.min(this.items.length - 1, this.currentIndex + 1);
-                this.update();
-            }
-            
-            update() {
-                const offset = -this.currentIndex * 100;
-                this.timeline.style.transform = `translateX(${offset}%)`;
-                
-                // Atualizar navegação
-                this.navPrev.style.visibility = this.currentIndex === 0 ? 'hidden' : 'visible';
-                this.navNext.style.visibility = this.currentIndex === this.items.length - 1 ? 'hidden' : 'visible';
-                
-                // Atualizar indicadores
-                this.items.forEach((item, index) => {
-                    item.classList.toggle('active', index === this.currentIndex);
-                });
-            }
-        }
+     
 
         // Inicializar todos os componentes
         document.addEventListener('DOMContentLoaded', () => {
@@ -3704,30 +3917,7 @@
         lazyImages.forEach(img => imageObserver.observe(img));
 
 
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.closest('.faq-item');
-                const answer = item.querySelector('.faq-answer');
-                const icon = question.querySelector('svg');
-                
-                // Alternar resposta
-                answer.classList.toggle('hidden');
-                
-                // Animação do ícone
-                icon.style.transform = answer.classList.contains('hidden') ? 
-                    'rotate(0deg)' : 'rotate(180deg)';
-                
-                // Fechar outros itens
-                document.querySelectorAll('.faq-item').forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.querySelector('.faq-answer').classList.add('hidden');
-                        otherItem.querySelector('svg').style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
-        });
-
+   
         // Anime Video Buttons
         document.querySelectorAll('.anime-card button').forEach(button => {
             button.addEventListener('click', function(e) {
@@ -3785,7 +3975,99 @@
                 this.querySelector('h3').classList.remove('text-white');
             });
         });
+
+        //Animação do Mapa de Rotas
+
+        // Informações das rotas
+        const routeData = {
+            wangan: {
+                name: 'Wangan',
+                description: 'Rodovia Bayshore - Corridas de alta velocidade',
+                features: ['300+ km/h', 'Túneis neon', 'GT-Rs']
+            },
+            touge: {
+                name: 'Touge (峠)',
+                description: 'Montanhas sinuosas - Técnica e drift',
+                features: ['Curvas fechadas', 'AE86 & RX-7', 'Attack/Defense']
+            },
+            c1: {
+                name: 'C1 Loop',
+                description: 'Circuito interno de Tóquio - 22km',
+                features: ['Túneis', 'Memorização', 'Variedade']
+            }
+        };
+
+        function showRouteInfo(routeKey) {
+            const info = routeData[routeKey];
+            const infoPanel = document.getElementById('routeInfo');
+            const content = document.getElementById('routeInfoContent');
+            
+            content.innerHTML = `
+                <h4 class="text-lg font-bold mb-2">${info.name}</h4>
+                <p class="text-gray-300 text-sm mb-3">${info.description}</p>
+                <ul class="space-y-1">
+                    ${info.features.map(feature => `
+                        <li class="text-xs text-gray-400 flex items-center gap-2">
+                            <div class="w-1 h-1 bg-white rounded-full"></div>
+                            ${feature}
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            
+            infoPanel.classList.remove('hidden');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                infoPanel.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Seção de Timeline
+
+ 
+        // Timeline stories observer
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        // Observar stories da timeline
+        document.querySelectorAll('.timeline-story').forEach(el => {
+            timelineObserver.observe(el);
+        });
+
+        // Hover effects para as tags
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect para os indicadores de década
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const indicators = document.querySelectorAll('.decade-indicator');
+            
+            indicators.forEach(indicator => {
+                const speed = 0.3;
+                const yPos = -(scrolled * speed);
+                indicator.style.transform = `translateY(${yPos}px)`;
+            });
+        });
     
+
+      
     </script>
 </body>
 </html>
