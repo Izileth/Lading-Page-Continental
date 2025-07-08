@@ -231,6 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
 // Category filtering
 
 const categoryBtns = document.querySelectorAll(".category-btn");
@@ -261,6 +263,8 @@ categoryBtns.forEach((btn) => {
     });
   });
 });
+
+
 
 // Newsletter subscription
 const newsletterBtn =
@@ -302,6 +306,7 @@ function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+
 
 // Header background on scroll
 const header = document.querySelector("header");
@@ -529,50 +534,7 @@ decadeFilters.forEach((filter) => {
   });
 });
 
-// Mapa Interativo - Rotas
-const routePoints = document.querySelectorAll("[data-route]");
-routePoints.forEach((point) => {
-  point.addEventListener("mouseenter", () => {
-    const route = point.dataset.route;
-    // Aqui você pode adicionar lógica para destacar a rota
-    console.log(`Rota selecionada: ${route}`);
-  });
-});
-
-// Mapa Interativo - Locais de Encontro
-const locationPoints = document.querySelectorAll("[data-location]");
-locationPoints.forEach((point) => {
-  point.addEventListener("click", () => {
-    const location = point.dataset.location;
-    // Aqui você pode adicionar lógica para mostrar detalhes do local
-    console.log(`Local selecionado: ${location}`);
-  });
-});
-
-// Tooltips para os Mapas
-function initMapTooltips() {
-  const tooltip = document.createElement("div");
-  tooltip.className =
-    "absolute bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none opacity-0 transition-opacity z-10";
-  document.body.appendChild(tooltip);
-
-  document.querySelectorAll("[data-tooltip]").forEach((el) => {
-    el.addEventListener("mouseenter", (e) => {
-      tooltip.textContent = el.dataset.tooltip;
-      tooltip.style.opacity = "1";
-
-      const rect = el.getBoundingClientRect();
-      tooltip.style.left = `${rect.left + window.scrollX}px`;
-      tooltip.style.top = `${rect.top + window.scrollY - 30}px`;
-    });
-
-    el.addEventListener("mouseleave", () => {
-      tooltip.style.opacity = "0";
-    });
-  });
-}
-
-initMapTooltips();
+// Carros - Filtro por Década (Aprimorado)
 
 // Filtro por Década - Complemento
 decadeFilters.forEach((filter) => {
