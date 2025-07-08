@@ -75,9 +75,9 @@ body {
 }
 
 .carousel-indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  width: 18px;
+  height: 4px;
+  border-radius: 0%;
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -197,16 +197,15 @@ body {
 .category-btn {
   padding: 10px 20px;
   background: transparent;
-  border: 1px solid #404040;
   color: #a0a0a0;
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .category-btn:hover,
 .category-btn.active {
-  background: white;
-  color: black;
-  border-color: white;
+  color: #fff;
+  border-bottom: 1px solid #fff;
 }
 
 /* Loading Animation */
