@@ -231,15 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const reviewsCarousel = new Carousel(
-  "reviewsCarousel",
-  "reviewsCarousel",
-  "reviewsPrev",
-  "reviewsNext",
-  "reviewsIndicators"
-);
-reviewsCarousel.init();
-
 // Category filtering
 
 const categoryBtns = document.querySelectorAll(".category-btn");
@@ -490,45 +481,7 @@ mapPoints.forEach((point) => {
   });
 });
 
-// Audio player functionality
-const audioPlayers = document.querySelectorAll(".audio-player");
-audioPlayers.forEach((player) => {
-  const playBtn = player.querySelector(".play-btn");
-  const progress = player.querySelector(".progress");
-  const currentTime = player.querySelector(".current-time");
-  const duration = player.querySelector(".duration");
 
-  // Mock functionality
-  playBtn.addEventListener("click", () => {
-    player.classList.toggle("playing");
-
-    if (player.classList.contains("playing")) {
-      playBtn.innerHTML = "❚❚";
-      // Simulate progress
-      let time = 0;
-      const interval = setInterval(() => {
-        if (time >= 100) {
-          clearInterval(interval);
-          player.classList.remove("playing");
-          playBtn.innerHTML = "▶";
-          progress.style.width = "0%";
-        } else {
-          time += 1;
-          progress.style.width = `${time}%`;
-          currentTime.textContent = formatTime(time * 0.42); // 42s total
-        }
-      }, 420); // 420ms for 100 steps = 42s total
-    } else {
-      playBtn.innerHTML = "▶";
-    }
-  });
-});
-
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
-}
 
 // Rotating wheel animation
 const wheelItems = document.querySelectorAll(".wheel-item");
@@ -930,7 +883,7 @@ function showRouteInfo(routeKey) {
                       .map(
                         (feature) => `
                         <li class="text-xs text-gray-400 flex items-center gap-2">
-                            <div class="w-1 h-1 bg-white rounded-full"></div>
+                            <div class="w-1 h-1 bg-zinc-950 rounded-full"></div>
                             ${feature}
                         </li>
                     `
@@ -991,3 +944,5 @@ window.addEventListener("scroll", () => {
     indicator.style.transform = `translateY(${yPos}px)`;
   });
 });
+
+

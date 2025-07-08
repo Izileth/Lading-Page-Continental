@@ -42,9 +42,12 @@
     <title>JDM & Cultura Japonesa</title>
 
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white p-0 m-0 overflow-x-hidden box-border">
     <!-- Mobile Sidebar Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+        
+    <div class="scroll-indicator" id="scrollProgress"></div>
+    
     
     <!-- Mobile Sidebar -->
     <div class="mobile-sidebar" id="mobileSidebar">
@@ -97,32 +100,72 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class=" min-h-screen flex items-center justify-center gradient-bg relative   overflow-hidden">
+
+
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Vídeo de fundo -->
+        <div class="absolute inset-0 z-0">
+            <video 
+            id="backgroundVideo"
+            autoplay 
+            muted 
+            loop 
+            class="w-full h-full object-cover opacity-70"
+            src="https://v1.pinimg.com/videos/mc/720p/d0/23/02/d0230262f420b7e32d32894e2dec4372.mp4"
+            ></video>
+   
+        </div>
+
+        <!-- Overlays de gradiente (mantidos do seu código original) -->
         <div class="absolute top-0 left-0 w-full h-2/3 bg-gradient-to-b from-black to-transparent z-10"></div>
         <div class="absolute bottom-0 left-0 w-full h-2/6 bg-gradient-to-t from-black to-transparent z-10"></div>
 
+        <!-- Conteúdo principal (mantido do seu código original) -->
         <div class="text-center px-6 animate-fadeInUp z-10">
             <h1 class="text-6xl md:text-8xl font-bold mb-6 text-gradient z-10">JDM</h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto font-light">
-                Explorando a essência da cultura automotiva japonesa
+            Explorando a essência da cultura automotiva japonesa
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-white text-black px-8 py-3 font-semibold hover:bg-gray-200 transition-colors">
-                    <a class="text-normlal " href="#galeria">Explorar</a>
-                </button>
-                <button class="border border-white text-white px-8 py-3 font-semibold hover:bg-white hover:text-black transition-colors">
-                    <a class="text-normal" href="#cultura">Conhecer a Cultura</a>
-                </button>
+            <button class="bg-white text-black px-8 py-3 font-semibold hover:bg-gray-200 transition-colors">
+                <a class="text-normal" href="#galeria">Explorar</a>
+            </button>
+            <button class="border border-white text-white px-8 py-3 font-semibold hover:bg-white hover:text-black transition-colors">
+                <a class="text-normal" href="#cultura">Conhecer a Cultura</a>
+            </button>
             </div>
         </div>
+
+        <!-- Controles de vídeo personalizados (opcional, aparecem ao passar o mouse) -->
+        <div class="absolute bottom-4 right-4 bg-black bg-opacity-50 rounded-full p-2 z-20 opacity-0 hover:opacity-100 transition-opacity duration-300 group">
+            <button id="videoControlBtn" class="text-white p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            </button>
+            <div class="hidden group-hover:flex absolute bottom-full right-0 mb-2 bg-black bg-opacity-80 rounded-lg p-3 space-x-2">
+            <button id="playPauseBgBtn" class="text-white p-1 hover:bg-white hover:bg-opacity-20 rounded">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <button id="muteBgBtn" class="text-white p-1 hover:bg-white hover:bg-opacity-20 rounded">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            </div>
+        </div>
+        
     </section>
+
  
     <!-- JDM Carousel Section -->
   
-    <section id="jdm" class="py-20 bg-black">
-        <div class="container mx-auto px-6">
-                    
+    <section id="jdm" class="py-20 bg-black w-full">
+        <div class="container w-full mx-auto max-w-full px-6">
+
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
                     Esportivos Lendários
@@ -134,17 +177,17 @@
             </div>
             
             <!-- JDM Carousel -->
-            <div id="jdmWrapper" class="carousel-container w-full relative overflow-hidden mb-16 fade-in-section">
+            <div id="jdmWrapper" class="carousel-container w-full max-w-full relative overflow-hidden mb-16 fade-in-section">
                 <div class="carousel-track flex flex-nowrap transition-transform duration-500 ease-out w-full" id="jdmTrack">
                     <!-- Slide 1 - Nissan Skyline GT-R -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-full md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-black to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
                                 <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
                                     <img 
-                                        src="https://i.pinimg.com/736x/3a/07/88/3a07888408bf3c026abe1f81a6825b68.jpg" 
+                                        src="https://i.pinimg.com/736x/d9/05/36/d90536965c0296b5b2418e17c4e48489.jpg" 
                                         alt="Nissan Skyline GT-R" 
-                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        class="w-full h-96 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
                                         loading="lazy"
                                     />
                                 </div>
@@ -159,13 +202,13 @@
                     
                     <!-- Slide 2 - Toyota Supra MK4 -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-zinc-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                        <div class="bg-zinc-black p-4 md:p-8 card-hover w-full max-w-full md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-black to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
                                 <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
                                     <img 
-                                        src="https://i.pinimg.com/736x/cd/e8/57/cde857015024bfcbe2f5d45ec546d15e.jpg" 
+                                        src="https://i.pinimg.com/736x/6b/81/59/6b8159fe6df77821b91e37fcf79155e8.jpg" 
                                         alt="Toyota Supra MK4" 
-                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        class="w-full h-96 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
                                         loading="lazy"
                                     />
                                 </div>
@@ -180,13 +223,13 @@
                     
                     <!-- Slide 3 - Honda NSX -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-zinc-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                        <div class="bg-zinc-black p-4 md:p-8 card-hover w-full max-w-full md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-black to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
                                 <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
                                     <img 
-                                        src="https://i.pinimg.com/736x/d7/00/36/d70036c5288b5b1a4c5e535a1e9632af.jpg" 
+                                        src="https://i.pinimg.com/736x/b4/96/b8/b496b8d5573612b9408093dcdda9fec3.jpg" 
                                         alt="Honda NSX" 
-                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        class="w-full h-96 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
                                         loading="lazy"
                                     />
                                 </div>
@@ -201,13 +244,13 @@
                     
                     <!-- Slide 4 - Mazda RX-7 -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-full md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-black to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
                                 <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
                                     <img 
                                         src="https://i.pinimg.com/736x/d6/d8/b4/d6d8b43bcf4856a2efa0915e92f211b5.jpg" 
                                         alt="Mazda RX-7" 
-                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        class="w-full h-96 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
                                         loading="lazy"
                                     />
                                 </div>
@@ -222,13 +265,13 @@
                     
                     <!-- Slide 5 - Subaru Impreza WRX -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-full md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-black to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
                                 <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
                                     <img 
-                                        src="https://i.pinimg.com/736x/06/78/1e/06781e633f05a9174afda638fa9ebd00.jpg" 
+                                        src="https://i.pinimg.com/736x/2f/db/fd/2fdbfdd2226d0e14fb9ee8cbe0f97428.jpg" 
                                         alt="Subaru Impreza WRX" 
-                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        class="w-full h-96 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
                                         loading="lazy"
                                     />
                                 </div>
@@ -243,13 +286,13 @@
                     
                     <!-- Slide 6 - Mitsubishi Lancer Evo -->
                     <div class="carousel-slide shrink-0 w-full flex justify-center">
-                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-sm md:max-w-none mx-auto">
-                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-neutral-800 to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
+                        <div class="bg-black p-4 md:p-8 card-hover w-full max-w-full md:max-w-none mx-auto">
+                            <div class="relative w-full mx-auto p-4 bg-gradient-to-br from-black to-black rounded-2xl shadow-2xl overflow-hidden group md:h-[70vh] flex flex-col">
                                 <div class="flex-1 flex items-center justify-center overflow-hidden rounded-xl">
                                     <img 
-                                        src="https://i.pinimg.com/736x/e3/f6/56/e3f656dbd19d15c213ac17b65fd00279.jpg" 
+                                        src="https://i.pinimg.com/736x/7a/21/53/7a2153548be7abba248f43000445e2a7.jpg" 
                                         alt="Mitsubishi Lancer Evo" 
-                                        class="w-full h-48 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
+                                        class="w-full h-96 md:h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-110 rounded-xl"
                                         loading="lazy"
                                     />
                                 </div>
@@ -269,6 +312,7 @@
             </div>
         </div>
     </section>
+
     <!-- Categorias Section -->
     <section id="categorias" class="py-20 bg-black">
         <div class="container mx-auto px-6">
@@ -338,7 +382,7 @@
     </section>
 
     <!-- Cultura Section -->
-    <section id="cultura" class="py-20 bg-zinc-950">
+    <section id="cultura" class="py-20 bg-black">
         <div class="container mx-auto px-6">
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
@@ -395,7 +439,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in-section">
                 <!-- Item 1 -->
                 <div class="bg-transparent p-6 card-hover group overflow-hidden">
-                    <div class="h-72 it-bg-weel-1 mb-4 flex items-center justify-center relative">
+                    <div class="h-96 it-bg-weel-1 mb-4 flex items-center justify-center relative">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"></div>
                         <span class="absolute text-xs text-gray-400 group-hover:text-white transition-all">RAYS Volk TE37</span>
                     </div>
@@ -405,7 +449,7 @@
                 
                 <!-- Item 2 -->
                 <div class="bg-transparent p-6 card-hover group overflow-hidden">
-                    <div class="h-72 it-bg-weel-2 mb-4 flex items-center justify-center relative">
+                    <div class="h-96 it-bg-weel-2 mb-4 flex items-center justify-center relative">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"></div>
                         <span class="absolute text-xs text-gray-400 group-hover:text-white transition-all">Watanabe RS</span>
                     </div>
@@ -415,7 +459,7 @@
                 
                 <!-- Item 3 -->
                 <div class="bg-transparent p-6 card-hover group overflow-hidden">
-                    <div class="h-72 it-bg-weel-3 mb-4 flex items-center justify-center relative">
+                    <div class="h-96 it-bg-weel-3 mb-4 flex items-center justify-center relative">
                         <div class="w-32 h-32 rounded-full border-4 border-gray-600 group-hover:border-white transition-all duration-500"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                             <span class="text-xs text-white">SSR Professor SP1</span>
@@ -427,7 +471,7 @@
                 
                 <!-- Item 4 -->
                 <div class="bg-transparent p-6 card-hover group overflow-hidden">
-                    <div class="h-72 it-bg-weel-4 mb-4 flex items-center justify-center relative">
+                    <div class="h-96 it-bg-weel-4 mb-4 flex items-center justify-center relative">
                         <div class="w-32 h-32 rounded-full border-4 border-gray-600 group-hover:border-white transition-all duration-500"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                             <span class="text-xs text-gray-400 group-hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0">Work Meister S1</span>
@@ -491,7 +535,6 @@
     <!-- Sons e Músicas Section -->
     <section id="sons" class="py-20 bg-black">
         <div class="container mx-auto px-6">
-
             <div class="text-center mb-20 fade-in">
                 <h2 class="text-5xl md:text-6xl font-black mb-6 text-gradient">
                     Solta o Som
@@ -510,49 +553,49 @@
                     
                     <div class="space-y-4">
                         <!-- Música 1 -->
-                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group">
-                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group cursor-pointer" data-audio="Power Slide">
+                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all play-btn">
                                 ▶
                             </button>
                             <div class="flex-1">
-                                <h4 class="font-medium">Running in the 90's</h4>
-                                <p class="text-xs text-gray-500">Initial D</p>
+                                <h4 class="font-medium">Power Slide</h4>
+                                <p class="text-xs text-gray-500">DRIFTBOYS</p>
                             </div>
                             <span class="text-sm text-gray-400">3:42</span>
                         </div>
                         
                         <!-- Música 2 -->
-                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group">
-                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group cursor-pointer" data-audio="Kami">
+                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all play-btn">
                                 ▶
                             </button>
                             <div class="flex-1">
-                                <h4 class="font-medium">Gas Gas Gas</h4>
-                                <p class="text-xs text-gray-500">Manuel</p>
+                                <h4 class="font-medium">Kami</h4>
+                                <p class="text-xs text-gray-500">DRIFTBOYS</p>
                             </div>
                             <span class="text-sm text-gray-400">3:15</span>
                         </div>
                         
                         <!-- Música 3 -->
-                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group">
-                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group cursor-pointer" data-audio="Six Days">
+                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all play-btn">
                                 ▶
                             </button>
                             <div class="flex-1">
-                                <h4 class="font-medium">Deja Vu</h4>
-                                <p class="text-xs text-gray-500">Initial D</p>
+                                <h4 class="font-medium">Six Days</h4>
+                                <p class="text-xs text-gray-500">Lyrics</p>
                             </div>
                             <span class="text-sm text-gray-400">4:26</span>
                         </div>
                         
                         <!-- Música 4 -->
-                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group">
-                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all">
+                        <div class="flex items-center gap-4 p-3 hover:bg-gray-700 rounded transition-colors group cursor-pointer" data-audio="Anikdote">
+                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full group-hover:bg-white group-hover:text-black transition-all play-btn">
                                 ▶
                             </button>
                             <div class="flex-1">
-                                <h4 class="font-medium">Night of Fire</h4>
-                                <p class="text-xs text-gray-500">Niko</p>
+                                <h4 class="font-medium">ANIKDOTE</h4>
+                                <p class="text-xs text-gray-500">Philosophy</p>
                             </div>
                             <span class="text-sm text-gray-400">3:24</span>
                         </div>
@@ -560,13 +603,13 @@
                 </div>
                 
                 <!-- Sons de Motor -->
-                <div class="bg- p-8 rounded-lg">
+                <div class="bg-black p-8 rounded-lg">
                     <h3 class="text-2xl font-semibold mb-6">Sons Icônicos de Motor</h3>
                     <p class="text-gray-400 mb-6">Os motores que criaram a lenda - identifique cada um pelo som.</p>
                     
                     <div class="grid grid-cols-2 gap-4">
                         <!-- Motor 1 -->
-                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group">
+                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group cursor-pointer" data-audio="Nissan RB26DETT">
                             <div class="h-24 mb-3 relative overflow-hidden rounded">
                                 <div class="absolute inset-0 bg-gradient-to-br from-black to-zinc-950 flex items-center justify-center">
                                     <span class="text-4xl">RB26</span>
@@ -577,7 +620,7 @@
                         </div>
                         
                         <!-- Motor 2 -->
-                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group">
+                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group cursor-pointer" data-audio="Toyota 2JZ-GTE">
                             <div class="h-24 mb-3 relative overflow-hidden rounded">
                                 <div class="absolute inset-0 bg-gradient-to-br from-black to-zinc-950 flex items-center justify-center">
                                     <span class="text-4xl">2JZ</span>
@@ -588,7 +631,7 @@
                         </div>
                         
                         <!-- Motor 3 -->
-                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group">
+                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group cursor-pointer" data-audio="Mazda 13B-REW">
                             <div class="h-24 mb-3 relative overflow-hidden rounded">
                                 <div class="absolute inset-0 bg-gradient-to-br from-black to-zinc-950 flex items-center justify-center">
                                     <span class="text-4xl">13B</span>
@@ -599,7 +642,7 @@
                         </div>
                         
                         <!-- Motor 4 -->
-                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group">
+                        <div class="p-4 bg-black rounded-lg hover:bg-black transition-colors group cursor-pointer" data-audio="Mitsubishi 4G63T">
                             <div class="h-24 mb-3 relative overflow-hidden rounded">
                                 <div class="absolute inset-0 bg-gradient-to-br from-black to-zinc-950 flex items-center justify-center">
                                     <span class="text-4xl">4G63</span>
@@ -612,43 +655,49 @@
                 </div>
             </div>
             
-            <!-- Visualização de Onda Sonora -->
-            <div class="mt-12 bg-blackp-6 rounded-lg fade-in-section">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xl font-semibold">RB26DETT - Aceleração Completa</h3>
-                    <span class="text-sm text-gray-400">0:28 / 0:42</span>
-                </div>
-                <div class="h-16 bg-zinc-950 rounded-full overflow-hidden relative">
-                    <div class="absolute inset-0 flex items-center px-4">
-                        <div class="h-1 bg-zinc-900 rounded-full w-full relative">
-                            <div class="absolute left-0 top-0 bottom-0 bg-white w-2/3"></div>
-                            <div class="absolute left-2/3 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rounded-full"></div>
-                        </div>
+            <!-- Player Global Fixo -->
+            <div id="globalPlayer" class="fixed bottom-0 left-0 right-0 bg-black border-t border-gray-800 p-4 hidden transform translate-y-full transition-transform duration-300">
+                <div class="container mx-auto flex items-center gap-4">
+                    <!-- Capa do Áudio -->
+                    <div id="currentCover" class="w-12 h-12 bg-gray-800 rounded flex items-center justify-center text-xl">
+                        🎵
                     </div>
                     
-                    <!-- Onda sonora -->
-                    <div class="absolute inset-0 flex items-center justify-between px-4">
-                        <div class="h-1 bg-gray-500 rounded-full" style="width: 3px; height: 4px;"></div>
-                        <div class="h-1 bg-gray-400 rounded-full" style="width: 3px; height: 10px;"></div>
-                        <div class="h-1 bg-gray-500 rounded-full" style="width: 3px; height: 6px;"></div>
-                        <div class="h-1 bg-gray-400 rounded-full" style="width: 3px; height: 14px;"></div>
-                        <div class="h-1 bg-gray-500 rounded-full" style="width: 3px; height: 8px;"></div>
-                        <div class="h-1 bg-gray-400 rounded-full" style="width: 3px; height: 18px;"></div>
-                        <div class="h-1 bg-gray-500 rounded-full" style="width: 3px; height: 12px;"></div>
-                        <div class="h-1 bg-gray-400 rounded-full" style="width: 3px; height: 22px;"></div>
-                        <!-- Repetir mais elementos para completar a onda -->
+                    <!-- Informações -->
+                    <div class="flex-1 min-w-0">
+                        <h4 id="currentTitle" class="font-medium truncate">Nenhuma música selecionada</h4>
+                        <p id="currentArtist" class="text-xs text-gray-400 truncate">JDM Sounds</p>
                     </div>
-                </div>
-                <div class="flex justify-center mt-6 gap-4">
-                    <button class="w-10 h-10 flex items-center justify-center bg-zinc-950rounded-full hover:bg-white hover:text-black transition-all">
-                        ⏮
-                    </button>
-                    <button class="w-12 h-12 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition-all">
-                        ▶
-                    </button>
-                    <button class="w-10 h-10 flex items-center justify-center bg-zinc-950 rounded-full hover:bg-white hover:text-black transition-all">
-                        ⏭
-                    </button>
+                    
+                    <!-- Controles -->
+                    <div class="flex items-center gap-4">
+                        <button id="prevBtn" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-800">
+                            ⏮
+                        </button>
+                        <button id="playPauseBtn" class="w-10 h-10 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200">
+                            ▶
+                        </button>
+                        <button id="nextBtn" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-800">
+                            ⏭
+                        </button>
+                    </div>
+                    
+                    <!-- Progresso -->
+                    <div class="hidden md:flex flex-1 max-w-md items-center gap-2">
+                        <span id="currentTime" class="text-xs text-gray-400">0:00</span>
+                        <div class="flex-1 h-1 bg-gray-800 rounded-full overflow-hidden cursor-pointer" id="progressContainer">
+                            <div id="progressBar" class="h-full bg-white" style="width: 0%"></div>
+                        </div>
+                        <span id="duration" class="text-xs text-gray-400">0:00</span>
+                    </div>
+                    
+                    <!-- Volume -->
+                    <div class="hidden md:flex items-center gap-2 w-24">
+                        <span class="text-xs">🔊</span>
+                        <div class="flex-1 h-1 bg-gray-800 rounded-full overflow-hidden cursor-pointer" id="volumeContainer">
+                            <div id="volumeBar" class="h-full bg-white" style="width: 80%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -804,30 +853,30 @@
                     <div class="absolute  inset-0 flex items-center justify-center">
                         <div class="w-full h-full bg-[url(https://cdn11.bigcommerce.com/s-hv21hhsv/images/stencil/1280x1280/products/36535/240355/Tokyo_Map_Dark__24004.1672008928.png?c=2)] bg-center bg-no-repeat bg-cover bg-gradient-to-br from-zinc-950 to-zinc-950 relative">
                             <!-- Elementos do Mapa -->
-                            <div class="absolute left-1/4 top-1/4 w-12 h-12 bg-red-500 rounded-full animate-pulse" data-tooltip="Mid Night Club - Wangan"></div>
-                            <div class="absolute left-1/3 top-1/2 w-16 h-16 bg-blue-500 rounded-full animate-pulse" data-tooltip="Team Orange - Ebisu"></div>
-                            <div class="absolute left-2/3 top-1/3 w-8 h-8 bg-yellow-500 rounded-full animate-pulse" data-tooltip="Mines - Yokohama"></div>
-                            <div class="absolute left-1/2 top-2.5 w-20 h-20 bg-green-500 rounded-full animate-pulse" data-tooltip="HKS - Fuji"></div>
-                            
+                            <div class="absolute left-1/4 top-1/4 w-12 h-12 bg-red-700 rounded-full animate-pulse" data-tooltip="Mid Night Club - Wangan"></div>
+                            <div class="absolute left-1/3 top-1/2 w-16 h-16 bg-orange-600 rounded-full animate-pulse" data-tooltip="Team Orange - Ebisu"></div>
+                            <div class="absolute left-2/3 top-1/3 w-8 h-8 bg-indigo-700 rounded-full animate-pulse" data-tooltip="Mines - Yokohama"></div>
+                            <div class="absolute left-1/2 top-2.5 w-20 h-20 bg-emerald-700 rounded-full animate-pulse" data-tooltip="HKS - Fuji"></div>
+
                         </div>
                     </div>
                     
                     <!-- Legenda -->
                     <div class="absolute bottom-4 left-4 bg-black bg-opacity-80 p-4 rounded-lg">
                         <div class="flex items-center gap-2 mb-2">
-                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-red-700 rounded-full"></div>
                             <span class="text-xs">Mid Night Club</span>
                         </div>
                         <div class="flex items-center gap-2 mb-2">
-                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-orange-600 rounded-full"></div>
                             <span class="text-xs">Team Orange</span>
                         </div>
                         <div class="flex items-center gap-2 mb-2">
-                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-indigo-700 rounded-full"></div>
                             <span class="text-xs">Mines</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-emerald-700 rounded-full"></div>
                             <span class="text-xs">HKS</span>
                         </div>
                     </div>
@@ -1327,13 +1376,13 @@
                             </div>
                             
                             <!-- Pontos do Mapa -->
-                            <div class="absolute left-1/4 top-1/3 w-14 h-14 bg-red-500 rounded-full map-point cursor-pointer animate-pulse" 
+                            <div class="absolute left-1/4 top-1/3 w-14 h-14 bg-orange-600 rounded-full map-point cursor-pointer animate-pulse" 
                                  title="Wangan Route" 
                                  onclick="showRouteInfo('wangan')"></div>
-                            <div class="absolute left-1/3 top-2/3 w-12 h-12 bg-green-500 rounded-full map-point cursor-pointer animate-pulse" 
+                            <div class="absolute left-1/3 top-2/3 w-12 h-12 bg-indigo-700 rounded-full map-point cursor-pointer animate-pulse" 
                                  title="Touge Route" 
                                  onclick="showRouteInfo('touge')"></div>
-                            <div class="absolute right-1/3 top-1/2 w-12 h-12 bg-yellow-500 rounded-full map-point cursor-pointer animate-pulse" 
+                            <div class="absolute right-1/3 top-1/2 w-12 h-12 bg-violet-700 rounded-full map-point cursor-pointer animate-pulse" 
                                  title="C1 Loop" 
                                  onclick="showRouteInfo('c1')"></div>
 
@@ -1341,15 +1390,15 @@
                             <div class="absolute bottom-6 left-6 bg-black/80 backdrop-blur-sm p-4 rounded-lg border border-gray-800">
                                 <div class="space-y-3">
                                     <div class="flex items-center gap-3 legend-item cursor-pointer" onclick="showRouteInfo('wangan')">
-                                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-red-700 rounded-full"></div>
                                         <span class="text-sm font-medium">Wangan</span>
                                     </div>
                                     <div class="flex items-center gap-3 legend-item cursor-pointer" onclick="showRouteInfo('touge')">
-                                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-indigo-700 rounded-full"></div>
                                         <span class="text-sm font-medium">Touge</span>
                                     </div>
                                     <div class="flex items-center gap-3 legend-item cursor-pointer" onclick="showRouteInfo('c1')">
-                                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                        <div class="w-3 h-3 bg-violet-700 rounded-full"></div>
                                         <span class="text-sm font-medium">C1 Loop</span>
                                     </div>
                                 </div>
@@ -1495,9 +1544,27 @@
                     </div>
                     
                     <!-- Pontos do Mapa -->
-                    <div class="absolute left-1/4 top-1/2 w-10 h-10 bg-white rounded-full animate-pulse cursor-pointer" data-location="daikoku"></div>
-                    <div class="absolute left-1/2 top-1/3 w-10 h-10 bg-white rounded-full animate-pulse cursor-pointer" data-location="tatsumi"></div>
-                    <div class="absolute left-2/3 top-2/3 w-10 h-10 bg-white rounded-full animate-pulse cursor-pointer" data-location="umihotaru"></div>
+                    <div class="absolute left-1/4 top-1/2 w-10 h-10 bg-indigo-700 rounded-full animate-pulse cursor-pointer" data-location="daikoku"></div>
+                    <div class="absolute left-1/2 top-1/3 w-10 h-10 bg-red-700 rounded-full animate-pulse cursor-pointer" data-location="tatsumi"></div>
+                    <div class="absolute left-2/3 top-2/3 w-10 h-10 bg-violet-700 rounded-full animate-pulse cursor-pointer" data-location="umihotaru"></div>
+
+                        
+                    <!-- Legenda -->
+                    <div class="absolute bottom-4 left-4 bg-black bg-opacity-80 p-4 rounded-lg">
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 bg-indigo-700 rounded-full"></div>
+                            <span class="text-xs">Daikoku</span>
+                        </div>
+             
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 bg-red-700 rounded-full"></div>
+                            <span class="text-xs">Tatsumi</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-3 h-3 bg-violet-700 rounded-full"></div>
+                            <span class="text-xs">Umihotaru</span>
+                        </div>
+                    </div>
 
                     <!-- Linhas de Conexão -->
                     <svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -1878,7 +1945,19 @@
             </div>
         </div>
     </footer>
+
+     <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-zinc-50 text-black rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 shadow-lg hover:bg-zinc-900 focus-minimal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"></path>
+        </svg>
+    </button>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="./script.js"></script>
+    <script src="./player.js"></script>
+    <script src="./back.top.btn.js"></script>
+    <script src="./scroll.bar.js"></script>
+    <script src="./video.repeat.js"></script>
 </body>
 </html>
